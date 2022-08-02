@@ -1,0 +1,28 @@
+.backGround{
+    padding: 0;
+    display: grid;
+    height: auto;
+    width: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+    z-index: 0;
+    background-image: url(../../../../assets/bg.svg);
+    background-size: contain;
+    background-position: bottom;
+}
+.card {
+    border: none;
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 5px 50px rgb(0 0 0 / 20%);
+    border-radius: .8rem!important
+}
+.login{
+    letter-spacing: -0.025em !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    font-size: 2rem !important;
+}

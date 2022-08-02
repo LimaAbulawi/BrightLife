@@ -1,0 +1,35 @@
+<div class="flex w-full">
+    <!-- dashboard  -->
+    <div class="flex flex-col bg-slate-600 text-center dark  w-[280px] h-[100vh]">
+        <div class="relative p-4 ">
+            <img class="w-28 h-28 m-auto" src="../../../assets/App icon1.png" alt="">
+        </div>
+        <div class="navbar-brand">BrightLife</div>
+        <ul class="nav ml-[30px] text-left flex flex-col" ui-nav>
+            <li class="hidden-folded">
+                <a href="">
+                    <small class="text-muted">Main</small>
+                </a>
+            </li>
+            <li class="hidden-folded">
+                <a routerLink="/protected/users">
+                    <span class="nav-text dark">users</span>
+                </a>
+            </li>
+            <li class="hidden-folded">
+                <a routerLink="/protected/providers">
+                    <span class="nav-text dark">providers</span>
+                </a>
+            </li>
+            <li class="hidden-folded">
+                <a routerLink="/protected/categories">
+                    <span class="nav-text dark">categories</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- component  -->
+    <div class="flex flex-col mt-10 w-full">
+        <router-outlet></router-outlet>
+    </div>
+</div>

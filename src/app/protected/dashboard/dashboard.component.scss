@@ -1,0 +1,120 @@
+.app-aside {
+    width: 12.5rem;
+    opacity: 1;
+    display: block !important;
+    position: fixed !important;
+    z-index: 1030;
+    float: left;
+    height: 100%;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dark {
+    color: rgba(255, 255, 255, 0.87) !important;
+    background-color: #2e3e4e;
+}
+
+.app-aside .left {
+    position: absolute;
+    right: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.modal>.left {
+    position: fixed;
+    z-index: 1055;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+}
+
+.navside {
+    border: inherit;
+}
+
+[layout=column] {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.no-radius {
+    border-radius: 0 !important;
+}
+
+.navbar {
+    border: none;
+    margin: 0;
+    padding: 0 1rem;
+    flex-shrink: 0;
+    min-height: 3.5rem;
+}
+
+.navbar {
+    position: relative;
+    padding: .5rem 1rem;
+}
+
+.navbar::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+// .navside .navbar-brand {
+
+// }
+
+.de-none {
+    text-decoration: none
+}
+
+// USE IT
+.navbar-brand {
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 3.5rem;
+    white-space: nowrap;
+    float: none;
+    margin-right: 0;
+}
+
+.inventory-grid {
+    grid-template-columns: 48px auto 40px;
+
+    @screen sm {
+        grid-template-columns: 48px auto 112px;
+    }
+
+    @screen md {
+        grid-template-columns: 48px 112px auto 112px 72px;
+    }
+
+    @screen lg {
+        grid-template-columns: 48px 112px auto 112px 96px 96px;
+    }
+}
+.customContainer{
+    max-width: 1247px;
+    margin: auto;
+}
