@@ -1,9 +1,9 @@
 <div class="flex items-center justify-between w-full container mb-12">
-    <div class="text-4xl font-extrabold text-[#3f8361]">
-        All Providers
+    <div class="text-4xl font-extrabold text-[#58c5b6]">
+        All Services
     </div>
     <div class="mr-[200px]">
-        <button type="button" class="ml-4 btn btn-light" (click)="addSuppliersDiv()">Add</button>
+        <button type="button" class="ml-4 btn btn-light" (click)="addServiceDiv()">Add</button>
     </div>
 </div>
 <div class="grid">
@@ -18,110 +18,86 @@
         <div>Details</div>
         <div class="hidden md:block"></div>
     </div>
-    <div *ngIf="isAddSupplier" class=" items-center py-3 px-6 md:px-8">
-        <form action="" class="border-b" [formGroup]="addSuppliersForm" (ngSubmit)="addSuppliers()" enctype="multipart/form-data">
+    <div *ngIf="isAddService" class=" items-center py-3 px-6 md:px-8">
+        <form action="" class="border-b" [formGroup]="addServicesForm" (ngSubmit)="addServices()" enctype="multipart/form-data">
             <div class="grid grid-container grid-template  w-full p-1 justify-center mt-7 mx-auto mb-1">
                 <div class="form-floating m-1 grid-item">
                     <input type="text" class="form-control" placeholder="Name" formControlName="name">
                     <label for="floatingInputGrid">Name</label>
                 </div>
                 <div class="form-floating m-1 grid-item ">
-                    <input type="text" class="form-control" placeholder="Email" formControlName="email">
-                    <label for="floatingInputGrid">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="content">
+                    <label for="floatingInputGrid">content</label>
                 </div>
                 <div class="form-floating m-1 grid-item">
-                    <input type="password" class="form-control out" placeholder="password" formControlName="password">
-                    <label for="floatingInputGrid">password</label>
+                    <input type="number" class="form-control" placeholder="phone" formControlName="price">
+                    <label for="floatingInputGrid">price</label>
                 </div>
                 <div class="form-floating m-1 grid-item">
-                    <input type="text" class="form-control" placeholder="phone" formControlName="phone">
-                    <label for="floatingInputGrid">phone</label>
+                    <input type="number" class="form-control" placeholder="description" formControlName="category_id">
+                    <label for="floatingInputGrid">category_id</label>
                 </div>
                 <div class="form-floating m-1 grid-item">
-                    <input type="text" class="form-control" placeholder="description" formControlName="description">
-                    <label for="floatingInputGrid">description</label>
-                </div>
-                <div class="form-floating m-1 grid-item">
-                    <input type="" class="form-control" placeholder="location" formControlName="location">
-                    <label for="floatingInputGrid">location</label>
-                </div>
+                    <input type="number" class="form-control" placeholder="description" formControlName="supplier_id">
+                    <label for="floatingInputGrid">supplier_id</label>
+                </div>   
                 <div class=" m-1 grid-item">
                     <input type="file" (change)="onFileChange($event)" #file class="form-control mt-[10px]" placeholder="image" >
-                </div>
-                <!-- <div class=" m-1 grid-item">
-                    <label for="floatingInputGrid">cover</label>
-                    <input type="file" class="form-control" id="floatingInputGrid" placeholder="cover"
-                        formControlName="cover">
-                </div> -->
+                </div>         
             </div>
             <div class="flex items-center justify-center customContainer  px-4 py-2 ">
-                <button type="submit" [disabled]="!addSuppliersForm.valid"
-                    class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px] w-36">Add Provider</button>
+                <button type="submit" [disabled]="!addServicesForm.valid"
+                    class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-36">Add Services</button>
             </div>
         </form>
     </div>
     <!-- ngFor -->
-    <div *ngIf="suppliers">
-        <div *ngFor="let supplier of suppliers">
+    <div *ngIf="services">
+        <div *ngFor="let service of services">
 
             <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
                 <div class="hidden md:block"></div>
                 <div class="items-center hidden md:block">
-                    {{supplier.id}}
+                    {{service.id}}
                 </div>
                 <div class="flex items-center">
-                    {{supplier.name}}
+                    {{service.name}}
                 </div>
                 <div>
                 </div>
                 <div class="flex items-center">
                     <!-- Details button -->
-                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(supplier.id)">
-                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[supplier.id]"></i>
-                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[supplier.id]"></i>
+                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(service.id)">
+                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[service.id]"></i>
+                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[service.id]"></i>
                     </div>
                 </div>
                 <div class="hidden md:block">
                 </div>
             </div>
-            <div *ngIf="isShown[supplier.id]">
+            <div *ngIf="isShown[service.id]">
                 <form action="" class="border-b">
                     <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
                         <div class="form-floating m-1">
                             <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
-                                value="{{supplier.id}}">
+                                value="{{service.id}}">
                             <label for="floatingInputGrid">Id</label>
                         </div>
                         <div class="form-floating m-1">
                             <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                value="{{supplier.name}}">
+                                value="{{service.name}}">
                             <label for="floatingInputGrid">Name</label>
                         </div>
                         <div class="form-floating m-1 w-1/4">
                             <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
-                                value="{{supplier.email}}">
+                                value="{{service.email}}">
                             <label for="floatingInputGrid">Email</label>
                         </div>
                         <div class="form-floating m-1 ">
                             <input type="text" class="form-control" id="floatingInputGrid" placeholder="phone"
-                                value="{{supplier.phone}}">
+                                value="{{service.phone}}">
                             <label for="floatingInputGrid">phone</label>
                         </div>
-                        <!-- <div class="form-floating m-1">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                value="{{supplier.email_verified_at}}">
-                            <label for="floatingInputGrid">Email Verified At</label>
-                        </div>
-                        <div class="form-floating m-1">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                value="{{supplier.created_at}}">
-                            <label for="floatingInputGrid">Created At</label>
-                        </div>
-                        <div class="form-floating m-1">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                value="{{supplier.updated_at}}">
-                            <label for="floatingInputGrid">Updated At</label>
-                        </div> -->
                     </div>
                     <div class="flex items-center justify-between customContainer  px-4 py-2 ">
                         <!-- <button type="button" class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]" (click)="edit(supplier.id)">Edit</button> -->

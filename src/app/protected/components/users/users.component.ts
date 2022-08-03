@@ -10,6 +10,8 @@ import { UsersService } from '../../services/users.service';
 export class UsersComponent implements OnInit {
 
   isShown: Array<Boolean> = [];
+  isOrderShown: Array<Boolean> = [];
+  isAddressesShown: Array<Boolean> = [];
   users: any = [];
   user: any = [];
   isdelete: any = [];
@@ -29,7 +31,7 @@ export class UsersComponent implements OnInit {
     phone: new FormControl('', [Validators.required]),
     image: new FormControl(''),
   });
-  
+
   getListFromService() {
     return this._ser.getList().subscribe((res: any) => {
       this.users = res.users;
@@ -46,6 +48,12 @@ export class UsersComponent implements OnInit {
       })
   }
 
+  OrdersDetails(Id: number) {
+    this.isOrderShown[Id] = !this.isOrderShown[Id];
+  }
+  AddressesDetails(Id: number) {
+    this.isAddressesShown[Id] = !this.isAddressesShown[Id];
+  }
   delete(Id: number) {
     return this._ser.delete(Id).subscribe((res: any) => {
       this.isdelete = res;

@@ -49,23 +49,25 @@ export class ProvidersComponent implements OnInit {
   // });
 
   addSuppliers() {
-    debugger
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       console.log(res);
     });
   }
   formData = new FormData();
+
   // on file select event
   onFileChange(event: any) {
-    debugger
-    this.formData.append('name', "testuser");
-    this.formData.append('email', "testuser");
-    this.formData.append('password', "testuser");
-    this.formData.append('phone', "testuser");
-    this.formData.append('image', event.target.files[0]);
-    console.log(this.formData);
+    console.log(event)
+    if (event.target.files.length > 0) {
+      debugger
+      this.formData.append('name', "testuser");
+      this.formData.append('email', "this.addSuppliersForm.controls['email'].value");
+      this.formData.append('password', "this.addSuppliersForm.value.password");
+      this.formData.append('phone', "1559");
+      this.formData.append('image', event.target.files[0]);
+      console.log("formData", this.formData);
+    }
   }
-
   // appendFormData(){
   // if (event.target.files.length > 0) {
   //   console.log("start")

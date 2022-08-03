@@ -91,7 +91,7 @@ a:not([href]):not([tabindex]) {
 // USE IT
 .navbar-brand {
     padding: 0;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     line-height: 3.5rem;
     white-space: nowrap;
@@ -114,7 +114,25 @@ a:not([href]):not([tabindex]) {
         grid-template-columns: 48px 112px auto 112px 96px 96px;
     }
 }
-.customContainer{
+
+.customContainer {
     max-width: 1247px;
     margin: auto;
+}
+
+.aside_data {
+    padding-left: 8px;
+    padding-right: 73px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 188px;
+}
+
+.aside_data:hover {
+    background-color: #73849d;
+    border-radius: 8px;
+    cursor: pointer;
+}
+a:hover{
+    color: white;
 }

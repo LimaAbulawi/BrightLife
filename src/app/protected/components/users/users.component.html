@@ -1,5 +1,5 @@
 <div class="flex items-center justify-between w-full container mb-12">
-    <div class="text-4xl font-extrabold">
+    <div class="text-4xl font-extrabold text-[#385848] ">
         All Users
     </div>
     <div class="mr-[200px]">
@@ -14,9 +14,9 @@
             ID
         </div>
         <div>Name</div>
-        <div></div>
+        <div>Orders</div>
         <div>Details</div>
-        <div class="hidden md:block"></div>
+        <div class="hidden md:block">Addresses</div>
     </div>
     <div *ngIf="isAddUser" class=" items-center py-3 px-6 md:px-8">
         <form action="" class="border-b" [formGroup]="addUsersForm" (ngSubmit)="addUsers()" enctype="multipart/form-data">
@@ -63,7 +63,12 @@
                 <div class="flex items-center">
                     {{user.name}}
                 </div>
-                <div>
+                <div class="flex items-center">
+                    <!-- Details button -->
+                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="OrdersDetails(user.id)">
+                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isOrderShown[user.id]"></i>
+                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isOrderShown[user.id]"></i>                        
+                    </div>
                 </div>
                 <div class="flex items-center">
                     <!-- Details button -->
@@ -72,10 +77,16 @@
                         <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[user.id]"></i>                        
                     </div>
                 </div>
-                <div class="hidden md:block">
+                <div class="flex items-center">
+                    <!-- Details button -->
+                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="AddressesDetails(user.id)">
+                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isAddressesShown[user.id]"></i>
+                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isAddressesShown[user.id]"></i>                        
+                    </div>
                 </div>
             </div>
             <div *ngIf="isShown[user.id]">
+                <div class="text-center mt-2 text-lg"> Details  </div>
                 <form action="" class="border-b">
                     <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
                         <div class="form-floating m-1">
@@ -116,7 +127,62 @@
 
                 </form>
             </div>
-        </div>
+            <!-- Orders details  -->
+            <div *ngIf="isOrderShown[user.id]">
+                <div class="text-center mt-2 text-lg"> Orders  </div>
+                <form action="" class="border-b">
+                    <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
+                        <div class="form-floating m-1">
+                            <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
+                                value="{{user.id}}">
+                            <label for="floatingInputGrid">Id</label>
+                        </div>
+                        <div class="form-floating m-1">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
+                                value="{{user.name}}">
+                            <label for="floatingInputGrid">Name</label>
+                        </div>
+                        <div class="form-floating m-1">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
+                                value="{{user.email}}">
+                            <label for="floatingInputGrid">Email</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between customContainer  px-4 py-2 ">
+                        <button type="button" class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]" (click)="edit(user.id)">Edit</button>
+                        <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 " (click)="delete(user.id)">Delete</button>
+                    </div>
 
+                </form>
+            </div>
+            <!-- Addresses details  -->
+            <div *ngIf="isAddressesShown[user.id]">
+                <div class="text-center mt-2 text-lg"> Addresses  </div>
+                <form action="" class="border-b">
+                    <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
+                        <div class="form-floating m-1">
+                            <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
+                                value="{{user.id}}">
+                            <label for="floatingInputGrid">Id</label>
+                        </div>
+                        <div class="form-floating m-1">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
+                                value="{{user.name}}">
+                            <label for="floatingInputGrid">Name</label>
+                        </div>
+                        <div class="form-floating m-1">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
+                                value="{{user.email}}">
+                            <label for="floatingInputGrid">Email</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between customContainer  px-4 py-2 ">
+                        <button type="button" class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]" (click)="edit(user.id)">Edit</button>
+                        <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 " (click)="delete(user.id)">Delete</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
 </div>

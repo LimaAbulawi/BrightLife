@@ -7,6 +7,7 @@ import { UsersComponent } from './components/users/users.component';
 import { ProvidersComponent } from './components/providers/providers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ServicesComponent } from './components/services/services.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
     UsersComponent,
     ProvidersComponent,
     CategoriesComponent,
+    ServicesComponent,
   ],
   imports: [
     CommonModule,
