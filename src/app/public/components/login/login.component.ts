@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { empty } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { LOCALSTORAGE_TOKEN_KEY } from 'src/app/app.module';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  errorMessage: string = '';
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -18,21 +22,29 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log( localStorage.getItem(LOCALSTORAGE_TOKEN_KEY) )
+    if (typeof localStorage.getItem(LOCALSTORAGE_TOKEN_KEY) != 'undefined' && localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)) {
+      console.log('alrady log');
+      this.router.navigate(['/protected/']);
+    }
   }
+
+
   login() {
     if (!this.loginForm.valid) {
       return;
     }
     this.authService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        // console.log(res);
+        console.log(res.code);
         if (res.code == 200) {
           this.router.navigate(['/protected/']);
         }
-        else {
-          // alert("0"+res.success)
-        }
       },
+      (error) => {
+        console.log(error)
+        this.errorMessage = error.error.msg;
+      }
     );
   }
 }
