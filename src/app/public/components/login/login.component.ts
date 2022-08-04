@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        // console.log(res);
         if (res.code == 200) {
           this.router.navigate(['/protected/']);
         }

@@ -12,7 +12,7 @@ export class ProvidersComponent implements OnInit {
   isShown: Array<Boolean> = [];
   isAddSupplier: Boolean = false;
   suppliers: any = [];
-
+  basicUrl = "https://api.brightlifeapp.com/public";
 
   // gloabal file name
   addSuppliersForm = this.fb.group({
@@ -33,11 +33,9 @@ export class ProvidersComponent implements OnInit {
     private _ser: SuppliersService
   ) {}
 
-
   ngOnInit(): void {
     this.getSuppliersListFromService()
   }
-
 
   getSuppliersListFromService() {
     return this._ser.getSuppliersList().subscribe((res: any) => {
@@ -57,18 +55,13 @@ export class ProvidersComponent implements OnInit {
 
   addSuppliers() {
     console.log(this.addSuppliersForm.value);
-    
     const formData = new FormData();
       Object.entries(this.addSuppliersForm.value).forEach(
         ([key, value]: any[]) => {
           formData.append(key, value);
           console.log(key + ':' +  value);
-          
         }
-
       )
-      
-      console.log(formData);
       this._ser.addSuppliers(formData).subscribe((res: any) => {
       console.log(res);
     });
@@ -84,7 +77,6 @@ export class ProvidersComponent implements OnInit {
         });
         // need to run CD since file load runs outside of zone
         this.cd.markForCheck();
-      
     }
   }
 }

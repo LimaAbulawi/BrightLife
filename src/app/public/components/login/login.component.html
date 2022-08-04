@@ -1,4 +1,4 @@
-<div class="bg-homeIntro p-0 h-[800px] grid w-full relative bg-no-repeat z-0 bg-contain bg-bottom pb-40 md:pb-[20%]">
+<div class="bg-homeIntro p-0 h-[100vh] grid w-full relative bg-no-repeat z-0 bg-contain bg-bottom pb-40 md:pb-[20%]">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -12,29 +12,35 @@
                     <form [formGroup]="loginForm" (ngSubmit)="login()">
                         <!-- email -->
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label ">Email address</label>
+                            <div class="flex justify-between">
+                                <label for="exampleInputEmail1" class="form-label ">Email address</label>
+                                <label class="text-rose-600"
+                                    *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
+                                    <i class="fad fa-exclamation"></i>
+                                    email is required
+                                </label>
+                                <label class="text-rose-600"
+                                    *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
+                                    <i class="fad fa-exclamation"></i>
+                                    must be valid email
+                                </label>
+                            </div>
                             <input type="email" class="form-control" id="" formControlName="email" placeholder="email">
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                            <label class="text-rose-600"
-                                *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
-                                email is required
-                            </label>
-                            <label class="text-rose-600"
-                            *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
-                            must be valid email
-                        </label>
                         </div>
                         <!-- password -->
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <div class="flex justify-between">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <label class="text-rose-600"
+                                    *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+                                    <i class="fad fa-exclamation"></i>
+                                    password is required
+                                </label>
+                            </div>
                             <input type="password" class="form-control" id="" formControlName="password"
                                 placeholder="password">
-                            <label class="text-rose-600"
-                                *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
-                                password is required
-                            </label>
                         </div>
-
                         <button type="submit" [disabled]="!loginForm.valid"
                             class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-5 uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out w-full ">
                             login

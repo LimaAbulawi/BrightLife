@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategorysService } from '../../services/categorys.service';
 
 @Component({
@@ -13,8 +13,9 @@ export class CategoriesComponent implements OnInit {
   isShown: Array<Boolean> = [];
   Categorys: any = [];
   basicUrl = "https://api.brightlifeapp.com/public";
-  
-  constructor(private _ser: CategorysService) { }
+
+  constructor(private _ser: CategorysService, private fb: FormBuilder,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getCategorysListFromService();
@@ -22,15 +23,25 @@ export class CategoriesComponent implements OnInit {
   addCategorysDiv() {
     this.isAddCatigorie = !this.isAddCatigorie;
   }
+
+  addCategorysForm = this.fb.group({
+    name: ['', Validators.required],
+    image: ['', Validators.required], 
+  })
+
   addCategorys() {
-    this._ser.addCategorys(this.addCategorysForm.value).subscribe((res: any) => {
+    console.log(this.addCategorysForm.value);
+    const formData = new FormData();
+    Object.entries(this.addCategorysForm.value).forEach(
+      ([key, value]: any[]) => {
+        formData.append(key, value);
+        console.log(key + ':' + value);
+      }
+    )
+    this._ser.addCategorys(formData).subscribe((res: any) => {
       console.log(res);
     });
   }
-  addCategorysForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    image: new FormControl(''),
-  });
 
   getCategorysListFromService() {
     return this._ser.getCategoryList().subscribe((res: any) => {
@@ -38,11 +49,21 @@ export class CategoriesComponent implements OnInit {
       console.log("this.Categorys", this.Categorys);
     })
   }
+
   details(Id: number) {
     this.isShown[Id] = !this.isShown[Id];
   }
-  onFileChange(event: any) {
-    console.log(event)
+  
+  onFileChange(event: any, inputName: any) {
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      // just checking if it is an image, ignore if you want
+      this.addCategorysForm.patchValue({
+        [inputName]: file
+      });
+      // need to run CD since file load runs outside of zone
+      this.cd.markForCheck();
+    }
   }
 
 }
