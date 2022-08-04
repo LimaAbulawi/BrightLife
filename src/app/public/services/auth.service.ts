@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, tap } from 'rxjs';
@@ -9,6 +9,10 @@ import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '
   providedIn: 'root'
 })
 export class AuthService {
+  basicUrl = "http://api.brightlifeapp.com/public";
+  headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Authorization', 'Bearer '+localStorage.getItem(LOCALSTORAGE_TOKEN_KEY));
 
   constructor(
     private http: HttpClient,
@@ -16,19 +20,21 @@ export class AuthService {
   ) { }
 
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('http://api.brightlifeapp.com/public/api/v1/login', loginRequest).pipe(
+    return this.http.post<LoginResponse>(this.basicUrl+'/api/v1/login', loginRequest).pipe(
       tap((res: LoginResponse) => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.data.token),
       ),
     );
   }
+
   register(loginRequest: RegisterRequest): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>('http://api.brightlifeapp.com/public/api/v1/user-reg', loginRequest).pipe(
+    return this.http.post<RegisterResponse>(this.basicUrl+'/api/v1/user-reg', loginRequest).pipe(
       tap((res: RegisterResponse) => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.data.token),
       ),
     );
   }
-  // getLoggedInUser() {
-  //   const decodedToken = this.jwtService.decodeToken();
-  //   return decodedToken.user;
-  // }
+
+  logOut() {
+    return this.http.get(this.basicUrl+"/api/v1/logout", { 'headers': this.headers })
+  }
+  
 }

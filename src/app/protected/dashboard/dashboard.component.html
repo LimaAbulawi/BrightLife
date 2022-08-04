@@ -1,81 +1,44 @@
 <div class="flex w-full">
     <!-- dashboard  -->
-    <div class="flex flex-col bg-slate-600 text-center dark  w-[380px] h-[100vh] sm:h-auto ">
-        
-        <div class="grid grid-cols-6 gap-4 m-10 align-middle">
-            <div class="col-start-1 col-end-3 ...">
-                <img class="w-15 h-15 m-auto" src="../../../assets/App icon1.png" alt="">
-
-            </div>
-            <div class="col-end-7 col-span-2 "><i class="fa-solid fa-user"></i>
-            
-                <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative inline-block text-left">
-    <div>
-      <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
-        Options
-        <!-- Heroicon name: solid/chevron-down -->
-        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-      </button>
-    </div>
-  
-    <!--
-      Dropdown menu, show/hide based on menu state.
-  
-      Entering: "transition ease-out duration-100"
-        From: "transform opacity-0 scale-95"
-        To: "transform opacity-100 scale-100"
-      Leaving: "transition ease-in duration-75"
-        From: "transform opacity-100 scale-100"
-        To: "transform opacity-0 scale-95"
-    -->
-    <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-      <div class="py-1" role="none">
-        <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-        <form method="POST" action="#" role="none">
-          <button type="submit" class="text-gray-700 block w-full text-left px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-            </div>
-          </div>
-        
+    <div class="flex flex-col bg-[#0f172a] text-center text-white w-[280px] h-[100vh] sm:h-auto ">
+        <div class="relative p-4 ">
+            <img class="w-28 h-28 m-auto" src="../../../assets/App icon1.png" alt="">
+        </div>
         <div class="navbar-brand ">BrightLife</div>
-        <ul class="nav ml-[30px] text-left flex flex-col md:ml-[10%]" ui-nav>
-            <li class="hidden-folded ">
+        <ul class="nav text-left flex flex-col mx-[3%]" ui-nav>
+            <li class="hidden-folded mb-1">
                 <a href="">
                     <small class="text-muted">Main</small>
                 </a>
             </li>
-            <a routerLink="/protected/users" class="">
+            <a routerLink="/protected/users" class="mb-1">
                 <li class="hidden-folded aside_data ">
                     <i class="fa-solid fa-users mr-2"></i>
                     <span class="nav-text text-lg">users</span>
                 </li>
             </a>
-            <a routerLink="/protected/providers" class="">
+            <a routerLink="/protected/providers" class="mb-1">
                 <li class="hidden-folded aside_data">
                     <i class="fa-solid fa-truck mr-2"></i>
                     <span class="nav-text  text-lg">providers</span>
                 </li>
             </a>
-            <a routerLink="/protected/categories" class="">
+            <a routerLink="/protected/categories" class="mb-1">
                 <li class="hidden-folded aside_data ">
                     <i class="fa-solid fa-bars-staggered mr-2"></i>
                     <span class="nav-text  text-lg">categories</span>
                 </li>
             </a>
-            <a routerLink="/protected/services" class="">
+            <a routerLink="/protected/services" class="mb-1">
                 <li class="hidden-folded aside_data">
                     <i class="fa-light fa-display mr-2"></i>
                     <span class="nav-text  text-lg">services</span>
+                </li>
+            </a>
+            <a (click)="logOut()" class="mb-1">
+                <li class="hidden-folded aside_data">
+                    <i class="fa-light fa-display mr-2"></i>
+                    <span class="nav-text  text-lg">logOut</span>
                 </li>
             </a>
         </ul>
