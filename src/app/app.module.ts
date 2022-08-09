@@ -9,7 +9,12 @@ import { AppComponent } from './app.component';
 export const LOCALSTORAGE_TOKEN_KEY = 'login_and_register'
 export function tokenGetter(){
   return localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
+
 }
+// export const LOCALSTORAGE_USER_NAME = 'user_name'
+// export function userNameGetter(){
+//   return localStorage.getItem(LOCALSTORAGE_USER_NAME)
+// }
 
 @NgModule({
   declarations: [
@@ -25,7 +30,7 @@ export function tokenGetter(){
         tokenGetter:tokenGetter , 
         allowedDomains : ['localhost:3000' , 'localhost:8000']
       }
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

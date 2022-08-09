@@ -18,7 +18,6 @@ export class SuppliersService {
   }
 
   addSuppliers(suppliers:any){
-
     return this.http.post<any>(this.basicUrl + "/api/v1/user-supplier", suppliers  )
   }
 }

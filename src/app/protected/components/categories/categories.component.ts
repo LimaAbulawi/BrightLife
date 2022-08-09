@@ -13,6 +13,7 @@ export class CategoriesComponent implements OnInit {
   isShown: Array<Boolean> = [];
   Categorys: any = [];
   basicUrl = "https://api.brightlifeapp.com/public";
+  delete: any = [];
 
   constructor(private _ser: CategorysService, private fb: FormBuilder,
     private cd: ChangeDetectorRef) { }
@@ -39,6 +40,7 @@ export class CategoriesComponent implements OnInit {
       }
     )
     this._ser.addCategorys(formData).subscribe((res: any) => {
+      window.location.reload();
       console.log(res);
     });
   }
@@ -64,6 +66,13 @@ export class CategoriesComponent implements OnInit {
       // need to run CD since file load runs outside of zone
       this.cd.markForCheck();
     }
+  }
+  deleteCat(Id: number) {
+    return this._ser.deleteCat(Id).subscribe((res: any) => {
+      this.delete = res;
+      window.location.reload();
+      console.log("delete", this.delete);
+    });
   }
 
 }

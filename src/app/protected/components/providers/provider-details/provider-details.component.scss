@@ -1,0 +1,42 @@
+
+.navbar-brand {
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 3.5rem;
+    white-space: nowrap;
+    float: none;
+    margin-right: 0;
+}
+
+.inventory-grid {
+    grid-template-columns: 48px auto 40px;
+
+    @screen sm {
+        grid-template-columns: 112px auto 112px;
+    }
+
+    @screen md {
+        grid-template-columns: 112px 48px 48px ;
+    }
+
+    @screen lg {
+        grid-template-columns: 112px 48px  48px ;
+    }
+}
+
+.customContainer {
+    max-width: 690px;
+    margin: auto auto 10px;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+.grid-template{
+    grid-template-columns: auto auto auto auto;
+}
+.grid-container{
+    grid-template-columns: auto auto auto;
+}

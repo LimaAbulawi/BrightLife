@@ -3,4 +3,43 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "~bootstrap/dist/css/bootstrap.css";
+// @import "~bootstrap/dist/css/bootstrap.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+.main-panel {
+    -webkit-transition: width 0.25s ease, margin 0.25s ease;
+    transition: width 0.25s ease, margin 0.25s ease;
+    // width: calc(100% - 260px);
+    min-height: calc(100vh - 70px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.content-wrapper {
+    background: #f2edf3;
+    padding: 2.75rem 2.25rem;
+    width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.card {
+    border: 0;
+    background: #fff;
+}
+
+@media screen and (max-width: 992px) {
+    table {
+        overflow-x: scroll;
+        max-width: 100%;
+        display: block;
+    }
+}
+.customBtn{
+    
+}

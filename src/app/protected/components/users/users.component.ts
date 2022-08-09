@@ -56,9 +56,11 @@ export class UsersComponent implements OnInit {
   AddressesDetails(Id: number) {
     this.isAddressesShown[Id] = !this.isAddressesShown[Id];
   }
+  
   delete(Id: number) {
     return this._ser.delete(Id).subscribe((res: any) => {
       this.isdelete = res;
+      window.location.reload();
       console.log("delete", this.isdelete);
     });
   }
@@ -81,6 +83,7 @@ export class UsersComponent implements OnInit {
     )
     this._ser.addUsers(formData).subscribe((res: any) => {
       console.log("res",res);
+      window.location.reload();
     });
   }
 

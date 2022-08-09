@@ -23,6 +23,10 @@ export class AuthService {
     return this.http.post<LoginResponse>(this.basicUrl+'/api/v1/login', loginRequest).pipe(
       tap((res: LoginResponse) => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.data.token),
       ),
+      tap((res:LoginResponse )=>localStorage.setItem("userName", res.data.user.name)
+      ),
+      tap((res:LoginResponse )=>localStorage.setItem("userImage", res.data.user.image)
+      ),
     );
   }
 
@@ -32,9 +36,4 @@ export class AuthService {
       ),
     );
   }
-
-  logOut() {
-    return this.http.get(this.basicUrl+"/api/v1/logout", { 'headers': this.headers })
-  }
-  
 }

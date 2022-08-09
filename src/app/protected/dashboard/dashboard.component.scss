@@ -1,3 +1,26 @@
+@media screen and (max-width: 992px) {
+    .aside_data {
+        padding-right: 1% !important;
+        padding-bottom: 0px !important;
+        padding-left: 1% !important;
+    }
+
+    .dash{
+        width: 36px;
+        // display: none;
+    }
+    .dashbutton {
+        display: block !important;
+        width: 36px;
+        text-align: center;
+        color: white ;
+    }
+}
+.dash{
+   width: 280px;
+}
+
+
 .app-aside {
     width: 12.5rem;
     opacity: 1;
@@ -128,11 +151,13 @@ a:not([href]):not([tabindex]) {
     // width: 205px;
 }
 
+
 .aside_data:hover {
     background-color: #73849d;
     border-radius: 3px;
     cursor: pointer;
 }
-a:hover{
+
+a:hover {
     color: white;
 }

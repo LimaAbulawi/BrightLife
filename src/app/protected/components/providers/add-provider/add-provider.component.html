@@ -1,0 +1,48 @@
+<p>add-provider works!</p>
+<button routerLink="/protected/providers">Back</button>
+<div class=" items-center py-3 px-6 md:px-8">
+    <form action="" class="border-b" [formGroup]="addSuppliersForm" (ngSubmit)="addSuppliers()">
+        <div class="grid grid-container grid-template  w-full p-1 justify-center mt-7 mx-auto mb-1">
+            <div class="form-floating m-1 grid-item">
+                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                <label for="floatingInputGrid">Name</label>
+            </div>
+            <div class="form-floating m-1 grid-item ">
+                <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                <label for="floatingInputGrid">Email</label>
+            </div>
+            <div class="form-floating m-1 grid-item">
+                <input type="password" class="form-control out" placeholder="password" formControlName="password">
+                <label for="floatingInputGrid">password</label>
+            </div>
+            <div class="form-floating m-1 grid-item">
+                <input type="text" class="form-control" placeholder="phone" formControlName="phone">
+                <label for="floatingInputGrid">phone</label>
+            </div>
+            <div class="form-floating m-1 grid-item">
+                <input type="text" class="form-control" placeholder="description" formControlName="description">
+                <label for="floatingInputGrid">description</label>
+            </div>
+            <div class="form-floating m-1 grid-item">
+                <input type="" class="form-control" placeholder="location" formControlName="location">
+                <label for="floatingInputGrid">location</label>
+            </div>
+            <div class=" m-1 grid-item">
+                <label for="floatingInputGrid">image</label>
+                <input type="file" #file class="form-control" placeholder="image"
+                    (change)="onFileChange($event,'image')">
+            </div>
+            <div class=" m-1 grid-item">
+                <label for="floatingInputGrid">cover</label>
+                <input type="file" #file class="form-control" placeholder="cover"
+                    (change)="onFileChange($event,'cover')">
+            </div>
+        </div>
+        <div class="flex items-center justify-center customContainer  px-4 py-2 ">
+            <button type="submit" [disabled]="!addSuppliersForm.valid"
+                class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-36">Add
+                Provider</button>
+
+        </div>
+    </form>
+</div>

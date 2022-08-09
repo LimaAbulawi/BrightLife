@@ -1,0 +1,48 @@
+#my-chart.line {
+    height: 200px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+// #motion-effect td {
+//     transition-duration: 0.3s;
+//     opacity: 0.7;
+// }
+
+#motion-effect td:hover {
+    // opacity: 1;
+    cursor: pointer;
+}
+
+#motion-effect td .data {
+    transition-duration: 0.6s;
+    transform: scale(0);
+}
+
+#motion-effect td:hover .data {
+    transform: scale(1);
+}
+
+#my-chart.column {
+    height: 200px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#my-chart.area {
+    height: 200px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#my-chart.area td {
+    transition-duration: 0.3s;
+    opacity: 0.7;
+}
+
+#my-chart.area td:hover {
+    opacity: 1;
+    cursor: pointer;
+
+}
+//   2222222

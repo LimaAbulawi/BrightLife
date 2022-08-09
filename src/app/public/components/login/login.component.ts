@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        console.log(res.code);
+        console.log(res);
+        // console.log(res.code);
         if (res.code == 200) {
+          // localStorage.setItem("userName", "value");
           this.router.navigate(['/protected/']);
         }
       },

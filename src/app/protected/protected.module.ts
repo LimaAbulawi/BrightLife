@@ -8,6 +8,10 @@ import { ProvidersComponent } from './components/providers/providers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ServicesComponent } from './components/services/services.component';
+import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
+import { ProviderDetailsComponent } from './components/providers/provider-details/provider-details.component';
+import { AddProviderComponent } from './components/providers/add-provider/add-provider.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -17,6 +21,10 @@ import { ServicesComponent } from './components/services/services.component';
     ProvidersComponent,
     CategoriesComponent,
     ServicesComponent,
+    MainDashboardComponent,
+    ProviderDetailsComponent,
+    AddProviderComponent,
+    OrdersComponent,
   ],
   imports: [
     CommonModule,

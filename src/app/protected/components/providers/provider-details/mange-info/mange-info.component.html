@@ -1,0 +1,55 @@
+<p>mange-info works! {{id}}</p>
+<div *ngIf="suppliers">
+    <div *ngFor="let supplier of suppliers">
+        <div *ngIf="isShown[supplier.id]">
+            <form action="" class="border-b">
+                <div class="grid grid-container w-full p-1 justify-center mt-7 mx-auto mb-1">
+                    <div class="w-20 form-floating m-1  grid-item">
+                        <img src="{{basicUrl}}/{{supplier.image}}" alt="">
+                    </div>
+                    <div class="w-20 form-floating m-1  grid-item">
+                        <img src="{{basicUrl}}/{{supplier.cover}}" alt="">
+                    </div>
+
+                    <div class="form-floating m-1 grid-item">
+                        <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
+                            value="{{supplier.id}}">
+                        <label for="floatingInputGrid">Id</label>
+                    </div>
+                    <div class="form-floating m-1  grid-item">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
+                            value="{{supplier.name}}">
+                        <label for="floatingInputGrid">Name</label>
+                    </div>
+                    <div class="form-floating m-1  grid-item">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="phone"
+                            value="{{supplier.phone}}">
+                        <label for="floatingInputGrid">phone</label>
+                    </div>
+                    <div class="form-floating m-1  grid-item">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
+                            value="{{supplier.email}}">
+                        <label for="floatingInputGrid">Email</label>
+                    </div>
+                    <div class="form-floating m-1  grid-item">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="location"
+                            value="{{supplier.location}}">
+                        <label for="floatingInputGrid">location</label>
+                    </div>
+                    <div class="form-floating m-1  grid-item">
+                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="description"
+                            value="{{supplier.description}}">
+                        <label for="floatingInputGrid">description</label>
+                    </div>
+                </div>
+                <!-- <div class="flex items-center justify-between customContainer  px-4 py-2 "> -->
+                <!-- <button type="button"
+                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
+                        (click)="edit(supplier.id)">Edit</button> -->
+                <!-- <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
+                        (click)="delete(supplier.id)">Delete</button> 
+                </div>   -->
+            </form>
+        </div>
+    </div>
+</div>
