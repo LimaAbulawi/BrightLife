@@ -5,19 +5,21 @@
         padding-left: 1% !important;
     }
 
-    .dash{
+    .dash {
         width: 36px;
         // display: none;
     }
+
     .dashbutton {
         display: block !important;
         width: 36px;
-        text-align: center;
-        color: white ;
+        // text-align: center;
+        color: white;
     }
 }
-.dash{
-   width: 280px;
+
+.dash {
+    width: 280px;
 }
 
 
@@ -114,12 +116,13 @@ a:not([href]):not([tabindex]) {
 // USE IT
 .navbar-brand {
     padding: 0;
-    font-size: 24px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 3.5rem;
     white-space: nowrap;
     float: none;
     margin-right: 0;
+    width: 100%;
 }
 
 .inventory-grid {
@@ -144,20 +147,75 @@ a:not([href]):not([tabindex]) {
 }
 
 .aside_data {
-    padding-left: 8px;
-    padding-right: 73px;
-    padding-top: 7px;
+    // padding-left: 8px;
+    padding-top: 1rem;
     padding-bottom: 7px;
     // width: 205px;
 }
-
-
-.aside_data:hover {
-    background-color: #73849d;
-    border-radius: 3px;
-    cursor: pointer;
+.aside_data i{
+    color: #bba8bff5 !important;
+}
+.aside_data span{
+    font-size: 0.875rem;
+}
+a:hover {
+    color: #b66dff !important;
 }
 
-a:hover {
-    color: white;
+// specified
+.navbar-toggler {
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+@media screen and (max-width: 991px) {
+    .active {
+        right: 0 !important;
+    }
+    .sidebar-offcanvas {
+        position: fixed;
+        max-height: calc(100vh - 70px);
+        top: 70px;
+        bottom: 0;
+        overflow: auto;
+        right: -260px;
+        -webkit-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out
+    }
+}
+.sidebar {
+    min-height: calc(100vh - 70px);
+    background: #ffffff;
+    font-family: "ubuntu-regular", sans-serif;
+    padding: 0;
+    // width: 260px;
+    z-index: 11;
+    transition: width 0.25s ease, background 0.25s ease;
+    -webkit-transition: width 0.25s ease, background 0.25s ease;
+    -moz-transition: width 0.25s ease, background 0.25s ease;
+    -ms-transition: width 0.25s ease, background 0.25s ease;
+}
+.w_54{
+    width: 54px !important;
+}
+.content-wrapper {
+    background: #f2edf3;
+    padding: 2.75rem 2.25rem;
+    width: 100%;
+    flex-grow: 1;
 }

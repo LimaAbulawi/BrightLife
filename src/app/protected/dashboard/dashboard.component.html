@@ -1,103 +1,141 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav> -->
-<div class="flex w-full">
-    <!-- dashboard  -->
-    <div class="flex flex-col bg-[#0f172a] text-center text-white  h-[100vh] sm:h-auto" [ngClass]="{'w-[280px]': !isShown, 'w-[36px]': isShown}">
-        <div class="flex flex-col dashbutton mt-3 cursor-pointer" (click)="isShown=!isShown"> 
-            <i class="fa-solid fa-bars text-2xl"></i>
-        </div>
-        <div class="flex flex-col " [ngClass]="{'block': !isShown, 'hidden': isShown}" >
-            <div class="relative p-4 ">
-                <img class="w-28 h-28 m-auto " src="../../../assets/App icon1.png" alt="">
+<div class="overflow-hidden">
+    <nav class="flex flex-row col-lg-12 col-12 p-0 fixed-top bg-white">
+        <div class="text-center items-center h-[70px] justify-center sm:w-11 ml-6 mr-6 sm:mr-0 pt-[14px] "
+            [ngClass]="{'mr-0 , ml-0': isShown}">
+            <div class="flex flex-wrap" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
+                <img class="w-12" src="../../../assets/App icon1.png" alt="">
+                <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1>
             </div>
-            <div class="navbar-brand truncate sm:text-xl sm:w-[143px]" >{{userName}}</div>
-            <ul class="nav text-left flex flex-col mx-[3%]" ui-nav>
-                <li class="hidden-folded mb-1">
-                    <a href="">
-                        <small class="text-muted">Main</small>
-                    </a>
-                </li>
-                <a routerLink="/protected/dashboard" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]">
-                        <i class="fa-solid fa-users mr-2"></i>
-                        <span class="nav-text text-lg">dashboard</span>
-                    </li>
-                </a>
-                <a routerLink="/protected/users" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px] ">
-                        <i class="fa-solid fa-users mr-2"></i>
-                        <span class="nav-text text-lg">users</span>
-                    </li>
-                </a>
-                <a routerLink="/protected/providers" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]" >
-                        <i class="fa-solid fa-truck mr-2"></i>
-                        <span class="nav-text  text-lg">providers</span>
-                    </li>
-                </a>
-                <a routerLink="/protected/categories" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]">
-                        <i class="fa-solid fa-bars-staggered mr-2"></i>
-                        <span class="nav-text  text-lg">categories</span>
-                    </li>
-                </a>
-                <a routerLink="/protected/services" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]">
-                        <i class="fa-light fa-display mr-2"></i>
-                        <span class="nav-text  text-lg">services</span>
-                    </li>
-                </a>
-                <a routerLink="/protected/orders" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]">
-                        <i class="fa-solid fa-cart-shopping mr-2"></i>
-                        <span class="nav-text  text-lg">orders</span>
-                    </li>
-                </a>
-                <a (click)="logOut()" class="mb-1">
-                    <li class="hidden-folded aside_data flex items-center sm:text-[10px]">
-                        <i class="fas fa-sign-out mr-2"></i>
-                        <span class="nav-text  text-lg">logOut</span>
-                    </li>
-                </a>
-            </ul>
+            <a href="" class="inline-block" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
+                <img class="" src="../../../assets/App icon1.png" alt="">
+            </a>
         </div>
-    </div>
-    <!-- component  -->
-    <div class="flex flex-col w-full ">
-        <router-outlet></router-outlet>
+        <div class="sm:px-4  px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
+            <!-- burger button -->
+            <button class="sm:px-1 pl-1 pr-5 border-none self-center navbar-toggler text-inherit"
+                (click)="isShown=!isShown" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+            <div></div>
+            <ul class="flex items-center">
+                <li class="sm:static flex ml-6 mr-2 items-center">
+                    <div class="relative w-8 h-8 sm:mx-3 user_image">
+                        <img src="../../../assets/face1.jpg" alt="" class="rounded-[100%] w-8 h-8">
+                    </div>
+                    <div class="user_name ml-3" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
+                        <p>
+                            {{userName}}
+                        </p>
+                    </div>
+                </li>
+                <li class="sm:static flex ml-6 mr-2 email items-center">
+                    <i class="fa-regular fa-envelope"></i>
+                    <div class="user_name ml-3" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
+                        <p>
+                            userEmail
+                        </p>
+                    </div>
+                </li>
+                <li class="sm:static ml-6 mr-2 logOut items-center">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </li>
+            </ul>
+            <button class="sm:px-1 pl-1 pr-5 border-none self-center navbar-toggler text-inherit ml-4 mr-2"
+                (click)="isShown=!isShown" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
+                <i class="fa-solid fa-bars text-2xl sm:text-xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="pt-[70px] flex flex-row px-0 w-full m-auto ">
+        <nav class="sidebar sidebar-offcanvas bg-blue-600 w-[282px] " id=""
+            [ngClass]="{'active': !isShown ,'w_54': isShown}">
+            <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto">
+                <div class="flex flex-col ">
+                  <div class="flex px-9 py-3 items-center" [ngClass]="{'block': !isShown, 'hidden': isShown}">
+                    <div class="relative w-14 h-11 sm:mx-3 user_image">
+                        <img src="../../../assets/face1.jpg" alt="" class="rounded-[100%]">
+                    </div>
+                    <div class="navbar-brand truncate "
+                        >{{userName}}</div>
+                  </div>
+                    <ul class="nav text-left flex flex-col  ml-6 mr-6"  [ngClass]="{'m-auto': isShown}" ui-nav>
+                        <li class="hidden-folded mb-2 " [ngClass]="{'block': !isShown, 'hidden': isShown}">
+                            <a href="">
+                                <small class="text-muted">Main</small>
+                            </a>
+                        </li>
+                        <a routerLink="/protected/dashboard" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
+                                <span class="nav-text "
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">dashboard</span>
+                                    <i class="fa-solid fa-house "></i>
+                            </li>
+                        </a>    
+                        <a routerLink="/protected/users" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between ">
+                                <!-- [ngClass]="{'hover:bg-slate-600': !isShown}" -->
+                                <span class="nav-text " [ngClass]="{'block': !isShown, 'hidden': isShown}">users</span>
+                                <i class="fa-solid fa-users "></i>
+                            </li>
+                        </a>
+                        <a routerLink="/protected/providers" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data  rounded cursor-pointer flex items-center  justify-between">
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">providers</span>
+                                <i class="fa-solid fa-truck "></i>
+                            </li>
+                        </a>
+                        <a routerLink="/protected/categories" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between">
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">categories</span>
+                                <i class="fa-solid fa-bars-staggered "></i>
+                            </li>
+                        </a>
+                        <a routerLink="/protected/services" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data rounded cursor-pointer  flex items-center  justify-between">
+                                <!-- <i class="fa-light fa-display "></i> -->
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">services</span>
+                                <i class="fa-solid fa-charging-station "></i>
+                            </li>
+                        </a>
+                        <a routerLink="/protected/orders" class="mb-2" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">orders</span>
+                                <i class="fa-solid fa-cart-shopping "></i>
+                            </li>
+                        </a>
+                        <a (click)="logOut()" class="mb-2 hover:text-[#b66dff]" [ngClass]="{'mt-7': isShown}">
+                            <li
+                                class="hidden-folded aside_data cursor-pointer rounded flex items-center justify-between">
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">logOut</span>
+                                <i class="fas fa-sign-out "></i>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="main-panel w-full content-wrapper"> 
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
+
+<!-- <div>
+    <svg id = "svgelem" width = "300" height = "300" xmlns = "http://www.w3.org/2000/svg">
+        <polygon points="100,10 40,180 190,60 10,60 160,180" fill="blue"/>
+     </svg>
+</div>
+     -->
+
+   

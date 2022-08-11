@@ -17,12 +17,18 @@ export class DashboardComponent implements OnInit {
   isShown: boolean = false;
   userName!: any;
   image!: any;
+  leftToggle: boolean = true;
+  rightToggle : boolean = false ;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.scrWidth = window.innerWidth;
     if (this.scrWidth < 992) {
       this.isShown = true;
+      this.leftToggle = false;
+      this.rightToggle = true;
+
+
     }
     // this.isShown[0] = !this.isShown[0];
     // this.scrHeight = window.innerHeight;

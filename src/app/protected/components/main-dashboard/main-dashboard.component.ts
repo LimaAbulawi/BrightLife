@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainDashboardComponent implements OnInit {
 
-  sq : number = 40 / 100;
+  sq: number = 40 / 100;
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
