@@ -1,55 +1,87 @@
 <p>mange-info works! {{id}}</p>
-<div *ngIf="suppliers">
-    <div *ngFor="let supplier of suppliers">
-        <div *ngIf="isShown[supplier.id]">
-            <form action="" class="border-b">
-                <div class="grid grid-container w-full p-1 justify-center mt-7 mx-auto mb-1">
-                    <div class="w-20 form-floating m-1  grid-item">
-                        <img src="{{basicUrl}}/{{supplier.image}}" alt="">
-                    </div>
-                    <div class="w-20 form-floating m-1  grid-item">
-                        <img src="{{basicUrl}}/{{supplier.cover}}" alt="">
-                    </div>
+<div class="row">
+    <div class="col-md-6 m-auto grid-margin stretch-card">
+        <div class="card mt-14">
+            <div class="card-body">
+                <div *ngIf="suppliers">
+                    <div *ngFor="let supplier of suppliers">
+                        <div *ngIf="isShown[supplier.id]">
+                            <form action="" class="">
+                                <div class="w-full p-1 justify-center mx-auto  columns-2">
+                                    <div class="form-floating flex justify-between mb-[10px] mx-2">
+                                        <img class=" w-14 h-14  rounded-full" src="{{basicUrl}}/{{supplier.image}}" alt="">
+                                        
+                                        <img class=" w-36 h-14" src="{{basicUrl}}/{{supplier.cover}}" alt="">
+                                    </div>
+                                    <div class="form-floating m-1 grid-item">
+                                        <input type="number" class="form-control out" id="floatingInputGrid"
+                                            placeholder="Id" value="{{supplier.id}}">
+                                        <label for="floatingInputGrid">Id</label>
+                                    </div>
+                                    <div class="form-floating m-1  grid-item">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Name" value="{{supplier.name}}">
+                                        <label for="floatingInputGrid">Name</label>
+                                    </div>
+                                    <div class="form-floating m-1  grid-item">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="phone" value="{{supplier.phone}}">
+                                        <label for="floatingInputGrid">phone</label>
+                                    </div>
+                                    <div class="form-floating m-1  grid-item">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Email" value="{{supplier.email}}">
+                                        <label for="floatingInputGrid">Email</label>
+                                    </div>
+                                    <div class="form-floating m-1  grid-item">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="location" value="{{supplier.location}}">
+                                        <label for="floatingInputGrid">location</label>
+                                    </div>
+                                    <div class="form-floating m-1  grid-item">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="description" value="{{supplier.description}}">
+                                        <label for="floatingInputGrid">description</label>
+                                    </div>
+                                </div>
+                                <!-- add button and model
+                                <div class="flex items-center justify-center customContainer  px-4 py-2 ">
+                                    <button type="submit" class="addNew" data-toggle="modal"
+                                        data-target="#exampleModal">Add
+                                        Provider</button> -->
 
-                    <div class="form-floating m-1 grid-item">
-                        <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
-                            value="{{supplier.id}}">
-                        <label for="floatingInputGrid">Id</label>
-                    </div>
-                    <div class="form-floating m-1  grid-item">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                            value="{{supplier.name}}">
-                        <label for="floatingInputGrid">Name</label>
-                    </div>
-                    <div class="form-floating m-1  grid-item">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="phone"
-                            value="{{supplier.phone}}">
-                        <label for="floatingInputGrid">phone</label>
-                    </div>
-                    <div class="form-floating m-1  grid-item">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
-                            value="{{supplier.email}}">
-                        <label for="floatingInputGrid">Email</label>
-                    </div>
-                    <div class="form-floating m-1  grid-item">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="location"
-                            value="{{supplier.location}}">
-                        <label for="floatingInputGrid">location</label>
-                    </div>
-                    <div class="form-floating m-1  grid-item">
-                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="description"
-                            value="{{supplier.description}}">
-                        <label for="floatingInputGrid">description</label>
+                                <!-- Modal -->
+                                <!-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{resMsg}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button"
+                                                        class="btn border transition ease-in-out border-white text-white  bg-[#90c8ac] hover:bg-[#76a38d]"
+                                                        data-dismiss="modal">
+                                                        Ok
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                <!-- </div> -->
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <!-- <div class="flex items-center justify-between customContainer  px-4 py-2 "> -->
-                <!-- <button type="button"
-                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                        (click)="edit(supplier.id)">Edit</button> -->
-                <!-- <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                        (click)="delete(supplier.id)">Delete</button> 
-                </div>   -->
-            </form>
+            </div>
         </div>
     </div>
 </div>

@@ -74,5 +74,7 @@ export class CategoriesComponent implements OnInit {
       console.log("delete", this.delete);
     });
   }
-
+  edit(Id: number){
+    
+  }
 }

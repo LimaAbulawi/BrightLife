@@ -16,9 +16,10 @@ export class DashboardComponent implements OnInit {
   scrWidth: any;
   isShown: boolean = false;
   userName!: any;
+  userEmail!: any;
   image!: any;
   leftToggle: boolean = true;
-  rightToggle : boolean = false ;
+  rightToggle: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
@@ -41,14 +42,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userName = localStorage.getItem("userName");
     this.image = localStorage.getItem("userImage");
+    this.userEmail = localStorage.getItem("userEmail");
   }
 
   logOut() {
-    // localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
-    // localStorage.removeItem("userName");
-    // localStorage.removeItem("userImage");
     localStorage.clear();
-    // window.location.reload();
     return this.router.navigate(['/public/']);
   }
 }

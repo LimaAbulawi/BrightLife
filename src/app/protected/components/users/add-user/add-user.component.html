@@ -1,20 +1,26 @@
 <div class="flex justify-between container mb-7">
-    <p>Add Provider!</p>
-    <button routerLink="/protected/providers" class="btn btn-light customBg">Back</button>
+    <p>Add User!</p>
+    <button routerLink="/protected/users" class="btn btn-light customBg">Back</button>
 </div>
 <div class="row">
     <div class="col-md-6  m-auto grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <!-- <h4 class="card-title">Default form</h4> -->
-                <form action="" class="" [formGroup]="addSuppliersForm" (ngSubmit)="addSuppliers()">
+                <form action="" class="" [formGroup]="addUsersForm" (ngSubmit)="addUsers()"
+                    enctype="multipart/form-data">
                     <div class="  w-full p-1 justify-center mt-7 mx-auto mb-1">
                         <div class="form-floating m-1 grid-item">
                             <input type="text" class="form-control" placeholder="Name" formControlName="name">
                             <label for="floatingInputGrid">Name</label>
                         </div>
                         <div class="form-floating m-1 grid-item ">
+                            <input type="text" class="form-control" placeholder="Name" formControlName="last_name">
+                            <label for="floatingInputGrid">last name</label>
+                        </div>
+                        <div class="form-floating m-1 grid-item">
                             <input type="text" class="form-control" placeholder="Email" formControlName="email">
+
                             <label for="floatingInputGrid">Email</label>
                         </div>
                         <div class="form-floating m-1 grid-item">
@@ -26,31 +32,15 @@
                             <input type="text" class="form-control" placeholder="phone" formControlName="phone">
                             <label for="floatingInputGrid">phone</label>
                         </div>
-                        <div class="form-floating m-1 grid-item">
-                            <input type="text" class="form-control" placeholder="description"
-                                formControlName="description">
-                            <label for="floatingInputGrid">description</label>
-                        </div>
-                        <div class="form-floating m-1 grid-item">
-                            <input type="" class="form-control" placeholder="location" formControlName="location">
-                            <label for="floatingInputGrid">location</label>
-                        </div>
                         <div class=" m-1 grid-item">
                             <label for="floatingInputGrid">image</label>
                             <input type="file" #file class="form-control" placeholder="image"
                                 (change)="onFileChange($event,'image')">
                         </div>
-                        <div class=" m-1 grid-item">
-                            <label for="floatingInputGrid">cover</label>
-                            <input type="file" #file class="form-control" placeholder="cover"
-                                (change)="onFileChange($event,'cover')">
-                        </div>
                     </div>
                     <div class="flex items-center justify-center customContainer  px-4 py-2 ">
-                        <button type="submit" [disabled]="!addSuppliersForm.valid"
-                            class="addNew"
-                            data-toggle="modal" data-target="#exampleModal">Add
-                            Provider</button>
+                        <button type="submit" [disabled]="!addUsersForm.valid" class="addNew" 
+                        data-toggle="modal" data-target="#exampleModal">Add User</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -76,10 +66,13 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<!-- inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-5 uppercase rounded 
+    shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none
+     focus:ring-0 active:bg-purple-800
+     active:shadow-lg transition duration-150 ease-in-out w-full  -->

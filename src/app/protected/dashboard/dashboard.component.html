@@ -32,12 +32,12 @@
                     <i class="fa-regular fa-envelope"></i>
                     <div class="user_name ml-3" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
                         <p>
-                            userEmail
+                            {{userEmail}}
                         </p>
                     </div>
                 </li>
                 <li class="sm:static ml-6 mr-2 logOut items-center">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket cursor-pointer hover:text-[#b66dff]" (click)="logOut()"></i>
                 </li>
             </ul>
             <button class="sm:px-1 pl-1 pr-5 border-none self-center navbar-toggler text-inherit ml-4 mr-2"

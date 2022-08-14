@@ -12,6 +12,8 @@ import { MainDashboardComponent } from './components/main-dashboard/main-dashboa
 import { ProviderDetailsComponent } from './components/providers/provider-details/provider-details.component';
 import { AddProviderComponent } from './components/providers/add-provider/add-provider.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AddUserComponent } from './components/users/add-user/add-user.component';
+import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     ProviderDetailsComponent,
     AddProviderComponent,
     OrdersComponent,
+    AddUserComponent,
+    AddCategoryComponent,
   ],
   imports: [
     CommonModule,

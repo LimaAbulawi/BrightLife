@@ -9,6 +9,9 @@ import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 })
 export class AddProviderComponent implements OnInit {
 
+  formData = new FormData();
+  resMsg!: string;
+
   constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
@@ -27,15 +30,16 @@ export class AddProviderComponent implements OnInit {
 
   addSuppliers() {
     console.log(this.addSuppliersForm.value);
-    const formData = new FormData();
     Object.entries(this.addSuppliersForm.value).forEach(
       ([key, value]: any[]) => {
-        formData.append(key, value);
+        this.formData.append(key, value);
         console.log(key + ':' + value);
       }
     )
-    this._ser.addSuppliers(formData).subscribe((res: any) => {
-      console.log("res", res);
+    
+    this._ser.addSuppliers(this.formData).subscribe((res: any) => {
+      this.resMsg = res.msg;
+  
     });
   }
 
@@ -50,5 +54,15 @@ export class AddProviderComponent implements OnInit {
       // need to run CD since file load runs outside of zone
       this.cd.markForCheck();
     }
+  }
+  deleteForm() {
+    this.addSuppliersForm.controls.name.setValue('')
+    this.addSuppliersForm.controls.email.setValue('')
+    this.addSuppliersForm.controls.password.setValue('')
+    this.addSuppliersForm.controls.phone.setValue('')
+    this.addSuppliersForm.controls.image.setValue('')
+    this.addSuppliersForm.controls.description.setValue('')
+    this.addSuppliersForm.controls.location.setValue('')
+    this.addSuppliersForm.controls.cover.setValue('')
   }
 }

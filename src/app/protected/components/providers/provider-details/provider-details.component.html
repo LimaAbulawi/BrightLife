@@ -1,21 +1,18 @@
-<p>provider-details works!</p>
-<button routerLink="/protected/providers">Back</button>
-<div class="flex items-center justify-between w-full container mb-12">
+<div class="flex items-center justify-between w-full container mb-12 pt-6">
     <div class="text-4xl font-extrabold text-[#2eb772]">
         provider details
     </div>
     <div class="mr-[200px]">
-        <!-- (click)="addSuppliersDiv()" -->
-        <!-- <button type="button" class="ml-4 btn btn-light" routerLink="/protected/providers/add">Add</button> -->
+        <button routerLink="/protected/providers" class="btn btn-light customBg">Back</button>
     </div>
 </div>
 <div
     class=" flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-    <div class="hidden md:block" routerLink="../{{id}}/mangeInfo" >
+    <div class="hidden md:block cursor-pointer" routerLink="../{{id}}/mangeInfo">
         Manage Info
     </div>
-    <div  routerLink="../{{id}}/services" >Services</div>
-    <div  routerLink="../{{id}}/accounting">Accounting/Order</div>
+    <div class="cursor-pointer" routerLink="../{{id}}/services">Services</div>
+    <div class="cursor-pointer" routerLink="../{{id}}/accounting">Accounting/Order</div>
     {{id}}
 </div>
 

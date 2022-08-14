@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     console.log( localStorage.getItem(LOCALSTORAGE_TOKEN_KEY) )
     if (typeof localStorage.getItem(LOCALSTORAGE_TOKEN_KEY) != 'undefined' && localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)) {
-      console.log('alrady log');
+      // console.log('alrady log');
       this.router.navigate(['/protected/']);
     }
   }
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        console.log(res);
+        // console.log(res);
         // console.log(res.code);
         if (res.code == 200) {
           // localStorage.setItem("userName", "value");
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error)
+        // console.log(error)
         this.errorMessage = error.error.msg;
       }
     );
