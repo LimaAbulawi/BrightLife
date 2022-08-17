@@ -18,7 +18,7 @@ export class AddProviderComponent implements OnInit {
   }
   addSuppliersForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [ Validators.email, Validators.required]],
     password: ['', Validators.required],
     phone: ['', Validators.required],
     description: [''],

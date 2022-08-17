@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/protected/services/users.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
   addUsersForm = this.fb.group({
     name: ['', Validators.required],
     last_name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', Validators.compose([ Validators.email, Validators.required])],
     password: ['', Validators.required],
     phone: ['', Validators.required],
     image: ['', Validators.required],
@@ -37,8 +37,6 @@ export class AddUserComponent implements OnInit {
     this._ser.addUsers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
       console.log("res", res);
-      // console.log("res", res.msg);
-      // window.location.reload();
     });
   }
 
@@ -59,14 +57,20 @@ export class AddUserComponent implements OnInit {
     this.addUsersForm.controls.email.setValue('')
     this.addUsersForm.controls.password.setValue('')
     this.addUsersForm.controls.phone.setValue('')
-    this.addUsersForm.controls.image.setValue('') 
-    // console.log( "this.formData",this.formData)
-    // console.log("this.addUsersForm", this.addUsersForm.value)
-    // Object.entries(this.addUsersForm.value).forEach(
-    //   ([key, value]: any[]) => {
-    //     this.formData.append(key, value);
-    //     console.log(key + ':' + value);
-    //   }
-    // )
+    this.addUsersForm.controls.image.setValue('')
   }
+
+  // space: any;
+  // keyPress(event: KeyboardEvent) {
+  //   // const pattern = /[0-9]/;
+  //   if (event.charCode == 32) {
+  //     event.preventDefault();
+  //     // this.space = event.charCode;
+  //     // const inputChar = String.fromCharCode(this.space);
+  //     // if (!pattern.test(inputChar)) {
+  //     //   // invalid character, prevent input
+  //     //   event.preventDefault();
+  //     // }
+  //   }
+  // }
 }

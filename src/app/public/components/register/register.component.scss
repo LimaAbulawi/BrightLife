@@ -11,15 +11,15 @@
     background-position: bottom;
 }
 .card {
-    border: none;
-    width: 500px;
+/* border: none; */
+    /* width: 500px; */
     padding: 40px;
-    position: absolute;
-    left: 50%;
-    top: -191px;
-    transform: translate(-50%, 50%);
+    /* position: absolute; */
+    /* left: 50%; */
+    /* transform: translate(-50%, 50%); */
     box-shadow: 0 5px 50px rgb(0 0 0 / 20%);
-    border-radius: .8rem!important
+    border-radius: 0.8rem !important;
+    margin-top: 20%;
 }
 .login{
     letter-spacing: -0.025em !important;

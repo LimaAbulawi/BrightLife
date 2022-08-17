@@ -1,51 +1,52 @@
-<div class="flex items-center justify-between w-full container mb-12 pt-6">
-    <div class="text-4xl font-extrabold text-[#2eb772]">
-        All Providers
-    </div>
-    <div class="mr-[200px]">
-        <!-- (click)="addSuppliersDiv()" -->
-        <button type="button" class="ml-4 btn btn-light customBg" routerLink="/protected/providers/add">Add</button>
-    </div>
-</div>
-<div class="grid">
-    <div
-        class="inventory-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-        <div class="hidden md:block"></div>
-        <div class="hidden md:block">
-            ID
+<div class="content-wrapper">
+    <div class="flex justify-between container mb-7">
+        <div class="lg:text-4xl sm:text-lg font-extrabold text-[#74b9af]">
+            All Providers
         </div>
-        <div>Name</div>
-        <div></div>
-        <div class="m-auto  ">Details</div>
-        <div class="hidden md:block"></div>
+        <div>
+            <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/providers/add">Add</button>
+        </div>
     </div>
-    <!-- add div deleted  -->
-    <!-- ngFor -->
-    <div *ngIf="suppliers">
-        <div *ngFor="let supplier of suppliers">
-
-            <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
-                <div class="hidden md:block"></div>
-                <div class="items-center hidden md:block">
-                    {{supplier.id}}
-                </div>
-                <div class="flex items-center">
-                    {{supplier.name}}
-                </div>
-                <div>
-                </div>
-                <div class="flex items-center m-auto">
-                    <!-- Details button -->
-                    <button [routerLink]="['/protected/providers/details', supplier.id]">
-                        <i class="fa-solid fa-bars-staggered text-[#bba8bff5]"></i>
-                    </button>
-                </div>
-                <div class="hidden md:block">
-                </div>
+    <div class="grid">
+        <div
+            class="inventory-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+            <div class="hidden md:block"></div>
+            <div class="hidden md:block">
+                ID
             </div>
-            <!-- details deleted -->
-
+            <div>Name</div>
+            <div></div>
+            <div class="m-auto  ">Details</div>
+            <div class="hidden md:block"></div>
         </div>
-
+        <!-- add div deleted  -->
+        <!-- ngFor -->
+        <div *ngIf="suppliers">
+            <div *ngFor="let supplier of suppliers">
+    
+                <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
+                    <div class="hidden md:block"></div>
+                    <div class="items-center hidden md:block">
+                        {{supplier.id}}
+                    </div>
+                    <div class="flex items-center">
+                        {{supplier.name}}
+                    </div>
+                    <div>
+                    </div>
+                    <!-- Details button -->
+                    <div class="flex items-center m-auto">
+                        <button [routerLink]="['/protected/providers/details', supplier.id]">
+                            <i class="fa-solid fa-bars-staggered text-[#bba8bff5]"></i>
+                        </button>
+                    </div>
+                    <div class="hidden md:block">
+                    </div>
+                </div>
+                <!-- details deleted -->
+    
+            </div>
+    
+        </div>
     </div>
 </div>

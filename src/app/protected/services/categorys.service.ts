@@ -25,7 +25,6 @@ export class CategorysService {
   }
 
   addCategorys(categories:any){
-    debugger
     return this.http.post(this.basicUrl + "/api/v1/category-create", categories , { 'headers': this.headers2 }  )
   }
   deleteCat(Id: number) {

@@ -1,7 +1,7 @@
 <div class="overflow-hidden">
-    <nav class="flex flex-row col-lg-12 col-12 p-0 fixed-top bg-white">
-        <div class="text-center items-center h-[70px] justify-center sm:w-11 ml-6 mr-6 sm:mr-0 pt-[14px] "
-            [ngClass]="{'mr-0 , ml-0': isShown}">
+    <nav class="flex flex-row col-lg-12 col-12 p-0 fixed-top bg-white sm:justify-between sm:px-4">
+        <div class="text-center items-center h-[70px] justify-center sm:w-11 pt-[14px]  "
+        [ngClass]="{'lg:mx-1': isShown, 'lg:mx-6': !isShown}" >
             <div class="flex flex-wrap" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
                 <img class="w-12" src="../../../assets/App icon1.png" alt="">
                 <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1>
@@ -10,7 +10,7 @@
                 <img class="" src="../../../assets/App icon1.png" alt="">
             </a>
         </div>
-        <div class="sm:px-4  px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
+        <div class=" lg:px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
             <!-- burger button -->
             <button class="sm:px-1 pl-1 pr-5 border-none self-center navbar-toggler text-inherit"
                 (click)="isShown=!isShown" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
@@ -47,9 +47,10 @@
         </div>
     </nav>
     <div class="pt-[70px] flex flex-row px-0 w-full m-auto ">
-        <nav class="sidebar sidebar-offcanvas bg-blue-600 w-[282px] " id=""
+        <nav class="sidebar sidebar-offcanvas bg-blue-600 w-[253px] " id=""
             [ngClass]="{'active': !isShown ,'w_54': isShown}">
-            <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto">
+            <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto fixed w-[246px]"
+            [ngClass]="{'w-[55px]': isShown}">
                 <div class="flex flex-col ">
                   <div class="flex px-9 py-3 items-center" [ngClass]="{'block': !isShown, 'hidden': isShown}">
                     <div class="relative w-14 h-11 sm:mx-3 user_image">
@@ -125,9 +126,19 @@
                 </div>
             </div>
         </nav>
-        <div class="main-panel w-full content-wrapper"> 
+        <div class="main-panel w-full  bg-[#f2edf3]"> 
             <router-outlet></router-outlet>
+            <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
+                        bootstrapdash.com 2021</span>
+                    <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a
+                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
+                            admin template</a> from Bootstrapdash.com</span>
+                </div>
+            </footer>
         </div>
+        
     </div>
 </div>
 

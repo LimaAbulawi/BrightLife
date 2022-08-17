@@ -47,23 +47,23 @@
     transition: opacity 0.3s ease;
     font-weight: 500;
     // background: linear-gradient(to right, #da8cff, #9a55ff);
-    background: -webkit-gradient(linear, left top, right top, from(#f4933a), to(#90c8ac));
-    background: linear-gradient(to right, #f4933a, #90c8ac);
+    // background: -webkit-gradient(linear, left top, right top, from(#f4933a), to(#90c8ac));
+    // background: linear-gradient(to right, #f4933a, #90c8ac);
+    background-color: #43af79 ;
     font-size: 0.875rem;
     color: white;
     padding: 0.5rem 2.5rem;
+    transition: ease-in-out;
 }
 
 .customBg:hover {
     color: white;
+    background-color: #5daa84;
+
 
 }
 
 .addNew {
-    // padding-left: 1.5rem/* 24px */;
-    // padding-right: 1.5rem/* 24px */;
-    // padding-top: 0.625rem/* 10px */;
-    // padding-bottom: 0.625rem/* 10px */;
     padding: 10px 24px;
     border-width: 1px;
     border-color: white;
@@ -72,7 +72,6 @@
     text-transform: uppercase;
     border-radius: 0.25rem;
     transition: ease-in-out;
-    // px-6 py-2.5 border border-white bg-[#90c8ac] hover: bg-[#76a38d] w-36 leading-5 uppercase rounded shadow-md hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out
 }
 
 .addNew:hover {
@@ -97,4 +96,16 @@ button[disabled] {
 }
 .form-control{
     margin-bottom: 10px;
+}
+.footer {
+    background: #f2edf3;
+    color: color(dark);
+    border-top: 1px solid #e7dee9;
+    padding: 30px 1rem;
+    transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -webkit-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    font-size: calc(0.875rem - 0.05rem);
+    font-family: "ubuntu-regular", sans-serif;
 }

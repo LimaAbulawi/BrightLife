@@ -1,57 +1,79 @@
-<div class="flex justify-between container mb-7">
-    <p>Add Catigory!</p>
-    <button routerLink="/protected/categories" class="btn btn-light customBg">Back</button>
-</div>
-<div class="row">
-    <div class="col-md-6  m-auto grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <form action="" class="" [formGroup]="addCategorysForm" (ngSubmit)="addCategorys()"
-                    enctype="multipart/form-data">
-                    <div class="  w-full p-1 justify-center mt-7 mx-auto mb-1">
-                        <div class="form-floating m-1 grid-item">
-                            <input type="text" class="form-control" placeholder="Name" formControlName="name">
-                            <label for="floatingInputGrid">Name</label>
+<div class="content-wrapper">
+    <div class="flex justify-between container mb-7">
+        <p>Add Catigory!</p>
+        <button routerLink="/protected/categories" class="btn btn-light customBg">Back</button>
+    </div>
+    <div class="row">
+        <div class="col-md-6  m-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" class="" [formGroup]="addCategorysForm" (ngSubmit)="addCategorys()"
+                        enctype="multipart/form-data">
+                        <div class="  w-full p-1 justify-center mt-7 mx-auto mb-1">
+                             <!-- name -->
+                             <div class="mb-3">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">Name</label>
+                                    <!-- name is required -->
+                                    <label class="text-rose-600"
+                                        *ngIf="this.addCategorysForm.get('name')?.touched && this.addCategorysForm.get('name')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        name is required
+                                    </label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                            </div>
+                            <!-- image -->
+                            <div class="mb-3">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">image</label>
+                                    <!-- phone is required -->
+                                    <label class="text-rose-600"
+                                        *ngIf="this.addCategorysForm.get('image')?.touched && this.addCategorysForm.get('image')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        image is required
+                                    </label>
+                                </div>
+                                <input type="file" #file class="form-control" placeholder="image"
+                                    (change)="onFileChange($event,'image')" formControlName="image">
+                            </div>
                         </div>
-                        <div class=" m-1 grid-item">
-                            <input type="file" #file class="form-control" placeholder="cover"
-                                (change)="onFileChange($event,'image')">
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center customContainer  px-4 py-2 ">
-                        <button type="submit" [disabled]="!addCategorysForm.valid" class="addNew" 
-                        data-toggle="modal" data-target="#exampleModal">Add Category</button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        {{resMsg}}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button"
-                                            class="btn border transition ease-in-out border-white text-white  bg-[#90c8ac] hover:bg-[#76a38d]"
-                                            data-dismiss="modal"  (click)="deleteForm()">
-                                            Ok
-                                        </button>
+                        <div class="flex items-center justify-center customContainer  px-4 py-2 ">
+                            <button type="submit" [disabled]="!addCategorysForm.valid" class="addNew" 
+                            data-toggle="modal" data-target="#exampleModal">Add Category</button>
+    
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{resMsg}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"
+                                                class="btn border transition ease-in-out border-white text-white  bg-[#90c8ac] hover:bg-[#76a38d]"
+                                                data-dismiss="modal"  (click)="deleteForm()">
+                                                Ok
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-5 uppercase rounded 
     shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none
      focus:ring-0 active:bg-purple-800

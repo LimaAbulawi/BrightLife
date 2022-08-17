@@ -14,6 +14,7 @@ import { AddProviderComponent } from './components/providers/add-provider/add-pr
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
+import { ProviderDetailsModule } from './components/providers/provider-details/provider-details.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AddCategoryComponent } from './components/categories/add-category/add-c
   imports: [
     CommonModule,
     ProtectedRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProviderDetailsModule
   ]
 })
 export class ProtectedModule { }
