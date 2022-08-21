@@ -109,3 +109,11 @@ button[disabled] {
     font-size: calc(0.875rem - 0.05rem);
     font-family: "ubuntu-regular", sans-serif;
 }
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

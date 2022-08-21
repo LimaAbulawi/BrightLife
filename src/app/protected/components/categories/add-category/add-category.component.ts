@@ -20,16 +20,16 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
+   formData = new FormData();
   addCategorys() {
     console.log(this.addCategorysForm.value);
-    const formData = new FormData();
     Object.entries(this.addCategorysForm.value).forEach(
       ([key, value]: any[]) => {
-        formData.append(key, value);
+        this.formData.append(key, value);
         console.log(key + ':' + value);
       }
     )
-    this._ser.addCategorys(formData).subscribe((res: any) => {
+    this._ser.addCategorys(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
       // window.location.reload();
       console.log(res);

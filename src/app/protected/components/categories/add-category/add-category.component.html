@@ -21,7 +21,7 @@
                                         name is required
                                     </label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                                <input type="text" class="form-control" placeholder="Name" formControlName="name" >
                             </div>
                             <!-- image -->
                             <div class="mb-3">
@@ -35,12 +35,12 @@
                                     </label>
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="image"
-                                    (change)="onFileChange($event,'image')" formControlName="image">
+                                    (change)="onFileChange($event,'image')" >
                             </div>
                         </div>
                         <div class="flex items-center justify-center customContainer  px-4 py-2 ">
-                            <button type="submit" [disabled]="!addCategorysForm.valid" class="addNew" 
-                            data-toggle="modal" data-target="#exampleModal">Add Category</button>
+                            <button type="submit"  class="addNew" 
+                            data-toggle="modal" data-target="#exampleModal" [disabled]="!addCategorysForm.valid" >Add Category</button>
     
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -78,3 +78,4 @@
     shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none
      focus:ring-0 active:bg-purple-800
      active:shadow-lg transition duration-150 ease-in-out w-full  -->
+     

@@ -7,7 +7,7 @@
                 <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1>
             </div>
             <a href="" class="inline-block" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
-                <img class="" src="../../../assets/App icon1.png" alt="">
+                <img class="w-12" src="../../../assets/App icon1.png" alt="">
             </a>
         </div>
         <div class=" lg:px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
@@ -128,15 +128,6 @@
         </nav>
         <div class="main-panel w-full  bg-[#f2edf3]"> 
             <router-outlet></router-outlet>
-            <footer class="footer">
-                <div class="container-fluid d-flex justify-content-between">
-                    <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                        bootstrapdash.com 2021</span>
-                    <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a
-                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                            admin template</a> from Bootstrapdash.com</span>
-                </div>
-            </footer>
         </div>
         
     </div>
