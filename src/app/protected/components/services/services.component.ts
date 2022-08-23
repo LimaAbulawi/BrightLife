@@ -72,7 +72,6 @@ export class ServicesComponent implements OnInit {
     }
   }
   deleteSer(Id: number) {
-  
     return this._ser.deleteSer(Id).subscribe((res: any) => {
       this.delete = res;
       console.log("delete", this.delete);

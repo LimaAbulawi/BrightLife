@@ -15,7 +15,7 @@
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">Name</label>
                                     <!-- name is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addCategorysForm.get('name')?.touched && this.addCategorysForm.get('name')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         name is required
@@ -28,7 +28,7 @@
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">image</label>
                                     <!-- phone is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addCategorysForm.get('image')?.touched && this.addCategorysForm.get('image')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         image is required

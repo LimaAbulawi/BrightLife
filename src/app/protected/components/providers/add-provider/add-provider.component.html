@@ -9,13 +9,13 @@
                 <div class="card-body">
                     <!-- <h4 class="card-title">Default form</h4> -->
                     <form action="" class="" [formGroup]="addSuppliersForm" (ngSubmit)="addSuppliers()">
-                        <div class="  w-full p-1 justify-center mt-7 mx-auto mb-1">
+                        <div class="w-full p-1 justify-center mx-auto">
                             <!-- name -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">Name</label>
                                     <!-- name is required -->
-                                    <label class="text-rose-600" *ngIf="this.addSuppliersForm
+                                    <label class="errorLabel" *ngIf="this.addSuppliersForm
                                         .get('name')?.touched && this.addSuppliersForm
                                         .get('name')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
@@ -25,18 +25,18 @@
                                 <input type="text" class="form-control" placeholder="Name" formControlName="name">
                             </div>
                             <!-- email -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="exampleInputEmail1" class="">Email</label>
                                     <!-- email is required -->
-                                    <label class="text-rose-600" *ngIf="this.addSuppliersForm
+                                    <label class="errorLabel" *ngIf="this.addSuppliersForm
                                         .get('email')?.touched && this.addSuppliersForm
                                         .get('email')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         email is required
                                     </label>
                                     <!-- must be valid email -->
-                                    <label class="text-rose-600" *ngIf="this.addSuppliersForm
+                                    <label class="errorLabel" *ngIf="this.addSuppliersForm
                                         .get('email')?.touched && this.addSuppliersForm
                                         .get('email')?.hasError('email')">
                                         <i class="fad fa-exclamation"></i>
@@ -47,7 +47,7 @@
                                     (keydown.space)="$event.preventDefault();" placeholder="email">
                                 <!-- email didn't take arabic  -->
                                 <!-- the ts , Validators.pattern('[a-zA-Z]*') -->
-                                <!-- <label class="text-rose-600"
+                                <!-- <label class="errorLabel"
                                     *ngIf="this.addSuppliersForm
                                     .get('email')?.touched && this.addSuppliersForm
                                     .get('email')?.hasError('pattern')">
@@ -56,11 +56,11 @@
                                 </label> -->
                             </div>
                             <!-- password -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">Password</label>
                                     <!-- Password is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('password')?.touched && this.addSuppliersForm.get('password')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         Password is required
@@ -70,11 +70,11 @@
                                     formControlName="password">
                             </div>
                             <!-- phone -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">phone</label>
                                     <!-- phone is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         phone is required
@@ -83,7 +83,7 @@
                                 <input type="number" class="form-control" onKeyPress="if(this.value.length==10) return false;" placeholder="phone" formControlName="phone">
                             </div>
                             <!-- description -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">description</label>
                                 </div>
@@ -91,18 +91,18 @@
                                     formControlName="description">
                             </div>
                             <!-- location -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">location</label>
                                 </div>
                                 <input type="" class="form-control" placeholder="location" formControlName="location">
                             </div>
                             <!-- image -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">image</label>
                                     <!-- image is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('image')?.touched && this.addSuppliersForm.get('image')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         image is required
@@ -112,11 +112,11 @@
                                     (change)="onFileChange($event,'image')">
                             </div>
                             <!-- cover image -->
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">cover</label>
                                     <!-- cover is required -->
-                                    <label class="text-rose-600"
+                                    <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('cover')?.touched && this.addSuppliersForm.get('cover')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         cover is required
@@ -126,7 +126,7 @@
                                     (change)="onFileChange($event,'cover')" >
                             </div>
                         </div>
-                        <div class="flex items-center justify-center customContainer  px-4 py-2 ">
+                        <div class="flex items-center justify-center customContainer  px-4 mt-2 ">
                             <button type="submit" [disabled]="!addSuppliersForm.valid" class="addNew"
                                 data-toggle="modal" data-target="#exampleModal">Add
                                 Provider</button>

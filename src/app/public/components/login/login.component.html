@@ -11,7 +11,7 @@
                     </div>
                     <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-                        <label class="text-rose-600"
+                        <label class="errorLabel"
                                 *ngIf="errorMessage">
                                 {{ errorMessage }}
                             </label>
@@ -20,12 +20,12 @@
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <label for="exampleInputEmail1" class="form-label ">Email address</label>
-                                <label class="text-rose-600"
+                                <label class="errorLabel"
                                     *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
                                     <i class="fad fa-exclamation"></i>
                                     email is required
                                 </label>
-                                <label class="text-rose-600"
+                                <label class="errorLabel"
                                     *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
                                     <i class="fad fa-exclamation"></i>
                                     must be valid email
@@ -38,7 +38,7 @@
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <label class="text-rose-600"
+                                <label class="errorLabel"
                                     *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
                                     <i class="fad fa-exclamation"></i>
                                     password is required

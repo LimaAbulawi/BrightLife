@@ -41,6 +41,10 @@
         max-width: 100%;
         display: block;
     }
+
+    .content-wrapper {
+        padding: 1.75rem 1.25rem;
+    }
 }
 
 .customBg {
@@ -49,7 +53,7 @@
     // background: linear-gradient(to right, #da8cff, #9a55ff);
     // background: -webkit-gradient(linear, left top, right top, from(#f4933a), to(#90c8ac));
     // background: linear-gradient(to right, #f4933a, #90c8ac);
-    background-color: #43af79 ;
+    background-color: #43af79;
     font-size: 0.875rem;
     color: white;
     padding: 0.5rem 2.5rem;
@@ -88,12 +92,19 @@
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-button:focus{
+
+button:focus {
     outline: none;
 }
+
 button[disabled] {
     cursor: not-allowed;
 }
+.cursorNotAllowed{
+    cursor: not-allowed !important;
+
+}
+
 // .form-control{
 //     margin-bottom: 10px;
 // }
@@ -109,11 +120,18 @@ button[disabled] {
     font-size: calc(0.875rem - 0.05rem);
     font-family: "ubuntu-regular", sans-serif;
 }
+
 input[type='number'] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+.errorLabel {
+    font-size: 14px;
+    --tw-text-opacity: 1;
+    color: rgb(225 29 72 / var(--tw-text-opacity));
 }

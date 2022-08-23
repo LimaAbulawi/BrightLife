@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
   addUsersForm = this.fb.group({
     name: ['', Validators.required],
     last_name: ['', Validators.required],
-    email: ['', Validators.compose([ Validators.email, Validators.required])],
+    email: ['', Validators.compose([Validators.email, Validators.required])],
     password: ['', Validators.required],
     phone: ['', Validators.required],
     image: ['', Validators.required],
@@ -27,7 +27,9 @@ export class AddUserComponent implements OnInit {
 
   addUsers() {
     console.log(this.addUsersForm.value);
-
+    if(!this.addUsersForm.valid) {
+      this.addUsersForm.markAllAsTouched();
+    }
     Object.entries(this.addUsersForm.value).forEach(
       ([key, value]: any[]) => {
         this.formData.append(key, value);
@@ -73,4 +75,18 @@ export class AddUserComponent implements OnInit {
   //     // }
   //   }
   // }
+
+  placeholder :any | undefined;
+  onKeyPress(event: any){
+
+    this.placeholder = this.destroyMask(event.target.value);
+    event.target.value= this.createMask(this.placeholder);
+
+  }
+  destroyMask(event: any) {
+    return event.replace(/\D/g, '').substring(0, 9);
+  }
+  createMask(event: any){
+    return event.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3");
+  }
 }

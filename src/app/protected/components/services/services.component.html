@@ -18,13 +18,13 @@
             <div>Name</div>
             <div></div>
             <div>Details</div>
-            <div class="hidden md:block"></div>
+            <div class="hidden "></div>
         </div>
         <div *ngIf="isAddService" class=" items-center py-3 px-6 md:px-8">
             <form action="" class="border-b" [formGroup]="addServicesForm" (ngSubmit)="addServices()"
                 enctype="multipart/form-data">
                 <div class="grid grid-container grid-template  w-full p-1 justify-center mt-7 mx-auto mb-1">
-    
+
                     <div class="form-floating m-1 grid-item">
                         <input type="text" class="form-control" placeholder="Name" formControlName="name">
                         <label for="floatingInputGrid">Name</label>
@@ -38,11 +38,13 @@
                         <label for="floatingInputGrid">price</label>
                     </div>
                     <div class="form-floating m-1 grid-item">
-                        <input type="number" class="form-control" placeholder="description" formControlName="category_id">
+                        <input type="number" class="form-control" placeholder="description"
+                            formControlName="category_id">
                         <label for="floatingInputGrid">category_id</label>
                     </div>
                     <div class="form-floating m-1 grid-item">
-                        <input type="number" class="form-control" placeholder="description" formControlName="supplier_id">
+                        <input type="number" class="form-control" placeholder="description"
+                            formControlName="supplier_id">
                         <label for="floatingInputGrid">supplier_id</label>
                     </div>
                     <div class=" m-1 grid-item">
@@ -107,36 +109,35 @@
                                 <label for="floatingInputGrid">price</label>
                             </div>
                             <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="supplier"
-                                    value="{{service.supplier}}">
-                                <label for="floatingInputGrid">supplier</label>
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="supplier id"
+                                    value="{{services[i].supplier.id}}">
+                                <label for="floatingInputGrid">supplier id</label>
                             </div>
-                            <div class="form-floating m-1 ">
+                            <!-- <div class="form-floating m-1 ">
                                 <input type="text" class="form-control" id="floatingInputGrid" placeholder="catigory id"
-                                    value="{{services[i].category.id}}">
-                                <label for="floatingInputGrid">catigory id</label>
-                            </div>
+                                    >
+                                <label for="floatingInputGrid">catigory </label>
+                            </div> -->
                             <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="catigory name"
-                                    value="{{services[i].category.name}}">
-                                <label for="floatingInputGrid">catigory name</label>
+                                <input type="text" class="form-control" id="floatingInputGrid"
+                                    placeholder="supplier name" value="{{services[i].supplier.name}}">
+                                <label for="floatingInputGrid">supplier name</label>
                             </div>
                             <div class="form-floating m-1 ">
                                 <div class="form-floating m-1 w-20">
-                                    <img src="{{basicUrl}}/{{services[i].category.image}}" alt="">
+                                    <img src="{{basicUrl}}/{{services[i].supplier.image}}" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                            <!-- <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                (click)="deleteSer(service.id)">Delete</button> -->
-                            <!-- Button trigger modal -->
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700"
+                            <button type="button"
+                                class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]">Edit</button>
+
+                            <button type="button"
+                                class="btn border border-white text-white  bg-red-600 hover:bg-red-700"
                                 data-toggle="modal" data-target="#exampleModal">
                                 Delete
                             </button>
-    
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
@@ -158,12 +159,10 @@
                                             <button type="button"
                                                 class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
                                                 (click)="deleteSer(service.id)" data-dismiss="modal">Delete</button>
-                                            <!-- <button type="button" class="btn btn-primary">Delete</button> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <button type="button" class="btn border border-white text-white  bg-red-600 hover:bg-red-700 " (click)="delete(supplier.id)">Delete</button> -->
                         </div>
                     </form>
                 </div>
@@ -171,4 +170,3 @@
         </div>
     </div>
 </div>
-
