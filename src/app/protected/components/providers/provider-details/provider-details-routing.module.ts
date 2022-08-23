@@ -7,9 +7,9 @@ import { ServicesOrProductsComponent } from './services-or-products/services-or-
 const routes: Routes = [
   
   { path: "", component: MangeInfoComponent },
-  { path: "mangeInfo", component: MangeInfoComponent },
+  { path: ":id/mangeInfo", component: MangeInfoComponent },
   { path: "accounting", component: AccountingComponent },
-  { path: "services", component: ServicesOrProductsComponent },
+  { path: "services/:id", component: ServicesOrProductsComponent },
 ];
 
 @NgModule({

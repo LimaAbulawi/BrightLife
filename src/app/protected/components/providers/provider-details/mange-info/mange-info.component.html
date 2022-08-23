@@ -1,13 +1,13 @@
 <p>mange-info works! {{id}}</p>
 <div class="row">
-    <div class="col-md-6 m-auto grid-margin stretch-card">
+    <div class=" m-auto grid-margin stretch-card">
         <div class="card mt-14">
             <div class="card-body">
                 <div *ngIf="suppliers">
                     <div *ngFor="let supplier of suppliers">
                         <div *ngIf="isShown[supplier.id]">
                             <form action="" class="">
-                                <div class="w-full p-1 justify-center mx-auto  columns-2">
+                                <div class="w-full p-1 justify-center mx-auto  columns-2 sm:columns-1">
                                     <div class="form-floating flex justify-between mb-[10px] mx-2">
                                         <img class=" w-14 h-14  rounded-full" src="{{basicUrl}}/{{supplier.image}}" alt="">
                                         
@@ -24,7 +24,7 @@
                                         <label for="floatingInputGrid">Name</label>
                                     </div>
                                     <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                        <input type="text" class="form-control" id="floatingInputGrid" onKeyPress="if(this.value.length==10) return false;"
                                             placeholder="phone" value="{{supplier.phone}}">
                                         <label for="floatingInputGrid">phone</label>
                                     </div>

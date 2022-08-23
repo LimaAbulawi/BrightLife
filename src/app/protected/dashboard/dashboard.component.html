@@ -47,9 +47,9 @@
         </div>
     </nav>
     <div class="pt-[70px] flex flex-row px-0 w-full m-auto ">
-        <nav class="sidebar sidebar-offcanvas bg-blue-600 flex sm:w-[253px]  w-[293px]" id=""
+        <nav class="sidebar sidebar-offcanvas bg-blue-600 flex sm:w-[253px]  w-[293px] overflow-hidden" id=""
             [ngClass]="{'active': !isShown ,'w_54': isShown }" >
-            <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto fixed w-[246px]"
+            <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto  w-full"
             [ngClass]="{'w-[55px]': isShown}">
                 <div class="flex flex-col ">
                   <div class="flex px-9 py-3 items-center" [ngClass]="{'block': !isShown, 'hidden': isShown}">
@@ -126,7 +126,7 @@
                 </div>
             </div>
         </nav>
-        <div class="main-panel w-full  bg-[#f2edf3]"> 
+        <div class="main-panel w-full bg-[#f2edf3]"> 
             <router-outlet></router-outlet>
         </div>
         

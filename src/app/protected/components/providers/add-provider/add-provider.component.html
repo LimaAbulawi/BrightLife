@@ -80,7 +80,7 @@
                                         phone is required
                                     </label>
                                 </div>
-                                <input type="number" class="form-control" placeholder="phone" formControlName="phone">
+                                <input type="number" class="form-control" onKeyPress="if(this.value.length==10) return false;" placeholder="phone" formControlName="phone">
                             </div>
                             <!-- description -->
                             <div class="mb-3">
@@ -101,7 +101,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">image</label>
-                                    <!-- phone is required -->
+                                    <!-- image is required -->
                                     <label class="text-rose-600"
                                         *ngIf="this.addSuppliersForm.get('image')?.touched && this.addSuppliersForm.get('image')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
@@ -115,7 +115,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">cover</label>
-                                    <!-- phone is required -->
+                                    <!-- cover is required -->
                                     <label class="text-rose-600"
                                         *ngIf="this.addSuppliersForm.get('cover')?.touched && this.addSuppliersForm.get('cover')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
