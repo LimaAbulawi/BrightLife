@@ -26,14 +26,14 @@ export class AddUserComponent implements OnInit {
   }
 
   addUsers() {
+    
     console.log(this.addUsersForm.value);
-    if(!this.addUsersForm.valid) {
+    if (!this.addUsersForm.valid) {
       this.addUsersForm.markAllAsTouched();
     }
     Object.entries(this.addUsersForm.value).forEach(
       ([key, value]: any[]) => {
         this.formData.append(key, value);
-        console.log(key + ':' + value);
       }
     )
     this._ser.addUsers(this.formData).subscribe((res: any) => {
@@ -76,17 +76,15 @@ export class AddUserComponent implements OnInit {
   //   }
   // }
 
-  placeholder :any | undefined;
-  onKeyPress(event: any){
-
+  placeholder: any | undefined;
+  onInput(event: any) {
     this.placeholder = this.destroyMask(event.target.value);
-    event.target.value= this.createMask(this.placeholder);
-
+    event.target.value = this.createMask(this.placeholder);
   }
   destroyMask(event: any) {
-    return event.replace(/\D/g, '').substring(0, 9);
+    return event.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
   }
-  createMask(event: any){
-    return event.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3");
+  createMask(event: any) {
+    return event.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
   }
 }

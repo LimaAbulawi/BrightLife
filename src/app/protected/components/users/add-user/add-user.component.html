@@ -22,7 +22,8 @@
                                         name is required
                                     </label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                                <input type="text" class="form-control outLine" placeholder="Name" formControlName="name" 
+                                [ngClass]="{'border-rose-600': this.addUsersForm.get('name')?.touched && this.addUsersForm.get('name')?.hasError('required')}">
                             </div>
                             <!-- last name -->
                             <div class="mb-1">
@@ -35,7 +36,8 @@
                                         last name is required
                                     </label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="last name" formControlName="last_name">
+                                <input type="text" class="form-control" placeholder="last name" formControlName="last_name"
+                                [ngClass]="{'border-rose-600': this.addUsersForm.get('last_name')?.touched && this.addUsersForm.get('last_name')?.hasError('required')}">
                             </div>
                             <!-- email -->
                             <div class="mb-1">
@@ -55,7 +57,8 @@
                                     </label>
                                 </div>
                                 <input type="email" class="form-control" id="" formControlName="email"
-                                    (keydown.space)="$event.preventDefault();" placeholder="email">
+                                    (keydown.space)="$event.preventDefault();" placeholder="email"
+                                    [ngClass]="{'border-rose-600': (this.addUsersForm.get('email')?.touched && this.addUsersForm.get('email')?.hasError('required')) || (this.addUsersForm.get('email')?.touched && this.addUsersForm.get('email')?.hasError('email')) }" >
                                 <!-- email didn't take arabic  -->
                                 <!-- the ts , Validators.pattern('[a-zA-Z]*') -->
                                 <!-- <label class="text-rose-600"
@@ -76,7 +79,8 @@
                                     </label>
                                 </div>
                                 <input type="password" class="form-control out" placeholder="password"
-                                    formControlName="password">
+                                    formControlName="password"
+                                    [ngClass]="{'border-rose-600': this.addUsersForm.get('password')?.touched && this.addUsersForm.get('password')?.hasError('required')}">
                             </div>
                             <!-- phone -->
                             <div class="mb-1">
@@ -90,8 +94,10 @@
                                     </label>
                                 </div>
                                 <div class="md-form">
-                                    <input type="text" id="form1" class="form-control" (keypress)="onKeyPress($event)"
-                                        placeholder="077-777-7778" formControlName="phone">
+                                    <input type="text" id="form1" class="form-control" (input)="onInput($event)" maxlength="10" 
+                                        placeholder="077-777-7778" formControlName="phone"  
+                                        [ngClass]="{'border-rose-600': this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('required')}">
+                                        <!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
                                 </div>
                             </div>
                             <!-- image -->
@@ -106,7 +112,7 @@
                                     </label>
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="image"
-                                    (change)="onFileChange($event,'image')" >
+                                    (change)="onFileChange($event,'image')"  accept="image/png, image/gif, image/jpeg , image/PNG, image/GIF , image/JPEG"  >
                             </div>
                         </div>
                         <div class="flex items-center justify-center customContainer mt-2 px-4 ">

@@ -123,6 +123,7 @@ button[disabled] {
 
 input[type='number'] {
     -moz-appearance: textfield;
+
 }
 
 input::-webkit-outer-spin-button,
@@ -134,4 +135,19 @@ input::-webkit-inner-spin-button {
     font-size: 14px;
     --tw-text-opacity: 1;
     color: rgb(225 29 72 / var(--tw-text-opacity));
+}
+input:read-only {
+    cursor: default;
+    background-color: #e8f0fe !important;
+    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170)) ;
+    border-color: rgba(118, 118, 118, 0.3) !important;
+}
+
+input:focus{
+    outline: none;
+}
+.form-control:focus{
+    // border-color:#ced4da ;
+    // outline : none ;
+    box-shadow : none !important;
 }
