@@ -1,11 +1,13 @@
 <div class="content-wrapper">
 
-    <div class="flex items-center justify-between w-full container mb-12 pt-6">
+    <div class="flex items-center justify-between w-full container mb-12">
         <div class="lg:text-4xl sm:text-lg font-extrabold text-[#74b9af]">
             provider details
         </div>
         <div>
-            <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/providers">Back</button>
+            <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/providers">
+                <i class="fa-solid fa-angle-left mr-2"></i>
+                Back</button>
         </div>
     </div>
     <!-- <div class="flex items-center justify-between w-full container mb-12 pt-6">
@@ -17,12 +19,13 @@
         </div>
     </div> -->
     <div
-        class=" flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-        <div class=" cursor-pointer" routerLink="../{{id}}/{{id}}/mangeInfo">
+        class="flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+        <div class=" cursor-pointer active" routerLink="../{{id}}/{{id}}/mangeInfo">
             Manage Info
         </div>
         <div class=" cursor-pointer" routerLink="../{{id}}/services/{{id}}">Services</div>
         <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/accounting">Accounting/Order</div>
+        <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/zoons">Zoons</div>
     </div>
     
     <router-outlet></router-outlet>

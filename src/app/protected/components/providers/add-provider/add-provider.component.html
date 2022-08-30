@@ -1,7 +1,9 @@
 <div class="content-wrapper">
     <div class="flex justify-between container mb-7">
         <p>Add Provider!</p>
-        <button routerLink="/protected/providers" class="btn btn-light customBg">Back</button>
+        <button routerLink="/protected/providers" class="btn btn-light customBg">
+            <i class="fa-solid fa-angle-left mr-2"></i>
+            Back</button>
     </div>
     <div class="row">
         <div class="col-md-6  m-auto grid-margin stretch-card">
@@ -22,7 +24,8 @@
                                         name is required
                                     </label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                                <input type="text" class="form-control" placeholder="Name" formControlName="name"
+                                [ngClass]="{'border-rose-600': this.addSuppliersForm.get('name')?.touched && this.addSuppliersForm.get('name')?.hasError('required')}">
                             </div>
                             <!-- email -->
                             <div class="mb-1">
@@ -44,7 +47,8 @@
                                     </label>
                                 </div>
                                 <input type="email" class="form-control" id="" formControlName="email"
-                                    (keydown.space)="$event.preventDefault();" placeholder="email">
+                                    (keydown.space)="$event.preventDefault();" placeholder="email"
+                                    [ngClass]="{'border-rose-600': (this.addSuppliersForm.get('email')?.touched && this.addSuppliersForm.get('email')?.hasError('required')) || (this.addSuppliersForm.get('email')?.touched && this.addSuppliersForm.get('email')?.hasError('email')) }">
                                 <!-- email didn't take arabic  -->
                                 <!-- the ts , Validators.pattern('[a-zA-Z]*') -->
                                 <!-- <label class="errorLabel"
@@ -67,7 +71,8 @@
                                     </label>
                                 </div>
                                 <input type="password" class="form-control out" placeholder="password"
-                                    formControlName="password">
+                                    formControlName="password"
+                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('password')?.touched && this.addSuppliersForm.get('password')?.hasError('required')}">
                             </div>
                             <!-- phone -->
                             <div class="mb-1">
@@ -80,8 +85,10 @@
                                         phone is required
                                     </label>
                                 </div>
-                                <input type="number" placeholder="077-777-7778" class="form-control" 
-                                onKeyPress="if(this.value.length==10) return false;" formControlName="phone">
+                                <input type="text" placeholder="077-777-7778" class="form-control"
+                                    (input)="onInput($event)" maxlength="10" placeholder="077-777-7778"
+                                    formControlName="phone"
+                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required')}">
                             </div>
                             <!-- description -->
                             <div class="mb-1">
@@ -110,7 +117,7 @@
                                     </label>
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="image"
-                                    (change)="onFileChange($event,'image')">
+                                    (change)="onFileChange($event,'image')" accept="image/png, image/gif, image/jpeg , image/PNG, image/GIF , image/JPEG">
                             </div>
                             <!-- cover image -->
                             <div class="mb-1">
@@ -124,11 +131,15 @@
                                     </label>
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="cover"
-                                    (change)="onFileChange($event,'cover')" >
+                                    (change)="onFileChange($event,'cover')">
                             </div>
                         </div>
                         <div class="flex items-center justify-center customContainer  px-4 mt-2 ">
-                            <button type="submit" [disabled]="!addSuppliersForm.valid" class="addNew"
+                            <!-- <button type="submit" class="addNew" data-toggle="modal" data-target="#exampleModal">Add
+                                Provider</button> -->
+                            <button *ngIf="!addSuppliersForm.valid" type="submit" class="addNew cursorNotAllowed">Add
+                                Provider</button>
+                            <button *ngIf="addSuppliersForm.valid" type="submit" class="addNew cursor-pointer"
                                 data-toggle="modal" data-target="#exampleModal">Add
                                 Provider</button>
                             <!-- Modal -->

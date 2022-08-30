@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountingComponent } from './accounting/accounting.component';
 import { MangeInfoComponent } from './mange-info/mange-info.component';
 import { ServicesOrProductsComponent } from './services-or-products/services-or-products.component';
+import { ZoonsComponent } from './zoons/zoons.component';
 
 const routes: Routes = [
   
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: ":id/mangeInfo", component: MangeInfoComponent },
   { path: "accounting", component: AccountingComponent },
   { path: "services/:id", component: ServicesOrProductsComponent },
+  { path: "zoons", component: ZoonsComponent },
 ];
 
 @NgModule({

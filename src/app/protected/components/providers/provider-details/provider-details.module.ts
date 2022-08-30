@@ -5,13 +5,15 @@ import { ProviderDetailsRoutingModule } from './provider-details-routing.module'
 import { MangeInfoComponent } from './mange-info/mange-info.component';
 import { ServicesOrProductsComponent } from './services-or-products/services-or-products.component';
 import { AccountingComponent } from './accounting/accounting.component';
+import { ZoonsComponent } from './zoons/zoons.component';
 
 
 @NgModule({
   declarations: [
     MangeInfoComponent,
     ServicesOrProductsComponent,
-    AccountingComponent
+    AccountingComponent,
+    ZoonsComponent
   ],
   imports: [
     CommonModule,

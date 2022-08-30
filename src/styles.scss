@@ -35,9 +35,17 @@
     background: #fff;
 }
 
+table {
+    overflow: scroll;
+}
+table th{
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
 @media screen and (max-width: 992px) {
     table {
-        overflow-x: scroll;
+        // overflow-x: scroll;
         max-width: 100%;
         display: block;
     }
@@ -54,9 +62,9 @@
     // background: -webkit-gradient(linear, left top, right top, from(#f4933a), to(#90c8ac));
     // background: linear-gradient(to right, #f4933a, #90c8ac);
     background-color: #43af79;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: white;
-    padding: 0.5rem 2.5rem;
+    padding: 0.5rem 1.5rem;
     transition: ease-in-out;
 }
 
@@ -100,7 +108,8 @@ button:focus {
 button[disabled] {
     cursor: not-allowed;
 }
-.cursorNotAllowed{
+
+.cursorNotAllowed {
     cursor: not-allowed !important;
 
 }
@@ -136,18 +145,33 @@ input::-webkit-inner-spin-button {
     --tw-text-opacity: 1;
     color: rgb(225 29 72 / var(--tw-text-opacity));
 }
+
 input:read-only {
     cursor: default;
     background-color: #e8f0fe !important;
-    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170)) ;
+    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
     border-color: rgba(118, 118, 118, 0.3) !important;
 }
 
-input:focus{
+input:focus {
     outline: none;
 }
-.form-control:focus{
+
+.form-control:focus {
     // border-color:#ced4da ;
     // outline : none ;
-    box-shadow : none !important;
+    box-shadow: none !important;
+}
+
+.tableBorder tr,.tableBorder th , .tableBorder td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tableBorder tr:nth-child(even) {
+    background-color: rgba(150, 212, 212, 0.4);
+}
+
+.tableBorder th:nth-child(even) , td:nth-child(even) {
+    background-color: rgba(150, 212, 212, 0.4);
 }

@@ -2,7 +2,9 @@
 
     <div class="flex justify-between container mb-7">
         <p>Add User!</p>
-        <button routerLink="/protected/users" class="btn btn-light customBg">Back</button>
+        <button routerLink="/protected/users" class="btn btn-light customBg">
+            <i class="fa-solid fa-angle-left mr-2"></i>
+            Back</button>
     </div>
     <div class="row">
         <div class="col-md-6  m-auto grid-margin stretch-card">
@@ -94,7 +96,7 @@
                                     </label>
                                 </div>
                                 <div class="md-form">
-                                    <input type="text" id="form1" class="form-control" (input)="onInput($event)" maxlength="10" 
+                                    <input type="text" id="form1" class="form-control" (input)="onInput($event)" maxlength="10" (keydown.enter)="$event.preventDefault()"
                                         placeholder="077-777-7778" formControlName="phone"  
                                         [ngClass]="{'border-rose-600': this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('required')}">
                                         <!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->

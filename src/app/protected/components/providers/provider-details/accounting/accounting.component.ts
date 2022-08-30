@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { SuppliersService } from 'src/app/protected/services/suppliers.service';
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/protected/services/users.service';
 
 @Component({
   selector: 'app-accounting',
@@ -10,30 +10,31 @@ import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 export class AccountingComponent implements OnInit {
 
   id: any;
-  Id:any;
+  Id: any;
+  users: any = [];
+  basicUrl = "https://api.brightlifeapp.com/public";
 
-  constructor(private _Activatedroute: ActivatedRoute, private _ser: SuppliersService, private router: Router) {
-    this._Activatedroute.paramMap.subscribe(params => {
-      this.id = params.get('id');
-    });
+  constructor(private router: Router, private _ser: UsersService) {
 
+    this.getListFromService();
+
+    // get id from url 
     let URL = this.router.url;
     let URL_AS_LIST = URL.split('details/');
-    this.Id = URL_AS_LIST[1];
-    console.log("URL_AS_LIST ", URL_AS_LIST)
-    console.log("this.Idddd ", this.Id)
-    let Split2 = this.Id.split('/');
+    this.Id = URL_AS_LIST[1];         // 8/accounting
+    let Split2 = this.Id.split('/'); // array ['8', 'accounting']
     this.id = Split2[0];
-    console.log("this.Id2 ", this.id, typeof (this.id))
-    // let urlTree = this.router.parseUrl(this.router.url);
-    // urlTree.queryParams = {};
-    // console.log("tostring", urlTree.toString());
-
-
   }
-
 
   ngOnInit(): void {
   }
+  getListFromService() {
+    return this._ser.getList().subscribe((res: any) => {
+      this.users = res.users;
+      // console.log("this.users", this.users);
+
+    })
+  }
+
 
 }

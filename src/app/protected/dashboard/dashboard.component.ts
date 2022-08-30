@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   image!: any;
   leftToggle: boolean = true;
   rightToggle: boolean = false;
+  active: number = 0;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
@@ -50,4 +51,3 @@ export class DashboardComponent implements OnInit {
     return this.router.navigate(['/public/']);
   }
 }
-

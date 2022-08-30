@@ -11,7 +11,7 @@ export class AddProviderComponent implements OnInit {
 
   formData = new FormData();
   resMsg!: string;
-
+  placeholder: any | undefined;
   constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
@@ -29,7 +29,10 @@ export class AddProviderComponent implements OnInit {
   })
 
   addSuppliers() {
-    console.log(this.addSuppliersForm.value);
+    
+    if (!this.addSuppliersForm.valid) {
+      this.addSuppliersForm.markAllAsTouched();
+    }
     Object.entries(this.addSuppliersForm.value).forEach(
       ([key, value]: any[]) => {
         this.formData.append(key, value);
@@ -64,5 +67,16 @@ export class AddProviderComponent implements OnInit {
     this.addSuppliersForm.controls.description.setValue('')
     this.addSuppliersForm.controls.location.setValue('')
     this.addSuppliersForm.controls.cover.setValue('')
+  }
+
+  onInput(event: any) {
+    this.placeholder = this.destroyMask(event.target.value);
+    event.target.value = this.createMask(this.placeholder);
+  }
+  destroyMask(event: any) {
+    return event.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+  }
+  createMask(event: any) {
+    return event.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
   }
 }

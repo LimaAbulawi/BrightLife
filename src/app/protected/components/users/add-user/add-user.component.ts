@@ -11,6 +11,7 @@ export class AddUserComponent implements OnInit {
 
   formData = new FormData();
   resMsg!: string;
+  placeholder: any | undefined;
   addUsersForm = this.fb.group({
     name: ['', Validators.required],
     last_name: ['', Validators.required],
@@ -76,7 +77,7 @@ export class AddUserComponent implements OnInit {
   //   }
   // }
 
-  placeholder: any | undefined;
+
   onInput(event: any) {
     this.placeholder = this.destroyMask(event.target.value);
     event.target.value = this.createMask(this.placeholder);
