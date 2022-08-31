@@ -38,4 +38,9 @@ export class AuthService {
       ),
     );
   }
+ 
+  logout() {
+   debugger
+    return this.http.get(this.basicUrl + "/api/v1/logout", { 'headers': this.headers })
+  }
 }

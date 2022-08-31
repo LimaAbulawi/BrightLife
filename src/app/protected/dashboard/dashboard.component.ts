@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LOCALSTORAGE_TOKEN_KEY } from 'src/app/app.module';
 import { HostListener } from "@angular/core";
+import { AuthService } from 'src/app/public/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,7 @@ export class DashboardComponent implements OnInit {
     // this.scrHeight = window.innerHeight;
     // console.log(this.scrHeight, this.scrWidth);
   }
-  constructor(private router: Router) {
+  constructor(private router: Router, private _ser: AuthService) {
     this.getScreenSize();
   }
 
@@ -47,7 +48,12 @@ export class DashboardComponent implements OnInit {
   }
 
   logOut() {
+    debugger
     localStorage.clear();
-    return this.router.navigate(['/public/']);
+    this.router.navigate(['/public/']);
+    return  this._ser.logout().subscribe((res: any) => {
+      console.log("res",res)
+    })
+    
   }
 }

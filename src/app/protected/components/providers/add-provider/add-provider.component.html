@@ -25,7 +25,7 @@
                                     </label>
                                 </div>
                                 <input type="text" class="form-control" placeholder="Name" formControlName="name"
-                                [ngClass]="{'border-rose-600': this.addSuppliersForm.get('name')?.touched && this.addSuppliersForm.get('name')?.hasError('required')}">
+                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('name')?.touched && this.addSuppliersForm.get('name')?.hasError('required')}">
                             </div>
                             <!-- email -->
                             <div class="mb-1">
@@ -98,13 +98,6 @@
                                 <input type="text" class="form-control" placeholder="description"
                                     formControlName="description">
                             </div>
-                            <!-- location -->
-                            <div class="mb-1">
-                                <div class="flex justify-between mb-1">
-                                    <label for="floatingInputGrid">location</label>
-                                </div>
-                                <input type="" class="form-control" placeholder="location" formControlName="location">
-                            </div>
                             <!-- image -->
                             <div class="mb-1">
                                 <div class="flex justify-between mb-1">
@@ -117,7 +110,8 @@
                                     </label>
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="image"
-                                    (change)="onFileChange($event,'image')" accept="image/png, image/gif, image/jpeg , image/PNG, image/GIF , image/JPEG">
+                                    (change)="onFileChange($event,'image')"
+                                    accept="image/png, image/gif, image/jpeg , image/PNG, image/GIF , image/JPEG">
                             </div>
                             <!-- cover image -->
                             <div class="mb-1">
@@ -132,6 +126,34 @@
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="cover"
                                     (change)="onFileChange($event,'cover')">
+                            </div>
+                            <!-- location -->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">location</label>
+                                </div>
+                                <input type="" class="form-control" placeholder="location" formControlName="location">
+                            </div>
+                            <!-- from to delivery fees -->
+                            <div class="flex justify-between">
+                                <div class="mb-1">
+                                    <div class="flex justify-between mb-1">
+                                        <label for="floatingInputGrid">from</label>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="1Km">
+                                </div>
+                                <div class="mb-1">
+                                    <div class="flex justify-between mb-1">
+                                        <label for="floatingInputGrid">to</label>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="2Km">
+                                </div>
+                                <div class="mb-1">
+                                    <div class="flex justify-between mb-1">
+                                        <label for="floatingInputGrid">delivery fees</label>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="0jd">
+                                </div>
                             </div>
                         </div>
                         <div class="flex items-center justify-center customContainer  px-4 mt-2 ">
@@ -166,8 +188,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </form>
                 </div>
             </div>

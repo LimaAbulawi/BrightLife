@@ -94,11 +94,17 @@
                                         <i class="fad fa-exclamation"></i>
                                         phone is required
                                     </label>
+                                    <!-- phone must be 10 numbers -->
+                                    <label class="errorLabel"
+                                    *ngIf="this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('minlength')">
+                                    <i class="fad fa-exclamation"></i>
+                                    phone must be 10 numbers 
+                                </label>
                                 </div>
                                 <div class="md-form">
-                                    <input type="text" id="form1" class="form-control" (input)="onInput($event)" maxlength="10" (keydown.enter)="$event.preventDefault()"
+                                    <input type="text" id="form1" class="form-control" (input)="onInput($event)" minlength="10" maxlength="10" (keydown.enter)="$event.preventDefault()"
                                         placeholder="077-777-7778" formControlName="phone"  
-                                        [ngClass]="{'border-rose-600': this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('required')}">
+                                        [ngClass]="{'border-rose-600': this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('required') || this.addUsersForm.get('phone')?.touched && this.addUsersForm.get('phone')?.hasError('minlength')}">
                                         <!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
                                 </div>
                             </div>
