@@ -161,7 +161,9 @@ a:not([href]):not([tabindex]) {
 a:hover {
     color: #b66dff !important;
 }
-
+a:focus{
+    color: #b66dff !important;
+}
 // specified
 .navbar-toggler {
     font-size: 1.25rem;

@@ -13,7 +13,7 @@ export class ProviderDetailsComponent implements OnInit {
   basicUrl = "https://api.brightlifeapp.com/public";
   suppliers: any = [];
   id: any;
-
+  active: number = 1;
   constructor(private _Activatedroute: ActivatedRoute, private _ser: SuppliersService,) {
     this._Activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');

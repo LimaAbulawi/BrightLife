@@ -16,6 +16,7 @@ import { AddUserComponent } from './components/users/add-user/add-user.component
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { ProviderDetailsModule } from './components/providers/provider-details/provider-details.module';
 
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProviderDetailsModule } from './components/providers/provider-details/p
     CommonModule,
     ProtectedRoutingModule,
     ReactiveFormsModule,
-    ProviderDetailsModule
+    ProviderDetailsModule,
+    GoogleMapsModule
   ]
 })
 export class ProtectedModule { }

@@ -6,6 +6,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+
 export const LOCALSTORAGE_TOKEN_KEY = 'login_and_register'
 export function tokenGetter(){
   return localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
@@ -25,6 +27,7 @@ export function tokenGetter(){
     BrowserModule,
     AppRoutingModule,
     HttpClientModule ,
+    GoogleMapsModule,
     JwtModule.forRoot({
       config :{
         tokenGetter:tokenGetter , 
@@ -32,6 +35,7 @@ export function tokenGetter(){
       }
     }),
   ],
+  exports: [GoogleMapsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

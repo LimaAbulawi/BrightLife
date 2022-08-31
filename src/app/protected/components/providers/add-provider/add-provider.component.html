@@ -128,29 +128,64 @@
                                     (change)="onFileChange($event,'cover')">
                             </div>
                             <!-- location -->
-                            <div class="mb-1">
+                            <!-- <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">location</label>
                                 </div>
                                 <input type="" class="form-control" placeholder="location" formControlName="location">
+                            </div> -->
+                            <!-- location -->
+                            <!-- map  start-->
+                            <div class="center">
+                                <!-- app.component.html -->
+                                <div>
+                                    <div class="flex items-center mb-1">
+                                        <label for="floatingInputGrid" class="mr-2">location /</label>
+                                        <label for="floatingInputGrid" class="text-[#585b60] text-sm">double click to
+                                            add location</label>
+                                    </div>
+                                    <input type="text" class="my-search-box form-control"
+                                        (keydown.enter)="$event.preventDefault()" placeholder="Search Location"
+                                        type="text" #search />
+                                </div>
+
+                                <google-map #myGoogleMap height="500px" width="100%" [center]="center"
+                                    [options]="options" (mapClick)="eventHandler($event,'mapClick')"
+                                    (mapDblclick)="eventHandler($event,'mapDblclick')">
+                                    <!--  (mapDrag)="eventHandler($event,'mapDrag')"
+    (mapDragend)="eventHandler($event,'mapDragend')"
+    (mapRightclick)="eventHandler($event,'mapRightclick')"
+    (positionChanged)="eventHandler($event,'marker_positionChanged')"
+    (zoomChanged)="eventHandler($event,'zoomChanged')"
+    
+  -->
+                                    <map-marker #markerElem="mapMarker" *ngFor="let marker of markers"
+                                        [position]="marker.position" [label]="marker.label" [title]="marker.title"
+                                        [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)">
+
+                                    </map-marker>
+
+                                    <map-info-window>{{ infoContent }}</map-info-window>
+                                </google-map>
                             </div>
-                            <!-- from to delivery fees -->
+                            <!-- map  end-->
+                            <!-- from / to / delivery fees -->
                             <div class="flex justify-between">
-                                <div class="mb-1">
+                                <div class="mb-1 px-1">
                                     <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid">from</label>
+                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">from</label>
                                     </div>
                                     <input type="number" class="form-control" placeholder="1Km">
                                 </div>
-                                <div class="mb-1">
+                                <div class="mb-1 px-1">
                                     <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid">to</label>
+                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">to</label>
                                     </div>
                                     <input type="number" class="form-control" placeholder="2Km">
                                 </div>
-                                <div class="mb-1">
+                                <div class="mb-1 px-1">
                                     <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid">delivery fees</label>
+                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">delivery fees</label>
                                     </div>
                                     <input type="number" class="form-control" placeholder="0jd">
                                 </div>

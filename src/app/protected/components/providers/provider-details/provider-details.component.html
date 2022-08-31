@@ -20,13 +20,17 @@
     </div> -->
     <div
         class="flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-        <div class=" cursor-pointer active" routerLink="../{{id}}/{{id}}/mangeInfo">
+        <div class=" cursor-pointer active" routerLink="../{{id}}/{{id}}/mangeInfo"
+            [ngClass]="{'text-[#b66dff]' : active == 1 }" (click)="active = 1">
             Manage Info
         </div>
-        <div class=" cursor-pointer" routerLink="../{{id}}/services/{{id}}">Services</div>
-        <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/accounting">Accounting/Order</div>
-        <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/zoons">Zoons</div>
+        <div class=" cursor-pointer" routerLink="../{{id}}/services/{{id}}"
+            [ngClass]="{'text-[#b66dff]' : active == 2 }" (click)="active = 2">Services</div>
+        <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/accounting"
+            [ngClass]="{'text-[#b66dff]' : active == 3}" (click)="active = 3">Accounting/Order</div>
+        <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/zoons"
+            [ngClass]="{'text-[#b66dff]' : active == 4}" (click)="active = 4">Zoons</div>
     </div>
-    
+
     <router-outlet></router-outlet>
 </div>
