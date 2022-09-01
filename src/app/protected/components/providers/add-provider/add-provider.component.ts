@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit , ElementRef, NgZone, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 import { GoogleMap, MapMarker, MapInfoWindow } from '@angular/google-maps';
@@ -13,7 +13,7 @@ export class AddProviderComponent implements OnInit {
   resMsg!: string;
   placeholder: any | undefined;
   // google maps 
-  
+
   @ViewChild('search')
   public searchElementRef!: ElementRef;
   @ViewChild(GoogleMap)
@@ -41,16 +41,43 @@ export class AddProviderComponent implements OnInit {
   latitude!: any;
   longitude!: any;
 
-  constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef,private ngZone: NgZone) { }
+  constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef, private ngZone: NgZone) { }
 
-  ngOnInit(){
+  ngOnInit() {
+
     // maps get current location
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-        // marker
+      // marker
+      this.markers.push({
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
+        label: {
+          color: 'blue',
+          text: 'provider',
+        },
+        title: 'Marker title ' + (this.markers.length + 1),
+        info: 'Marker info ' + (this.markers.length + 1),
+        options: {
+          animation: google.maps.Animation.DROP,
+        },
+      })
+    })
+    console.log(this.center)
+  }
+  getMyLoc() {
+    this.markers = [];
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      // marker
       this.markers.push({
         position: {
           lat: position.coords.latitude,
@@ -68,10 +95,9 @@ export class AddProviderComponent implements OnInit {
       })
     })
   }
-
   addSuppliersForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', [ Validators.email, Validators.required]],
+    email: ['', [Validators.email, Validators.required]],
     password: ['', Validators.required],
     phone: ['', Validators.required],
     description: [''],
@@ -82,7 +108,7 @@ export class AddProviderComponent implements OnInit {
   })
 
   addSuppliers() {
-    
+
     if (!this.addSuppliersForm.valid) {
       this.addSuppliersForm.markAllAsTouched();
     }
@@ -92,10 +118,10 @@ export class AddProviderComponent implements OnInit {
         console.log(key + ':' + value);
       }
     )
-    
+
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
-  
+
     });
   }
 
@@ -168,7 +194,7 @@ export class AddProviderComponent implements OnInit {
           lat: this.latitude,
           lng: this.longitude,
         };
-        
+
         // marker
         this.markers = [];
         this.markers.push({

@@ -136,7 +136,7 @@
                             </div> -->
                             <!-- location -->
                             <!-- map  start-->
-                            <div class="center">
+                            <div class="mt-3">
                                 <!-- app.component.html -->
                                 <div>
                                     <div class="flex items-center mb-1">
@@ -168,6 +168,9 @@
                                     <map-info-window>{{ infoContent }}</map-info-window>
                                 </google-map>
                             </div>
+                            <button type="text " placeholder="loc"
+                                class="px-1 py-1 mt-1 text-sm text-[#78909c] border border-[#a0c1f8] rounded cursor-pointer"
+                                (click)="getMyLoc()">get my location</button>
                             <!-- map  end-->
                             <!-- from / to / delivery fees -->
                             <div class="flex justify-between">
