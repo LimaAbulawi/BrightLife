@@ -77,18 +77,25 @@
                             <!-- phone -->
                             <div class="mb-1">
                                 <div class="flex justify-between mb-1">
-                                    <label for="floatingInputGrid">phone</label>
+                                    <label for="exampleInputEmail1" class="">phone</label>
                                     <!-- phone is required -->
-                                    <label class="errorLabel"
-                                        *ngIf="this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required')">
+                                    <label class="errorLabel" *ngIf="this.addSuppliersForm
+                                        .get('phone')?.touched && this.addSuppliersForm
+                                        .get('phone')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
                                         phone is required
                                     </label>
+                                    <!-- must be valid phone -->
+                                    <label class="errorLabel" *ngIf="this.addSuppliersForm
+                                        .get('phone')?.touched && this.addSuppliersForm.get('phone')?.value?.length !=10">
+                                        <i class="fad fa-exclamation"></i>
+                                        phone must be 10 numbers
+                                    </label>
                                 </div>
                                 <input type="text" placeholder="077-777-7778" class="form-control"
-                                    (input)="onInput($event)" maxlength="10" placeholder="077-777-7778"
+                                    (input)="onInput($event)" minlength="10" maxlength="10" placeholder="077-777-7778"
                                     formControlName="phone"
-                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required')}">
+                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required') || this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('minlength')}">
                             </div>
                             <!-- description -->
                             <div class="mb-1">
@@ -168,7 +175,7 @@
                                     <map-info-window>{{ infoContent }}</map-info-window>
                                 </google-map>
                             </div>
-                            <button type="text " placeholder="loc"
+                            <button  placeholder="loc" type="button"
                                 class="px-1 py-1 mt-1 text-sm text-[#78909c] border border-[#a0c1f8] rounded cursor-pointer"
                                 (click)="getMyLoc()">get my location</button>
                             <!-- map  end-->

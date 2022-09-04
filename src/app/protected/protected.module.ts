@@ -15,6 +15,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { ProviderDetailsModule } from './components/providers/provider-details/provider-details.module';
+import { NgApexchartsModule } from "ng-apexcharts"; 
 
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -37,7 +38,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ProtectedRoutingModule,
     ReactiveFormsModule,
     ProviderDetailsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    NgApexchartsModule
   ]
 })
 export class ProtectedModule { }

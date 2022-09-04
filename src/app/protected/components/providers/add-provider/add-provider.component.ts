@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 import { GoogleMap, MapMarker, MapInfoWindow } from '@angular/google-maps';
 @Component({
@@ -40,38 +40,51 @@ export class AddProviderComponent implements OnInit {
   marker!: google.maps.Marker;
   latitude!: any;
   longitude!: any;
+  lenghtErorr: boolean = false;
+  // enableMap: boolean = false;
 
   constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef, private ngZone: NgZone) { }
 
   ngOnInit() {
 
+    navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+      if (result.state === 'granted') {
+        // showMap();
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.center = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          // marker
+          this.markers.push({
+            position: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            },
+            label: {
+              color: 'blue',
+              text: 'provider',
+            },
+            title: 'Marker title ' + (this.markers.length + 1),
+            info: 'Marker info ' + (this.markers.length + 1),
+            options: {
+              animation: google.maps.Animation.DROP,
+            },
+          })
+        })
+        console.log('granted')
+      } else if (result.state === 'prompt') {
+        // showButtonToEnableMap();
+        // this.enableMap = true;
+      }
+      // Don't do anything if the permission was denied.
+    });
     // maps get current location
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      // marker
-      this.markers.push({
-        position: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
-        label: {
-          color: 'blue',
-          text: 'provider',
-        },
-        title: 'Marker title ' + (this.markers.length + 1),
-        info: 'Marker info ' + (this.markers.length + 1),
-        options: {
-          animation: google.maps.Animation.DROP,
-        },
-      })
-    })
-    console.log(this.center)
   }
+
   getMyLoc() {
     this.markers = [];
+    // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,
@@ -94,12 +107,13 @@ export class AddProviderComponent implements OnInit {
         },
       })
     })
+    // }
   }
   addSuppliersForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: ['', Validators.required],
-    phone: ['', Validators.required],
+    phone: ['', Validators.required ],
     description: [''],
     location: [''],
     image: ['', Validators.required], //making the image required here
@@ -108,7 +122,7 @@ export class AddProviderComponent implements OnInit {
   })
 
   addSuppliers() {
-
+    console.log("length", this.addSuppliersForm.get('phone')?.value?.length)
     if (!this.addSuppliersForm.valid) {
       this.addSuppliersForm.markAllAsTouched();
     }
@@ -269,4 +283,13 @@ export class AddProviderComponent implements OnInit {
   initMap() {
 
   }
+  must10Digit() {
+    debugger
+    if (this.addSuppliersForm.get('phone')?.value?.length !=10) {
+      this.lenghtErorr = true;
+    }else{
+      this.lenghtErorr = false;
+    }
+  }
+
 }
