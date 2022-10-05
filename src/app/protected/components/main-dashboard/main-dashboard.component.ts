@@ -53,7 +53,7 @@ export class MainDashboardComponent implements OnInit {
         }
       ],
       chart: {
-        height: 350,
+        height: 300,
         type: "area"
       },
       dataLabels: {
@@ -85,7 +85,7 @@ export class MainDashboardComponent implements OnInit {
     this.chartOptions = {
       series: [44, 55, 13, 43, 22],
       chart: {
-        height: 250,
+        height: 200,
         type: "pie"
       },
       labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
@@ -109,7 +109,7 @@ export class MainDashboardComponent implements OnInit {
       series: [75],
       chart: {
         
-        height: 350,
+        height: 300,
         type: "radialBar",
         toolbar: {
           show: true
@@ -205,7 +205,7 @@ export class MainDashboardComponent implements OnInit {
         }
       ],
       chart: {
-        height: 350,
+        height: 300,
         type: "bar",
         events: {
           click: function (chart, w, e) {

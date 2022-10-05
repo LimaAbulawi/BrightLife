@@ -93,7 +93,7 @@
                                     </label>
                                 </div>
                                 <input type="text" placeholder="077-777-7778" class="form-control"
-                                    (input)="onInput($event)" minlength="10" maxlength="10" placeholder="077-777-7778"
+                                    (input)="onInput($event)" minlength="10" maxlength="10" 
                                     formControlName="phone"
                                     [ngClass]="{'border-rose-600': this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('required') || this.addSuppliersForm.get('phone')?.touched && this.addSuppliersForm.get('phone')?.hasError('minlength')}">
                             </div>
