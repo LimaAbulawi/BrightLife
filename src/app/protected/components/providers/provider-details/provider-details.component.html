@@ -10,7 +10,46 @@
                 Back</button>
         </div>
     </div>
-    <!-- <div class="flex items-center justify-between w-full container mb-12 pt-6">
+
+    <div class="flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4
+     px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black
+      dark:bg-opacity-5">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                href="#list-home" role="tab" aria-controls="home">mangeInfo</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                href="#list-profile" role="tab" aria-controls="profile">products</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings">orders</a>
+            <!-- <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                href="#list-messages" role="tab" aria-controls="messages">categories</a> -->
+        </div>
+    </div>
+    <!-- <router-outlet></router-outlet> -->
+</div>
+<div class="row justify-center">
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <app-mange-info [providerId]="id"></app-mange-info>
+            </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <app-services-or-products [providerId]="id"></app-services-or-products>
+            </div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <app-providers-orders [providerId]="id"></app-providers-orders>
+            </div>
+            <!-- <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                <app-providers-categories></app-providers-categories>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="flex items-center justify-between w-full container mb-12 pt-6">
         <div class="text-4xl font-extrabold text-[#2eb772]">
             provider details
         </div>
@@ -18,9 +57,8 @@
             <button routerLink="/protected/providers" class="btn btn-light customBg">Back</button>
         </div>
     </div> -->
-    <div
-        class="flex items-center text-center justify-center z-10 sticky top-0 gap-10 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-        <div class=" cursor-pointer active" routerLink="../{{id}}/{{id}}/mangeInfo"
+
+<!-- <div class=" cursor-pointer active" routerLink="../{{id}}/{{id}}/mangeInfo"
             [ngClass]="{'text-[#b66dff]' : active == 1 }" (click)="active = 1">
             Manage Info
         </div>
@@ -29,8 +67,4 @@
         <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/accounting"
             [ngClass]="{'text-[#b66dff]' : active == 3}" (click)="active = 3">Accounting/Order</div>
         <div class=" hidden md:block cursor-pointer" routerLink="../{{id}}/zoons"
-            [ngClass]="{'text-[#b66dff]' : active == 4}" (click)="active = 4">Zoons</div>
-    </div>
-
-    <router-outlet></router-outlet>
-</div>
+            [ngClass]="{'text-[#b66dff]' : active == 4}" (click)="active = 4">Zoons</div> -->

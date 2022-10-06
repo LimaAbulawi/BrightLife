@@ -1,57 +1,57 @@
-<p>mange-info works! {{id}}</p>
 <div class="row">
     <div class=" m-auto grid-margin stretch-card">
         <div class="card mt-10">
             <div class="card-body">
-                <div *ngIf="suppliers">
-                    <div *ngFor="let supplier of suppliers">
-                        <div *ngIf="isShown[supplier.id]">
-                            <form action="" class="">
-                                <div class="w-full p-1 justify-center mx-auto  columns-2 sm:columns-1">
-                                    <div class="form-floating flex justify-between mb-[10px] mx-2">
-                                        <img class=" w-14 h-14  rounded-full" src="{{basicUrl}}/{{supplier.image}}" alt="">
-                                        
-                                        <img class=" w-36 h-14" src="{{basicUrl}}/{{supplier.cover}}" alt="">
-                                    </div>
-                                    <div class="form-floating m-1 grid-item">
-                                        <input type="number" class="form-control out" id="floatingInputGrid"
-                                            placeholder="Id" value="{{supplier.id}}" readonly>
-                                        <label for="floatingInputGrid">Id</label>
-                                    </div>
-                                    <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{supplier.name}}">
-                                        <label for="floatingInputGrid">Name</label>
-                                    </div>
-                                    <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid" onKeyPress="if(this.value.length==10) return false;"
-                                            placeholder="phone" value="{{supplier.phone}}">
-                                        <label for="floatingInputGrid">phone</label>
-                                    </div>
-                                    <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Email" value="{{supplier.email}}">
-                                        <label for="floatingInputGrid">Email</label>
-                                    </div>
-                                    <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="location" value="{{supplier.location}}">
-                                        <label for="floatingInputGrid">location</label>
-                                    </div>
-                                    <div class="form-floating m-1  grid-item">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="description" value="{{supplier.description}}">
-                                        <label for="floatingInputGrid">description</label>
-                                    </div>
-                                </div>
-                                <!-- add button and model
+                <div *ngIf="provider">
+                    <form action="" class="">
+                        <div class="w-full p-1 justify-center mx-auto  columns-2 sm:columns-1">
+                            <div class="form-floating flex justify-between mb-[10px] mx-2">
+                                <img class=" w-14 h-14  rounded-full" src="{{basicUrl}}/{{provider.image}}" alt="">
+                                <img class=" w-36 h-14" src="{{basicUrl}}/{{provider.cover}}" alt="">
+                            </div>
+                            <div class="form-floating m-1 grid-item">
+                                <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
+                                    value="{{provider.id}}" readonly>
+                                <label for="floatingInputGrid">Id</label>
+                            </div>
+                            <div class="form-floating m-1  grid-item">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
+                                    value="{{provider.name}}">
+                                <label for="floatingInputGrid">Name</label>
+                            </div>
+                            <div class="form-floating m-1  grid-item">
+                                <input type="text" class="form-control" id="floatingInputGrid"
+                                    onKeyPress="if(this.value.length==10) return false;" placeholder="phone"
+                                    value="{{provider.phone}}">
+                                <label for="floatingInputGrid">phone</label>
+                            </div>
+                            <div class="form-floating m-1  grid-item">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
+                                    value="{{provider.email}}">
+                                <label for="floatingInputGrid">Email</label>
+                            </div>
+                            <div class="form-floating m-1  grid-item">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="location"
+                                    value="{{provider.location}}">
+                                <label for="floatingInputGrid">location</label>
+                            </div>
+                            <div class="form-floating m-1  grid-item">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="description"
+                                    value="{{provider.description}}">
+                                <label for="floatingInputGrid">description</label>
+                            </div>
+
+                        </div>
+
+
+                        <!-- add button and model
                                 <div class="flex items-center justify-center customContainer  px-4 py-2 ">
                                     <button type="submit" class="addNew" data-toggle="modal"
                                         data-target="#exampleModal">Add
                                         Provider</button> -->
 
-                                <!-- Modal -->
-                                <!-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                        <!-- Modal -->
+                        <!-- <div class="modal fade" id="exampleModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -76,10 +76,8 @@
                                         </div>
                                     </div> -->
 
-                                <!-- </div> -->
-                            </form>
-                        </div>
-                    </div>
+                        <!-- </div> -->
+                    </form>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ProtectedModule } from './protected/protected.module';
 
 export const LOCALSTORAGE_TOKEN_KEY = 'login_and_register'
 export function tokenGetter(){
@@ -20,11 +21,12 @@ export function tokenGetter(){
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent, 
+       
   ],
   imports: [
     BrowserModule,
+    // ProtectedModule,
     AppRoutingModule,
     HttpClientModule ,
     GoogleMapsModule,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { FinanceComponent } from './components/finance/finance.component';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddProviderComponent } from './components/providers/add-provider/add-provider.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "dashboard", component: MainDashboardComponent },
   { path: "users", component: UsersComponent },
   { path: "providers", component: ProvidersComponent },
+  { path: "finance", component: FinanceComponent },
   { path: "categories", component: CategoriesComponent },
   { path: "services", component: ServicesComponent },
   { path: "orders", component: OrdersComponent },

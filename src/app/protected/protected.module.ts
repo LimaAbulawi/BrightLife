@@ -18,6 +18,7 @@ import { ProviderDetailsModule } from './components/providers/provider-details/p
 import { NgApexchartsModule } from "ng-apexcharts"; 
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { FinanceComponent } from './components/finance/finance.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     OrdersComponent,
     AddUserComponent,
     AddCategoryComponent,
+    FinanceComponent,
+    
   ],
   imports: [
     CommonModule,

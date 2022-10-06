@@ -14,6 +14,7 @@ export class ProviderDetailsComponent implements OnInit {
   suppliers: any = [];
   id: any;
   active: number = 1;
+
   constructor(private _Activatedroute: ActivatedRoute, private _ser: SuppliersService,) {
     this._Activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -25,6 +26,7 @@ export class ProviderDetailsComponent implements OnInit {
   }
 
   getSuppliersListFromService() {
+    
     this.isShown[this.id] = !this.isShown[this.id];
     return this._ser.getSuppliersList().subscribe((res: any) => {
       this.suppliers = res.suppliers;

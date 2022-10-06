@@ -18,6 +18,10 @@ export class SuppliersService {
     return this.http.get(this.basicUrl + "/api/v1/suppliers", { 'headers': this.headers })
   }
 
+  getSupplier(providerId:any) {
+    return this.http.get(this.basicUrl + "/api/v1/supplier/"+ providerId, { 'headers': this.headers })
+  }
+
   addSuppliers(suppliers:any){
     return this.http.post<any>(this.basicUrl + "/api/v1/user-supplier", suppliers  )
   }
