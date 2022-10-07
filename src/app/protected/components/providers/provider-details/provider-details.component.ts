@@ -9,10 +9,13 @@ import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 })
 export class ProviderDetailsComponent implements OnInit {
 
+  provider: any;
+  providerName: any;
+  id: any;
+
   isShown: Array<Boolean> = [];
   basicUrl = "https://api.brightlifeapp.com/public";
   suppliers: any = [];
-  id: any;
   active: number = 1;
 
   constructor(private _Activatedroute: ActivatedRoute, private _ser: SuppliersService,) {
@@ -22,15 +25,14 @@ export class ProviderDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSuppliersListFromService()
+    this.getSupplier(this.id)
   }
 
-  getSuppliersListFromService() {
-    
-    this.isShown[this.id] = !this.isShown[this.id];
-    return this._ser.getSuppliersList().subscribe((res: any) => {
-      this.suppliers = res.suppliers;
+  getSupplier(providerId: any) {
+    return this._ser.getSupplier(providerId).subscribe((res: any) => {
+      this.provider = res.user;
+      this.providerName = this.provider.name;
+      console.log(this.provider.name)
     })
   }
-
 }
