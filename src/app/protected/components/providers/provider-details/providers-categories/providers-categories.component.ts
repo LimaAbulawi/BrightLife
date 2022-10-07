@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { map } from 'rxjs';
 import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 
 @Component({
@@ -7,20 +9,49 @@ import { SuppliersService } from 'src/app/protected/services/suppliers.service';
   styleUrls: ['./providers-categories.component.scss']
 })
 export class ProvidersCategoriesComponent implements OnInit {
-  
+
   @Input() providerId = ''; // decorate the property with @Input()
   categories: any;
+  filter: any;
+  resMsg: any;
 
-  constructor(private _ser: SuppliersService) { }
+  constructor(private _ser: SuppliersService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getSupplier(this.providerId);
+    this.filterCat(this.providerId);
+    this.selectCat.controls.supplier_id.setValue(this.providerId)
   }
+
+
+  selectCat = this.fb.group({
+    supplier_id: ['', Validators.required],
+    category_id: ['', Validators.required],
+  })
+
   getSupplier(providerId: any) {
     return this._ser.getSupplier(providerId).subscribe((res: any) => {
-      // this.provider = res.user;
       this.categories = res.user.categories;
       console.log(this.categories);
-    })  
+    })
   }
+
+  submit() {
+    if (!this.selectCat.valid) {
+      this.selectCat.markAllAsTouched();
+    }
+    debugger
+    this._ser.addCategory(this.selectCat.value).subscribe((res: any) => {
+      this.resMsg = res.msg;
+    });
+    window.location.reload();
+  }
+
+  filterCat(providerId: any) {
+    return this._ser.getSupplier(providerId)
+      .pipe(map((res: any) =>
+        res.user.categories.filter((x: any) => x.id == '51'))
+      )
+  }
+
 }

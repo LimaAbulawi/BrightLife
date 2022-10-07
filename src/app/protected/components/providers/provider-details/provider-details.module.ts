@@ -6,6 +6,7 @@ import { MangeInfoComponent } from './mange-info/mange-info.component';
 import { ServicesOrProductsComponent } from './services-or-products/services-or-products.component';
 import { ProvidersCategoriesComponent } from './providers-categories/providers-categories.component';
 import { ProvidersOrdersComponent } from './providers-orders/providers-orders.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,9 @@ import { ProvidersOrdersComponent } from './providers-orders/providers-orders.co
   ],
   imports: [
     CommonModule,
-    ProviderDetailsRoutingModule
+    ProviderDetailsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [ MangeInfoComponent,
     ServicesOrProductsComponent,

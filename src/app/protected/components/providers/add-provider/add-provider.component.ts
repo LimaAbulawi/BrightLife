@@ -135,7 +135,6 @@ export class AddProviderComponent implements OnInit {
 
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
-
     });
   }
 
