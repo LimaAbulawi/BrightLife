@@ -21,7 +21,8 @@ export class DashboardComponent implements OnInit {
   image!: any;
   leftToggle: boolean = true;
   rightToggle: boolean = false;
-  active: number = 1;
+  active: any ;
+  // active1: any = 1;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
@@ -45,6 +46,7 @@ export class DashboardComponent implements OnInit {
     this.userName = localStorage.getItem("userName");
     this.image = localStorage.getItem("userImage");
     this.userEmail = localStorage.getItem("userEmail");
+    this.active = localStorage.getItem("active");
   }
 
   logOut() {
@@ -53,6 +55,9 @@ export class DashboardComponent implements OnInit {
     return  this._ser.logout().subscribe((res: any) => {
       console.log("res",res)
     })
-    
+  }
+  setActive(event:any){
+   localStorage.setItem("active", event);  
+   this.active = localStorage.getItem("active");
   }
 }

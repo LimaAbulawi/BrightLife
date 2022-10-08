@@ -13,6 +13,7 @@ export class AuthService {
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Authorization', 'Bearer ' + localStorage.getItem(LOCALSTORAGE_TOKEN_KEY));
+    active1: any = 1;
 
   constructor(
     private http: HttpClient,
@@ -28,6 +29,8 @@ export class AuthService {
       tap((res: LoginResponse) => localStorage.setItem("userImage", res.data.user.image)
       ),
       tap((res: LoginResponse) => localStorage.setItem("userEmail", res.data.user.email)
+      ),
+      tap((res: LoginResponse) =>     localStorage.setItem("active", this.active1)
       ),
     );
   }
