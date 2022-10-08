@@ -31,9 +31,9 @@
                     </div>
                     <form action="" [formGroup]="selectCat" (ngSubmit)="submit()">
                         <div class="modal-body">
-                            <select formControlName="category_id" class="ml-4 btn btn-light  customBg" name="addCategory"
+                            <select (change)="selectChangeHandler($event)" class="ml-4 btn btn-light  customBg" name="addCategory"
                             id="">
-                            <option value="add" disabled selected hidden>add</option>
+                            <option value="add" disabled selected hidden>add cat</option>
                             <option class="text-white" *ngFor="let category of categories" value="{{category.id}}">
                                 {{category.name}}</option>
                         </select>
@@ -42,7 +42,7 @@
                             <button type="button" class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
                                 data-dismiss="modal">Close</button>
                             <button type="submit"
-                                class="btn border"
+                                class="btn border"  [disabled]="!selectCat.valid"
                                >add</button>
                             <!-- <button type="submit" data-dismiss="modal">Submit</button> -->
                         </div>
@@ -52,4 +52,3 @@
         </div>
     </div>
 </div>
-

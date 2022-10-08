@@ -14,7 +14,7 @@ export class ProvidersCategoriesComponent implements OnInit {
   categories: any;
   filter: any;
   resMsg: any;
-
+  selectedTeam: any;
   constructor(private _ser: SuppliersService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -40,11 +40,14 @@ export class ProvidersCategoriesComponent implements OnInit {
     if (!this.selectCat.valid) {
       this.selectCat.markAllAsTouched();
     }
-    debugger
+    console.log(this.selectCat.value)
     this._ser.addCategory(this.selectCat.value).subscribe((res: any) => {
       this.resMsg = res.msg;
     });
-    window.location.reload();
+    setTimeout(() => {
+      console.log(this.resMsg)
+      window.location.reload();
+    },1000)
   }
 
   filterCat(providerId: any) {
@@ -53,5 +56,8 @@ export class ProvidersCategoriesComponent implements OnInit {
         res.user.categories.filter((x: any) => x.id == '51'))
       )
   }
-
+  selectChangeHandler(event: any) {
+    this.selectedTeam = event.target.value;
+    this.selectCat.controls.category_id.setValue(this.selectedTeam)
+  }
 }
