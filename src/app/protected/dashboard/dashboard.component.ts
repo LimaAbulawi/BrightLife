@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   image!: any;
   leftToggle: boolean = true;
   rightToggle: boolean = false;
-  active: any ;
+  active: any = 1 ;
   // active1: any = 1;
 
   @HostListener('window:resize', ['$event'])
@@ -31,8 +31,6 @@ export class DashboardComponent implements OnInit {
       this.isShown = true;
       this.leftToggle = false;
       this.rightToggle = true;
-
-
     }
     // this.isShown[0] = !this.isShown[0];
     // this.scrHeight = window.innerHeight;
