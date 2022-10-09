@@ -29,6 +29,8 @@ export class SuppliersService {
   addCategory(category: any) {
     console.log(category)
     return this.http.post<any>(this.basicUrl + "/api/v1/suppliers/category", category)
-
+  }
+  addProduct(product :any){
+    return this.http.post<any>(this.basicUrl + "/api/v1/products-create", product)
   }
 }
