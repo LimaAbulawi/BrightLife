@@ -45,4 +45,4 @@ export type spineChart = {
     dataLabels: ApexDataLabels;
     responsive: ApexResponsive[];
   };
-  
+

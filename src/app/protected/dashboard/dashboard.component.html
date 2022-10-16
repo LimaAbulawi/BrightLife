@@ -60,11 +60,6 @@
                         >{{userName}}</div>
                   </div>
                     <ul class="nav text-left flex flex-col  ml-6 mr-6"  [ngClass]="{'m-auto': isShown}" ui-nav>
-                        <li class="hidden-folded mb-2 " [ngClass]="{'block': !isShown, 'hidden': isShown}">
-                            <a href="">
-                                <small class="text-muted">Main</small>
-                            </a>
-                        </li>
                         <a routerLink="/protected/dashboard" class="mb-2" [ngClass]="{'mt-7': isShown ,  'text-[#b991c2]' : active == 1 }" (click)="setActive(1)">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
