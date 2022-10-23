@@ -7,6 +7,7 @@ import { ServicesOrProductsComponent } from './services-or-products/services-or-
 import { ProvidersCategoriesComponent } from './providers-categories/providers-categories.component';
 import { ProvidersOrdersComponent } from './providers-orders/providers-orders.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProviderFinanceComponent } from './provider-finance/provider-finance.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ServicesOrProductsComponent,
     ProvidersCategoriesComponent,
     ProvidersOrdersComponent,
+    ProviderFinanceComponent,
  
   ],
   imports: [
@@ -28,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ServicesOrProductsComponent,
     ProvidersCategoriesComponent,
     ProvidersOrdersComponent,
- 
+    ProviderFinanceComponent
     ],
 })
 export class ProviderDetailsModule { }

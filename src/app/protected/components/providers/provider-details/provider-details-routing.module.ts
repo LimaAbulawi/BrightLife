@@ -6,8 +6,8 @@ import { ServicesOrProductsComponent } from './services-or-products/services-or-
 const routes: Routes = [
   
   { path: "", component: MangeInfoComponent },
-  { path: ":id/mangeInfo", component: MangeInfoComponent },
-  { path: "services/:id", component: ServicesOrProductsComponent },
+  // { path: ":id/mangeInfo", component: MangeInfoComponent },
+  // { path: "services/:id", component: ServicesOrProductsComponent },
 ];
 
 @NgModule({
