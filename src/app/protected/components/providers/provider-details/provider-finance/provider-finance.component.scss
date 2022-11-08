@@ -7,7 +7,8 @@
 .item{
     background-color: #F4F9F2;
     width: 50%;
-    height: 150px;
+    height: auto;
+    min-height: 162px;
     margin: 10px;
     border-radius: 37px;
     padding: 15px;
@@ -16,8 +17,10 @@
     font-size: 22px;
 }
 .item h2{
-   
+   margin-bottom: 5px;
+   margin-top: 5px;
 }
 .item .num{
     color: #73A9AD;
+  
 }

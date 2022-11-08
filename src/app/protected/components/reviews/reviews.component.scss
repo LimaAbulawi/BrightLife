@@ -1,0 +1,28 @@
+.inventory-grid {
+    // text-align: center;
+    grid-template-columns: 48px auto 40px;
+
+    @screen sm {
+        grid-template-columns: auto 48px;
+    }
+
+    @screen md {
+        grid-template-columns: 48px auto 112px;
+    }
+
+    @screen lg {
+        grid-template-columns:  48px auto 112px;
+    }
+}
+.details span{
+    color: #43af79;
+    width: 72px;
+    display: inline-block;
+}
+
+.middle{
+    background-color: #f2edf3 ;
+}
+.middle input{
+    background-color: #f2edf3 ;
+}

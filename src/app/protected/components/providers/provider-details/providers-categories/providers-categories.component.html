@@ -15,9 +15,8 @@
         </table>
     </div>
     <div class="col-3">
-        <button type="button" class="mt-8 btn btn-light customBg "
-            data-toggle="modal" data-target="#exampleModal">
-           + add category
+        <button type="button" class="mt-8 btn btn-light customBg " data-toggle="modal" data-target="#exampleModal">
+            + add category
         </button>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -31,19 +30,17 @@
                     </div>
                     <form action="" [formGroup]="selectCat" (ngSubmit)="submit()">
                         <div class="modal-body">
-                            <select (change)="selectChangeHandler($event)" class="ml-4 btn btn-light  customBg" name="addCategory"
-                            id="">
-                            <option value="add" disabled selected hidden>add cat</option>
-                            <option class="text-white" *ngFor="let category of categories" value="{{category.id}}">
-                                {{category.name}}</option>
-                        </select>
+                            <select (change)="selectChangeHandler($event)" class="ml-4 btn btn-light  customBg"
+                                name="addCategory" id="">
+                                <option value="add" disabled selected hidden>add cat</option>
+                                <option class="text-white" *ngFor="let category of categories" value="{{category.id}}">
+                                    {{category.name}}</option>
+                            </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
                                 data-dismiss="modal">Close</button>
-                            <button type="submit"
-                                class="btn border"  [disabled]="!selectCat.valid"
-                               >add</button>
+                            <button type="submit" class="btn border" [disabled]="!selectCat.valid">add</button>
                             <!-- <button type="submit" data-dismiss="modal">Submit</button> -->
                         </div>
                     </form>
@@ -51,4 +48,5 @@
             </div>
         </div>
     </div>
+
 </div>

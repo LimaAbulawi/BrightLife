@@ -38,11 +38,13 @@
 table {
     overflow: scroll;
 }
-table th{
+
+table th {
     padding-top: 5px;
     padding-bottom: 5px;
 
 }
+
 @media screen and (max-width: 992px) {
     table {
         // overflow-x: scroll;
@@ -68,11 +70,16 @@ table th{
     transition: ease-in-out;
 }
 
-.customBg:hover {
+.customBg:hover,
+.customBg:focus,
+.customBg:active {
     color: white;
     background-color: #5daa84;
+}
 
-
+.form-check-input:checked {
+    background-color: #43af79 !important;
+    border-color: #43af79 !important;
 }
 
 .addNew {
@@ -163,7 +170,9 @@ input:focus {
     box-shadow: none !important;
 }
 
-.tableBorder tr,.tableBorder th , .tableBorder td{
+.tableBorder tr,
+.tableBorder th,
+.tableBorder td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -172,6 +181,85 @@ input:focus {
     background-color: rgba(150, 212, 212, 0.4);
 }
 
-.tableBorder th:nth-child(even) , td:nth-child(even) {
+.tableBorder th:nth-child(even),
+td:nth-child(even) {
     background-color: rgba(150, 212, 212, 0.4);
+}
+
+.deleteIcon:hover {
+    color: #d51d4f;
+    cursor: pointer;
+}
+
+.customFormControl:read-only {
+    cursor: default;
+    background-color: inherit !important;
+    border-color: #2a5b5b !important;
+    color: #606870;
+}
+
+.customFormControl {
+    /* display: block; */
+    /* width: 100%; */
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    /* border: 1px solid #ced4da; */
+    -webkit-appearance: none;
+    appearance: none;
+    /* border-radius: .375rem; */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-bottom-color: #2a5b5b;
+    border-bottom-width: 1px;
+}
+
+.head {
+    color: #74b9af;
+    font-weight: 800;
+    font-size: 2.25rem
+        /* 36px */
+    ;
+    line-height: 2.5rem
+        /* 40px */
+    ;
+}
+
+.saveBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    --tw-bg-opacity: 1;
+    background-color: rgb(144 200 172);
+    border-width: 1px;
+    color: rgb(71 85 105);
+    border-color: white;
+    width: 87px;
+}
+.saveBtn:hover{
+    background-color: #76a38d;
+    border-color: white;
+    color: rgb(71 85 105);
+
+}
+.deleteBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 38 38);
+    border-width: 1px;
+    color: white;
+    width: 87px;
+    border-color: white;
+}
+
+.deleteBtn:hover {
+    --tw-bg-opacity: 1;
+    border-color: white;
+    color: white;
+    background-color: rgb(185 28 28);
 }

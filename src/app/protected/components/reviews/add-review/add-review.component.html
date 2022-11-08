@@ -1,0 +1,113 @@
+<div class="content-wrapper">
+    <div class="flex justify-between container mb-7">
+        <p>Add Review!</p>
+        <button routerLink="/protected/reviews" class="btn btn-light customBg">
+            <i class="fa-solid fa-angle-left mr-2"></i>
+            Back</button>
+    </div>
+    <div class="row">
+        <div class="col-md-6  m-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" class="" [formGroup]="addForm" (ngSubmit)="addItem()"
+                        enctype="multipart/form-data">
+                        <div class="w-full p-1 justify-center mx-auto">
+                            <!-- title -->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">title</label>
+                                    <!-- title is required -->
+                                    <label class="errorLabel"
+                                        *ngIf="this.addForm.get('title')?.touched && this.addForm.get('title')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        title is required
+                                    </label>
+                                </div>
+                                <input type="text" class="form-control outLine" placeholder="title" formControlName="title" 
+                                [ngClass]="{'border-rose-600': this.addForm.get('title')?.touched && this.addForm.get('title')?.hasError('required')}">
+                            </div>
+                            <!-- content-->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">content</label>
+                                    <!-- content is required -->
+                                    <label class="errorLabel"
+                                        *ngIf="this.addForm.get('content')?.touched && this.addForm.get('content')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        content is required
+                                    </label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="content" formControlName="content"
+                                [ngClass]="{'border-rose-600': this.addForm.get('content')?.touched && this.addForm.get('content')?.hasError('required')}">
+                            </div>
+                            <!-- points-->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">points</label>
+                                    <!-- points is required -->
+                                    <label class="errorLabel"
+                                        *ngIf="this.addForm.get('points')?.touched && this.addForm.get('points')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        points is required
+                                    </label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="points" formControlName="points"
+                                [ngClass]="{'border-rose-600': this.addForm.get('points')?.touched && this.addForm.get('points')?.hasError('required')}">
+                            </div>
+                            <!-- status-->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">status</label>
+                                    <!-- status is required -->
+                                    <label class="errorLabel"
+                                        *ngIf="this.addForm.get('status')?.touched && this.addForm.get('status')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        status is required
+                                    </label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" 
+                                     id="flexSwitchCheckChecked" checked (change)="checkBoxValue($event)">
+                                </div>
+                                <!-- <input type="text" class="form-control" placeholder="status" formControlName="status"
+                                [ngClass]="{'border-rose-600': this.addForm.get('status')?.touched && this.addForm.get('status')?.hasError('required')}"> -->
+                            </div>
+
+                        </div>
+                        <div class="flex items-center justify-center customContainer mt-2 px-4 ">
+                            <button *ngIf="!addForm.valid" type="submit" class="addNew cursorNotAllowed" >Add
+                                FAQ</button>
+                            <button *ngIf="addForm.valid" type="submit" class="addNew cursor-pointer" data-toggle="modal" data-target="#exampleModal">Add
+                                FAQ</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{resMsg}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <!-- <button type="button"
+                                                class="btn border transition ease-in-out border-white text-white  bg-[#90c8ac] hover:bg-[#76a38d]"
+                                                data-dismiss="modal" (click)="deleteForm()">
+                                                Ok
+                                            </button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

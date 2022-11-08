@@ -37,6 +37,7 @@ export class ProvidersCategoriesComponent implements OnInit {
   }
 
   submit() {
+    debugger
     if (!this.selectCat.valid) {
       this.selectCat.markAllAsTouched();
     }

@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+    <div class="flex items-center justify-between w-full container mb-12 ">
+        <div class="head">
+            All FAQs
+        </div>
+        <div class="">
+            <button type="button" class="ml-4 btn btn btn-light customBg"
+                routerLink="/protected/FAQs/add">Add</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="grid shadow bg-white">
+                    <div
+                        class="inventory-grid z-10 mb-1 sticky top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+                        <div class="hidden md:block"></div>
+                        <div class="hidden md:block">
+                            ID
+                        </div>
+                        <div>question</div>
+                        <div class="">answer</div>
+                        <!-- <div class="text-center">Sizes</div>
+                        <div class="text-center">Extras</div> -->
+                    </div>
+                    <!-- ngFor -->
+                    <div *ngIf="list">
+                        <div *ngFor="let item of list">
+                            <div class="inventory-grid grid items-center gap-4 py-2 px-6 md:px-8 border-b">
+                                <div class="hidden md:block"></div>
+                                <div class="items-center hidden md:block">
+                                    {{item.id}}
+                                </div>
+                                <div class="flex items-center">
+                                    {{item.question}}
+                                </div>
+                                <div class="items-center flex ">
+                                    <!-- Details button -->
+                                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(item.id)">
+                                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
+                                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
+                                    </div>
+                                    <!-- delete icob -->
+                                    <i class="fa-solid fa-trash-can px-2 deleteIcon" (click)="delete(item.id)"></i>
+                                </div>
+                            </div>
+                            <!-- show details -->
+                            <div *ngIf="isShown[item.id]">
+                                <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
+                                    <div class="hidden md:block"></div>
+                                    <div class="hidden md:block">
+          
+                                    </div>
+                                    <div class="flex items-center">
+                                        {{item.answer}}
+                                    </div>
+                                    <div class="items-center flex ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

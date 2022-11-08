@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <div class="flex items-center justify-between w-full container mb-12 ">
-        <div class="lg:text-4xl sm:text-lg font-extrabold text-[#74b9af]">
+        <div class="head">
             All Users
         </div>
         <div>
@@ -10,15 +10,15 @@
     <div class="grid shadow bg-white">
 
         <div
-        class="inventory-grid z-10 sticky mb-1 top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+            class="inventory-grid z-10 sticky mb-1 top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
             <div class="hidden md:block"></div>
             <div class="hidden md:block">
                 ID
             </div>
             <div>Name</div>
-            <div class="hidden lg:block m-auto">Orders</div>
-            <div class="lg:hidden block"></div>
             <div class="m-auto ">Details</div>
+            <!-- <div class="hidden lg:block m-auto"></div> -->
+            <div class="lg:hidden block"></div>
             <div class="hidden lg:block m-auto">Addresses</div>
         </div>
         <!-- ngFor -->
@@ -32,14 +32,6 @@
                     <div class="flex items-center">
                         {{user.name}}
                     </div>
-                    <!-- Orders Details button -->
-                    <div class="lg:flex items-center hidden m-auto">
-                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="OrdersDetails(user.id)">
-                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isOrderShown[user.id]"></i>
-                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isOrderShown[user.id]"></i>
-                        </div>
-                    </div>
-                    <div class="lg:hidden block" ></div>
                     <!-- Details button -->
                     <div class="flex items-center m-auto">
                         <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(user.id)">
@@ -47,6 +39,14 @@
                             <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[user.id]"></i>
                         </div>
                     </div>
+                    <!-- Orders Details button -->
+                    <!-- <div class="lg:flex items-center hidden m-auto">
+                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="OrdersDetails(user.id)">
+                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isOrderShown[user.id]"></i>
+                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isOrderShown[user.id]"></i>
+                        </div>
+                    </div> -->
+                    <div class="lg:hidden block"></div>
                     <!--Addresses Details button -->
                     <div class="lg:flex items-center hidden m-auto ">
                         <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="AddressesDetails(user.id)">
@@ -55,49 +55,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Orders details  -->
-                <div *ngIf="isOrderShown[user.id]">
-                    <div class="text-center mt-2 text-lg"> Orders </div>
-                    <form action="" class="border-b">
-                        <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
-                            <div class="form-floating m-1">
-                                <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
-                                    value="{{user.id}}">
-                                <label for="floatingInputGrid">Id</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                    value="{{user.name}}">
-                                <label for="floatingInputGrid">Name</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                    value="{{user.last_name}}">
-                                <label for="floatingInputGrid">last name</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
-                                    value="{{user.email}}">
-                                <label for="floatingInputGrid">Email</label>
-                            </div>
-                            <div class="form-floating m-1 ">
-                                <img src="basicUrl/{{user.image}}" alt="">
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                            <button type="button"
-                                class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                (click)="edit(user.id)">Edit</button>
-                            <button type="button"
-                                class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                (click)="delete(user.id)">Delete</button>
-                        </div>
 
-                    </form>
-                </div>
-                <!--  details  -->
                 <div class="row">
-                    <div class="col-md-6 m-auto">
+                    <!--  details  -->
+                    <div class="col-md-4">
                         <div *ngIf="isShown[user.id]">
                             <div class="text-center mt-2 text-lg"> Details </div>
                             <form action="" class="border-b">
@@ -126,7 +87,8 @@
                                         <label for="floatingInputGrid">Email</label>
                                     </div>
                                     <div class="form-floating m-1">
-                                        <input type="number" class="form-control" id="floatingInputGrid" onKeyPress="if(this.value.length==10) return false;"
+                                        <input type="number" class="form-control" id="floatingInputGrid"
+                                            onKeyPress="if(this.value.length==10) return false;"
                                             placeholder="phone number" value="{{user.phone}}">
                                         <label for="floatingInputGrid">phone number</label>
                                     </div>
@@ -173,38 +135,86 @@
                         </div>
 
                     </div>
-                </div>
-                <!-- Addresses details  -->
-                <div *ngIf="isAddressesShown[user.id]">
-                    <div class="text-center mt-2 text-lg"> Addresses </div>
-                    <form action="" class="border-b">
-                        <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
-                            <div class="form-floating m-1">
-                                <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
-                                    value="{{user.id}}">
-                                <label for="floatingInputGrid">Id</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                    value="{{user.name}}">
-                                <label for="floatingInputGrid">Name</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
-                                    value="{{user.email}}">
-                                <label for="floatingInputGrid">Email</label>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                            <button type="button"
-                                class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                (click)="edit(user.id)">Edit</button>
-                            <button type="button"
-                                class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                (click)="delete(user.id)">Delete</button>
-                        </div>
 
-                    </form>
+                    <!-- Orders details  -->
+                    <!-- <div class="col-md-4">
+                        <div *ngIf="isOrderShown[user.id]">
+                            <div class="text-center mt-2 text-lg"> Orders </div>
+                            <form action="" class="border-b">
+                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
+                                    <div class="form-floating m-1">
+                                        <input type="number" class="form-control out" id="floatingInputGrid"
+                                            placeholder="Id" value="{{user.id}}">
+                                        <label for="floatingInputGrid">Id</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Name" value="{{user.name}}">
+                                        <label for="floatingInputGrid">Name</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Name" value="{{user.last_name}}">
+                                        <label for="floatingInputGrid">last name</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Email" value="{{user.email}}">
+                                        <label for="floatingInputGrid">Email</label>
+                                    </div>
+                                    <div class="form-floating m-1 ">
+                                        <img src="basicUrl/{{user.image}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between customContainer  px-4 py-2 ">
+                                    <button type="button"
+                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
+                                        (click)="edit(user.id)">Edit</button>
+                                    <button type="button"
+                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
+                                        (click)="delete(user.id)">Delete</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div> -->
+                    <!-- Addresses details  -->
+                    <div class="col-md-4">
+                        <div *ngIf="isAddressesShown[user.id]">
+                            <div class="text-center mt-2 text-lg"> Addresses </div>
+                            <form action="" class="border-b">
+                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
+                                    <div class="form-floating m-1">
+                                        <input type="number" class="form-control out" id="floatingInputGrid"
+                                            placeholder="Id" value="{{user.id}}">
+                                        <label for="floatingInputGrid">Id</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Name" value="{{user.name}}">
+                                        <label for="floatingInputGrid">Name</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Email" value="{{user.email}}">
+                                        <label for="floatingInputGrid">Email</label>
+                                    </div>
+                                    <div class="form-floating m-1">
+                                        <button type="button"
+                                            class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
+                                            (click)="delete(user.id)">Delete</button>
+                                    </div>
+                                </div>
+                                <!-- <div class="flex items-center justify-between customContainer  px-4 py-2 ">
+                                           <button type="button"
+                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
+                                        (click)="edit(user.id)">Edit</button>
+                                   
+                                </div> -->
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

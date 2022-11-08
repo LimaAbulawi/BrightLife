@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <div class="flex justify-between container mb-12">
-        <div class="lg:text-4xl sm:text-lg font-extrabold text-[#74b9af]">
+        <div class="head">
             All Services
         </div>
         <div>
@@ -17,14 +17,13 @@
             </div>
             <div>Name</div>
             <div></div>
-            <div>Details</div>
+            <div class="text-center">Details</div>
             <div class="hidden "></div>
         </div>
         <div *ngIf="isAddService" class=" items-center py-1 px-6 md:px-8">
             <form action="" class="border-b" [formGroup]="addServicesForm" (ngSubmit)="addServices()"
                 enctype="multipart/form-data">
-                <div class="grid grid-container grid-template  w-full p-1 justify-center mt-7 mx-auto mb-1">
-
+                <div class="grid grid-container grid-template  w-full p-1 justify-center mt-7 mx-auto mb-7">
                     <div class="form-floating m-1 grid-item">
                         <input type="text" class="form-control" placeholder="Name" formControlName="name">
                         <label for="floatingInputGrid">Name</label>
@@ -72,7 +71,7 @@
                     </div>
                     <div>
                     </div>
-                    <div class="flex items-center">
+                    <div class="flex items-center justify-center">
                         <!-- Details button -->
                         <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(service.id)">
                             <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[service.id]"></i>
@@ -84,81 +83,68 @@
                 </div>
                 <div *ngIf="isShown[service.id]">
                     <form action="" class="border-b">
-                        <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1 items-center">
-                            <div class="form-floating m-1 w-20">
-                                <img src="{{basicUrl}}/{{service.image}}" alt="">
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="number" class="form-control out" id="floatingInputGrid" placeholder="Id"
-                                    value="{{service.id}}">
-                                <label for="floatingInputGrid">Id</label>
-                            </div>
-                            <div class="form-floating m-1">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                    value="{{service.name}}">
-                                <label for="floatingInputGrid">Name</label>
-                            </div>
-                            <div class="form-floating m-1 w-1/4">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="content"
-                                    value="{{service.content}}">
-                                <label for="floatingInputGrid">content</label>
-                            </div>
-                            <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="price"
-                                    value="{{service.price}}">
-                                <label for="floatingInputGrid">price</label>
-                            </div>
-                            <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="supplier id"
-                                    value="{{services[i].supplier.id}}">
-                                <label for="floatingInputGrid">supplier id</label>
-                            </div>
-                            <!-- <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="catigory id"
-                                    >
-                                <label for="floatingInputGrid">catigory </label>
-                            </div> -->
-                            <div class="form-floating m-1 ">
-                                <input type="text" class="form-control" id="floatingInputGrid"
-                                    placeholder="supplier name" value="{{services[i].supplier.name}}">
-                                <label for="floatingInputGrid">supplier name</label>
-                            </div>
-                            <div class="form-floating m-1 ">
-                                <div class="form-floating m-1 w-20">
-                                    <img src="{{basicUrl}}/{{services[i].supplier.image}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                            <button type="button"
-                                class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]">Edit</button>
+                        <div class="flex w-ful p-1 justify-center mt-7 mb-7 mx-auto items-center">
+                            <div class="container">
+                                <div class="row flex justify-center">
+                                    <div class="col-3">
+                                        <div class="details">
+                                            <img src="{{basicUrl}}/{{service.image}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="details">
+                                            <span>id </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" placeholder="status" value="{{service.id}}"
+                                                readonly>
+                                        </div>
+                                        <div class="details">
+                                            <span>name </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" placeholder="status" value="{{service.name}}">
+                                        </div>
+                                        <div class="details">
+                                            <span>content </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" placeholder="status" value="{{service.content}}">
+                                        </div>
+                                        <div class="details">
+                                            <span>price </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" placeholder="status" value="{{service.price}}">
+                                        </div>
 
-                            <button type="button"
-                                class="btn border border-white text-white  bg-red-600 hover:bg-red-700"
-                                data-toggle="modal" data-target="#exampleModal">
-                                Delete
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure! you want to delete {{service.name}} service?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"
-                                                class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button"
-                                                class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                                (click)="deleteSer(service.id)" data-dismiss="modal">Delete</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="saveBtn btn ">
+                                            <i class="fa-solid fa-pen"></i> save</button>
+                                        <button type="button" class="btn deleteBtn" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            Delete
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure! you want to delete {{service.name}} service?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                            class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="button"
+                                                            class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
+                                                            (click)="deleteSer(service.id)"
+                                                            data-dismiss="modal">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -1,0 +1,167 @@
+<div class="content-wrapper">
+    <div class="flex items-center justify-between w-full container mb-12 ">
+        <div class="head">
+            All Reviews
+        </div>
+        <div class="">
+            <button type="button" class="ml-4 btn btn btn-light customBg"
+                routerLink="/protected/reviews/add-review">Add</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="grid shadow bg-white">
+                    <div
+                        class="inventory-grid z-10 mb-1 sticky top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+                        <div class="hidden md:block">
+                            ID
+                        </div>
+                        <div>title</div>
+                        <div class="text-center">details</div>
+                        <!-- <div class="text-center">Sizes</div>
+                        <div class="text-center">Extras</div> -->
+                    </div>
+                    <!-- ngFor -->
+                    <div *ngIf="list">
+                        <div *ngFor="let item of list">
+                            <div class="inventory-grid grid items-center gap-4 py-2 px-6 md:px-8 border-b">
+                                <div class="items-center hidden md:block">
+                                    {{item.id}}
+                                </div>
+                                <div class="flex items-center">
+                                    {{item.title}}
+                                </div>
+                                <div class="items-center flex justify-center">
+                                    <!-- Details button -->
+                                    <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(item.id)">
+                                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
+                                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
+                                    </div>
+                                    <!-- delete icob -->
+                                    <i class="fa-solid fa-trash-can px-2 deleteIcon" (click)="delete(item.id)"></i>
+                                </div>
+                            </div>
+                            <!-- show details -->
+                            <div *ngIf="isShown[item.id]">
+                                <form action="" class="" [formGroup]="editForm" (ngSubmit)="editItem()">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-4 my-3 ">
+                                                <div class="details">
+                                                    <span>id </span>: <input type="number" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="id" value="{{item.id}}"
+                                                        readonly>
+                                                </div>
+                                                <div class="details">
+                                                    <span>title </span>: <input type="text" class="customFormControl"
+                                                        formControlName="title" id="floatingInputGrid"
+                                                        placeholder="title" >
+                                                    <!-- value="{{item.title}}" -->
+                                                </div>
+                                                <div class="details">
+                                                    <span>content </span>: <input type="text" class="customFormControl"
+                                                        formControlName="content" id="floatingInputGrid"
+                                                        placeholder="content">
+                                                </div>
+                                                <div class="details">
+                                                    <span>points </span>: <input type="text" class="customFormControl"
+                                                        formControlName="points" id="floatingInputGrid"
+                                                        placeholder="points">
+                                                </div>
+                                                <div class="details flex">
+                                                    <span>status </span>: <div class="form-check form-switch mx-2">
+                                                        <input class="form-check-input" type="checkbox" role="switch"
+                                                            id="flexSwitchCheckChecked" 
+                                                            [checked]="item.status == 1" 
+                                                            (change)="checkBoxValue($event)">
+
+                                                        <!-- <label class="form-check-label" for="flexSwitchCheckChecked">
+                                                        status
+                                                    </label> -->
+                                                    </div>
+
+                                                    <!-- <input type="text" class="customFormControl"
+                                                     id="floatingInputGrid" placeholder="status"
+                                                    value="{{item.status}}"> -->
+                                                </div>
+                                                <div
+                                                    class="flex items-center justify-center customContainer mt-2 px-4 ">
+                                                    <button *ngIf="!editForm.valid" type="submit"
+                                                        class="addNew cursorNotAllowed">edit
+                                                        review</button>
+                                                    <button *ngIf="editForm.valid" type="submit"
+                                                        class="addNew cursor-pointer">edit
+                                                        review</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 py-3  middle">
+                                                <i class="fa-solid fa-user mx-2"></i>
+                                                <h2 class="inline-block">user details</h2>
+                                                <div class="details">
+                                                    <span> id </span>: <input type="number" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="id" value="{{item.user.id}}"
+                                                        readonly>
+                                                </div>
+                                                <div class="details">
+                                                    <span> name </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="title"
+                                                        value="{{item.user.name}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span> last name </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="last_name" value="{{item.user.last_name}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span> phone </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="phone"
+                                                        value="{{item.user.phone}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span> email </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="email"
+                                                        value="{{item.user.email}}">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-4 my-3 ">
+                                                <h2 class="inline-block">supplier details</h2>
+                                                <div class="details">
+                                                    <span>id </span>: <input type="number"
+                                                        class="customFormControl" formControlName="supplier_id"
+                                                        id="floatingInputGrid" placeholder="id"
+                                                         readonly>
+                                                </div>
+                                                <div class="details">
+                                                    <span>name </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="Name"
+                                                        value="{{item.supplier_id.name}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>last name </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="last name" value="{{item.supplier_id.last_name}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>phone </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="phone"
+                                                        value="{{item.supplier_id.phone}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>email </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="email"
+                                                        value="{{item.supplier_id.email}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
