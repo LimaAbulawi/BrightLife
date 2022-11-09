@@ -113,6 +113,7 @@ export class AddProviderComponent implements OnInit {
     name: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: ['', Validators.required],
+    password_confirmation: ['', Validators.required],
     phone: ['', Validators.required ],
     description: [''],
     location: [''],

@@ -74,6 +74,21 @@
                                     formControlName="password"
                                     [ngClass]="{'border-rose-600': this.addSuppliersForm.get('password')?.touched && this.addSuppliersForm.get('password')?.hasError('required')}">
                             </div>
+                            <!-- password_confirmation -->
+                            <div class="mb-1">
+                                <div class="flex justify-between mb-1">
+                                    <label for="floatingInputGrid">confirm password</label>
+                                    <!-- password_confirmation is required -->
+                                    <label class="errorLabel"
+                                        *ngIf="this.addSuppliersForm.get('password_confirmation')?.touched && this.addSuppliersForm.get('password_confirmation')?.hasError('required')">
+                                        <i class="fad fa-exclamation"></i>
+                                        confirm password is required
+                                    </label>
+                                </div>
+                                <input type="password_confirmation" class="form-control out" placeholder="confirm password"
+                                    formControlName="password_confirmation"
+                                    [ngClass]="{'border-rose-600': this.addSuppliersForm.get('password_confirmation')?.touched && this.addSuppliersForm.get('password_confirmation')?.hasError('required')}">
+                            </div>
                             <!-- phone -->
                             <div class="mb-1">
                                 <div class="flex justify-between mb-1">

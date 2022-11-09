@@ -11,210 +11,128 @@
 
         <div
             class="inventory-grid z-10 sticky mb-1 top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
-            <div class="hidden md:block"></div>
             <div class="hidden md:block">
                 ID
             </div>
             <div>Name</div>
+            <div class="text-center">details</div>
+            <!-- <div class="hidden md:block"></div> -->
+            <!-- <div class="hidden md:block">
+                ID
+            </div>
+            <div>Name</div>
             <div class="m-auto ">Details</div>
-            <!-- <div class="hidden lg:block m-auto"></div> -->
+            <div class="hidden lg:block m-auto"></div>
             <div class="lg:hidden block"></div>
-            <div class="hidden lg:block m-auto">Addresses</div>
+            <div class="hidden lg:block m-auto">Addresses</div> -->
         </div>
         <!-- ngFor -->
         <div *ngIf="users">
-            <div *ngFor="let user of users">
+            <div *ngFor="let item of users">
                 <div class="inventory-grid grid items-center gap-4 py-2 px-6 md:px-8 border-b">
-                    <div class="hidden md:block"></div>
+
                     <div class="items-center hidden md:block">
-                        {{user.id}}
+                        {{item.id}}
                     </div>
                     <div class="flex items-center">
-                        {{user.name}}
+                        {{item.name}}
                     </div>
-                    <!-- Details button -->
-                    <div class="flex items-center m-auto">
-                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(user.id)">
-                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[user.id]"></i>
-                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[user.id]"></i>
+                    <div class="items-center flex justify-center">
+                        <!-- Details button -->
+                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(item.id)">
+                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
+                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
                         </div>
-                    </div>
-                    <!-- Orders Details button -->
-                    <!-- <div class="lg:flex items-center hidden m-auto">
-                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="OrdersDetails(user.id)">
-                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isOrderShown[user.id]"></i>
-                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isOrderShown[user.id]"></i>
-                        </div>
-                    </div> -->
-                    <div class="lg:hidden block"></div>
-                    <!--Addresses Details button -->
-                    <div class="lg:flex items-center hidden m-auto ">
-                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="AddressesDetails(user.id)">
-                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isAddressesShown[user.id]"></i>
-                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isAddressesShown[user.id]"></i>
-                        </div>
+                        <!-- delete icob -->
+                        <i class="fa-solid fa-trash-can px-2 deleteIcon" (click)="delete(item.id)"></i>
                     </div>
                 </div>
 
-                <div class="row">
-                    <!--  details  -->
-                    <div class="col-md-4">
-                        <div *ngIf="isShown[user.id]">
-                            <div class="text-center mt-2 text-lg"> Details </div>
-                            <form action="" class="border-b">
-                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1 items-center flex-wrap">
-                                    <div class="form-floating m-1 w-20">
-                                        <img src="{{basicUrl}}/{{user.image}}" alt="">
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="number" class="form-control out" id="floatingInputGrid"
-                                            placeholder="Id" value="{{user.id}}" readonly>
-                                        <label for="floatingInputGrid">Id</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{user.name}}">
-                                        <label for="floatingInputGrid">Name</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{user.last_name}}">
-                                        <label for="floatingInputGrid">last name</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Email" value="{{user.email}}">
-                                        <label for="floatingInputGrid">Email</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="number" class="form-control" id="floatingInputGrid"
-                                            onKeyPress="if(this.value.length==10) return false;"
-                                            placeholder="phone number" value="{{user.phone}}">
-                                        <label for="floatingInputGrid">phone number</label>
+                <div *ngIf="isShown[item.id]">
+                    <form action="" class="border-b">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3 my-3">
+                                    <div class="details">
+                                        <img src="{{basicUrl}}/{{item.image}}" alt="user's Image">
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                                    <button type="button"
-                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                        (click)="edit(user.id)">Edit</button>
+                                <!--  details  -->
+                                <div class="col-4 my-3 middle">
+                                    <i class="fa-solid fa-user mx-2"></i>
+                                    <h2 class="inline-block">user details</h2>
+                                    <div class="details">
+                                        <span>id </span>: <input type="number" class="customFormControl"
+                                            id="floatingInputGrid" placeholder="id" value="{{item.id}}" readonly>
+                                    </div>
+                                    <div class="details">
+                                        <span>name </span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.name}}" placeholder="name">
 
-                                    <button type="button"
-                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700"
-                                        data-toggle="modal" data-target="#exampleModal">
-                                        Delete
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure! you want to delete {{user.name}} user?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button"
-                                                        class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button"
-                                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                                        (click)="delete(user.id)" data-dismiss="modal">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="details">
+                                        <span>last_name </span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.last_name}}" placeholder="last_name">
+                                    </div>
+                                    <div class="details">
+                                        <span>phone</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.phone}}" placeholder="phone">
+                                    </div>
+                                    <div class="details">
+                                        <span>email</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.email}}" placeholder="email">
                                     </div>
                                 </div>
+                                <!-- Addresses details  -->
+                                <div class="col-5 my-3">
+                                    <i class="fa-solid fa-user mx-2"></i>
+                                    <h2 class="inline-block">Address details</h2>
+                                    <div class="details">
+                                        <span>id </span>: <input type="number" class="customFormControl"
+                                            id="floatingInputGrid" placeholder="id" value="{{item.address.id}}"
+                                            readonly>
+                                    </div>
+                                    <div class="details">
+                                        <span>name </span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.name}}" placeholder="name">
+                                    </div>
+                                    <div class="details">
+                                        <span>city </span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.city}}" placeholder="city">
+                                    </div>
+                                    <div class="details">
+                                        <span>region</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.region}}" placeholder="region">
+                                    </div>
+                                    <div class="details">
+                                        <span>street</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.street}}" placeholder="street">
+                                    </div>
+                                    <div class="details">
+                                        <span>building number</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.building_number}}"
+                                            placeholder="building number">
+                                    </div>
+                                    <div class="details">
+                                        <span>floor number</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.floor_number}}"
+                                            placeholder="floor_number">
+                                    </div>
+                                    <div class="details">
+                                        <span>apartment number</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.apartment_number}}"
+                                            placeholder="apartment number">
+                                    </div>
+                                    <div class="details">
+                                        <span>additional tips</span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.address.additional_tips}}"
+                                            placeholder="additional tips">
+                                    </div>
 
-                            </form>
+                                </div>
+                            </div>
                         </div>
-
-                    </div>
-
-                    <!-- Orders details  -->
-                    <!-- <div class="col-md-4">
-                        <div *ngIf="isOrderShown[user.id]">
-                            <div class="text-center mt-2 text-lg"> Orders </div>
-                            <form action="" class="border-b">
-                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
-                                    <div class="form-floating m-1">
-                                        <input type="number" class="form-control out" id="floatingInputGrid"
-                                            placeholder="Id" value="{{user.id}}">
-                                        <label for="floatingInputGrid">Id</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{user.name}}">
-                                        <label for="floatingInputGrid">Name</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{user.last_name}}">
-                                        <label for="floatingInputGrid">last name</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Email" value="{{user.email}}">
-                                        <label for="floatingInputGrid">Email</label>
-                                    </div>
-                                    <div class="form-floating m-1 ">
-                                        <img src="basicUrl/{{user.image}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                                    <button type="button"
-                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                        (click)="edit(user.id)">Edit</button>
-                                    <button type="button"
-                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                        (click)="delete(user.id)">Delete</button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div> -->
-                    <!-- Addresses details  -->
-                    <div class="col-md-4">
-                        <div *ngIf="isAddressesShown[user.id]">
-                            <div class="text-center mt-2 text-lg"> Addresses </div>
-                            <form action="" class="border-b">
-                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1">
-                                    <div class="form-floating m-1">
-                                        <input type="number" class="form-control out" id="floatingInputGrid"
-                                            placeholder="Id" value="{{user.id}}">
-                                        <label for="floatingInputGrid">Id</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Name" value="{{user.name}}">
-                                        <label for="floatingInputGrid">Name</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid"
-                                            placeholder="Email" value="{{user.email}}">
-                                        <label for="floatingInputGrid">Email</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <button type="button"
-                                            class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                            (click)="delete(user.id)">Delete</button>
-                                    </div>
-                                </div>
-                                <!-- <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                                           <button type="button"
-                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                        (click)="edit(user.id)">Edit</button>
-                                   
-                                </div> -->
-
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
