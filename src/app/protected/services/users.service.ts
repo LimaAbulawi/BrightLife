@@ -26,7 +26,7 @@ export class UsersService {
   delete(Id: number) {
     return this.http.get(this.basicUrl + "/api/v1/user/delete/"+Id, { 'headers': this.headers })
   }
-  edit(Id: number) {
+  edit(Id: number) { 
     
   }
   addUsers(newUser:any){

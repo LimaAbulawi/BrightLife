@@ -14,7 +14,6 @@ import { ProviderDetailsComponent } from './components/providers/provider-detail
 import { ProvidersComponent } from './components/providers/providers.component';
 import { AddReviewComponent } from './components/reviews/add-review/add-review.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
-import { ServicesComponent } from './components/services/services.component';
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: "categories/add", component: AddCategoryComponent },  
   { path: "orders", component: OrdersComponent },
   { path: "finance", component: FinanceComponent },
-  { path: "services", component: ServicesComponent },
   { path: "FAQs", component: FAQsComponent },
   { path: "FAQs/add", component: AddFaqComponent },  
   { path: "reviews", component: ReviewsComponent },
