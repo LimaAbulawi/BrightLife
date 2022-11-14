@@ -7,16 +7,17 @@
     }
 
     @screen md {
-        grid-template-columns: 48px 112px 112px 112px auto 112px  ;
+        grid-template-columns: 48px 112px 112px 112px auto 112px;
     }
 
     @screen lg {
-        grid-template-columns:  48px 112px 112px 112px auto 112px ;
+        grid-template-columns: 48px 112px 112px 112px auto 112px;
     }
 }
 
-.details span{
+.details span {
     color: #43af79;
     // width: 93px;
     display: inline-block;
 }
+

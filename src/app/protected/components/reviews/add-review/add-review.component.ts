@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ReviewsService } from 'src/app/protected/services/reviews.service';
+import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 
 @Component({
   selector: 'app-add-review',
@@ -9,18 +10,21 @@ import { ReviewsService } from 'src/app/protected/services/reviews.service';
 })
 export class AddReviewComponent implements OnInit {
 
- 
+  list: any = [];
+  selectedTeam: any;
   resMsg!: string;
   addForm = this.fb.group({
     title: ['', Validators.required],
     content: ['', Validators.required],
     points: ['', Validators.required],
     status: ['', Validators.required],
+    supplier_id: ['', Validators.required],
   })
   
-  constructor(private fb: FormBuilder , private _ser: ReviewsService) { }
+  constructor(private fb: FormBuilder , private _ser: ReviewsService , private ser: SuppliersService) { }
 
   ngOnInit(): void {
+    this.getListFromService();
   }
 
   addItem() { 
@@ -41,5 +45,15 @@ export class AddReviewComponent implements OnInit {
     }else{
       this.addForm.controls.status.setValue('0')
     }
+  }
+  getListFromService() {
+    return this.ser.getSuppliersList().subscribe((res: any) => {
+      this.list = res.suppliers;
+      console.log("this.list", this.list);
+    })
+  }
+  selectChangeHandler(event: any) {
+    this.selectedTeam = event.target.value;
+    this.addForm.controls.supplier_id.setValue(this.selectedTeam)
   }
 }

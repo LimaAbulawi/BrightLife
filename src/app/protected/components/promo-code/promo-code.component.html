@@ -50,6 +50,13 @@
                             </div>
                             <!-- show details -->
                             <div *ngIf="isShown[item.id]">
+                            <div class="container " *ngIf="item.orders.length == 0">
+                                <div class="col-5 noData">
+                                    <div class="" >
+                                        no orders yet
+                                    </div>
+                                </div>
+                            </div>
                                 <div *ngFor="let order of item.orders">
                                     <div class="container">
                                         <div class="row flex justify-center">
@@ -65,9 +72,9 @@
                                                         value="{{order.status}}">
                                                 </div>
                                                 <div class="details">
-                                                    <span>payment method </span>: <input type="text" class="customFormControl"
-                                                        id="floatingInputGrid" placeholder="payment method"
-                                                        value="{{order.payment_method}}">
+                                                    <span>payment method </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="payment method" value="{{order.payment_method}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>note </span>: <input type="text" class="customFormControl"
@@ -80,9 +87,8 @@
                                                         value="{{order.total}}">
                                                 </div>
                                                 <div class="details">
-                                                    <span>tax </span>: <input type="text"
-                                                        class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="tax" value="{{order.tax}}">
+                                                    <span>tax </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="tax" value="{{order.tax}}">
                                                 </div>
                                             </div>
                                             <div class="col-5 my-3">
@@ -93,20 +99,20 @@
                                                         placeholder="delivery_fee" value="{{order.delivery_fee}}">
                                                 </div>
                                                 <div class="details">
-                                                    <span>discount </span>: <input type="text"
-                                                        class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="discount" value="{{order.discount}}">
+                                                    <span>discount </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="discount"
+                                                        value="{{order.discount}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>percentage </span>: <input type="text"
                                                         class="customFormControl" id="floatingInputGrid"
                                                         placeholder="percentage" value="{{order.percentage}}">
                                                 </div>
-                                                
+
                                                 <div class="details">
-                                                    <span>number </span>: <input type="text"
-                                                        class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="number" value="{{order.number}}">
+                                                    <span>number </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="number"
+                                                        value="{{order.number}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>order value </span>: <input type="text"

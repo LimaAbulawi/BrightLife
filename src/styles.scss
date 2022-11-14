@@ -272,3 +272,13 @@ td:nth-child(even) {
 .details {
     overflow: hidden;
 }
+.noData {
+    text-align: center;
+    margin: 10px auto;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #dee2e6;
+    background-color: #41464b;
+    border-radius: 5px;
+}
