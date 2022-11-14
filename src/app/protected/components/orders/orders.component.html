@@ -1,4 +1,132 @@
 <div class="content-wrapper">
-    <p>orders works!</p>
-</div>
+    <div class="flex items-center justify-between w-full container mb-12 ">
+        <div class="head">
+            All Orders
+        </div>
+        <div class="">
+            <button type="button" class="ml-4 btn btn btn-light customBg"
+                routerLink="/protected/promocode/add-promocode">Add</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="grid shadow bg-white">
+                    <div
+                        class="inventory-grid z-10 mb-1 sticky top-0 grid gap-4 py-4 px-6 md:px-8 text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5">
+                        <div class="hidden md:block">
+                            ID
+                        </div>
+                        <div>status</div>
+                        <div class="hidden md:block">payment method</div>
+                        <div class="hidden md:block">type</div>
+                        <div class="hidden md:block">total</div>
+                        <div class=" flex  items-center justify-end">details</div>
+                        <!-- <div class="text-center">Sizes</div>
+                        <div class="text-center">Extras</div> -->
+                    </div>
+                    <!-- ngFor -->
+                    <div *ngIf="list">
+                        <div *ngFor="let item of list">
+                            <div class="inventory-grid grid  gap-4 py-2 px-6 md:px-8 border-b">
+                                <div class="hidden md:block">
+                                    {{item.id}}
+                                </div>
+                                <div class="hidden md:block ">
+                                    {{item.status}}
+                                </div>
+                                <div class="hidden md:block"> {{item.payment_method}} </div>
+                                <div class="hidden md:block"> {{item.type}} </div>
+                                <div class="hidden md:block"> {{item.total}} </div>
+                                <div class="flex  items-center justify-end">
+                                    <!-- Details button -->
+                                    <div class="min-w-10 min-h-7 h-7 px-3 leading-6" (click)="details(item.id)">
+                                        <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
+                                        <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                            <!-- show details -->
+                            <div *ngIf="isShown[item.id]">
+                                <!-- <div class="container " *ngIf="item.orders.length == 0">
+                                    <div class="col-5 noData">
+                                        <div class="">
+                                            no orders yet
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- <div *ngFor="let order of item.orders">
+                                    <div class="container">
+                                        <div class="row flex justify-center">
+                                            <div class="col-5 my-3">
+                                                <div class="details">
+                                                    <span>id </span>: <input type="number" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="id" value="{{order.id}}"
+                                                        readonly>
+                                                </div>
+                                                <div class="details">
+                                                    <span>status </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="status"
+                                                        value="{{order.status}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>payment method </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="payment method" value="{{order.payment_method}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>note </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="note"
+                                                        value="{{order.note}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>total </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="total"
+                                                        value="{{order.total}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>tax </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="tax" value="{{order.tax}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 my-3">
 
+                                                <div class="details">
+                                                    <span>delivery_fee </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="delivery_fee" value="{{order.delivery_fee}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>discount </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="discount"
+                                                        value="{{order.discount}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>percentage </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="percentage" value="{{order.percentage}}">
+                                                </div>
+
+                                                <div class="details">
+                                                    <span>number </span>: <input type="text" class="customFormControl"
+                                                        id="floatingInputGrid" placeholder="number"
+                                                        value="{{order.number}}">
+                                                </div>
+                                                <div class="details">
+                                                    <span>order value </span>: <input type="text"
+                                                        class="customFormControl" id="floatingInputGrid"
+                                                        placeholder="order value" value="{{order.order_value}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

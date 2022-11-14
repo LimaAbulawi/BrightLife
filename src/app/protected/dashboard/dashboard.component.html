@@ -114,7 +114,8 @@
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
                                 [ngClass]="{'block': !isShown, 'hidden': isShown}">FAQs</span>
-                                <i class="fa-solid fa-cart-shopping "></i>
+                                <!-- <i class="fa-solid fa-cart-shopping "></i> -->
+                                <i class="fa-solid fa-clipboard-question"></i>
                             </li>
                         </a>
                         <a routerLink="/protected/reviews" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 9 }" (click)="setActive(9)">
@@ -122,15 +123,17 @@
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
                                 [ngClass]="{'block': !isShown, 'hidden': isShown}">reviews</span>
-                                <i class="fa-solid fa-cart-shopping "></i>
+                                <!-- <i class="fa-solid fa-cart-shopping "></i> -->
+                                <i class="fa-solid fa-comments"></i>
                             </li>
                         </a>
                         <a routerLink="/protected/promocode" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 10 }" (click)="setActive(10)">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
-                                <span class="nav-text  "
+                                <span class="nav-text"
                                 [ngClass]="{'block': !isShown, 'hidden': isShown}">promocode</span>
-                                <i class="fa-solid fa-cart-shopping "></i>
+                                <!-- <i class="fa-solid fa-cart-shopping"></i> -->
+                                <i class="fa-sharp fa-solid fa-barcode"></i>
                             </li>
                         </a>
                         <a (click)="logOut()" class="mb-2 hover:text-[#b66dff]" [ngClass]="{'mt-7': isShown}">
