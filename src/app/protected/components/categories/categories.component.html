@@ -5,7 +5,8 @@
             All Categorys
         </div>
         <div class="">
-            <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/categories/add">Add</button>
+            <button type="button" class="ml-4 btn btn btn-light customBg"
+                routerLink="/protected/categories/add">Add</button>
         </div>
     </div>
     <div class="grid shadow bg-white">
@@ -20,98 +21,64 @@
             <div class="text-center">Details</div>
             <div class="hidden lg:block"></div>
         </div>
-        
+
         <!-- ngFor -->
         <div *ngIf="Categorys">
-            <div *ngFor="let Category of Categorys">
+            <div *ngFor="let item of Categorys">
                 <div class="inventory-grid grid items-center gap-4 py-2 px-6 md:px-8 border-b">
                     <div class="hidden md:block"></div>
                     <div class="items-center hidden md:block">
-                        {{Category.id}}
+                        {{item.id}}
                     </div>
                     <div class="flex items-center">
-                        {{Category.name}}
+                        {{item.name}}
                     </div>
                     <div>
                     </div>
-                    <div class="text-center items-center">
+                    <div class="text-center items-center flex justify-center">
                         <!-- Details button -->
-                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(Category.id)">
-                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[Category.id]"></i>
-                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[Category.id]"></i>
+                        <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(item.id)">
+                            <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
+                            <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
                         </div>
+                        <!-- delete icon -->
+                        <i class="fa-solid fa-trash-can px-2 deleteIcon" (click)="delete(item.id)"></i>
                     </div>
                     <div class="sm:hidden block">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 m-auto">
-                        <div *ngIf="isShown[Category.id]">
-                            <div class="text-center mt-2 text-lg "> Details </div>
-                            <form action="" class="border-b">
-                                <div class="flex w-ful p-1 justify-center mt-7 mx-auto mb-1 items-center flex-wrap">
-                                    <div class="form-floating m-1 w-20 ">
-                                        <img class="" src="https://api.brightlifeapp.com/public/{{Category.image}}"
-                                            alt="">
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="number" class="form-control out" id="floatingInputGrid"
-                                            placeholder="Id" value="{{Category.id}}" readonly>
-                                        <label for="floatingInputGrid">Id</label>
-                                    </div>
-                                    <div class="form-floating m-1">
-                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Name"
-                                            value="{{Category.name}}">
-                                        <label for="floatingInputGrid">Name</label>
+                <div *ngIf="isShown[item.id]">
+                    <div class="text-center mt-2 text-lg "> Details </div>
+
+                    <form action="" class="border-b">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3 my-3">
+                                    <div class="details">
+                                        <img src="{{basicUrl}}/{{item.image}}" alt="user's Image">
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between customContainer  px-4 py-2 ">
-                                    <button type="button"
-                                        class="btn border border-white text-slate-600 bg-[#90c8ac] hover:bg-[#76a38d] w-[68px]"
-                                        (click)="edit(Category.id)">Edit</button>
-    
-                                    <button type="button"
-                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700"
-                                        data-toggle="modal" data-target="#exampleModal">
-                                        Delete
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure! you want to delete {{Category.name}} Category?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button"
-                                                        class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button"
-                                                        class="btn border border-white text-white  bg-red-600 hover:bg-red-700 "
-                                                        (click)="deleteCat(Category.id)"
-                                                        data-dismiss="modal">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <!--  details  -->
+                                <div class="col-4 my-3 middle">
+                                    <i class="fa-solid fa-user mx-2"></i>
+                                    <h2 class="inline-block">user details</h2>
+                                    <div class="details">
+                                        <span>id </span>: <input type="number" class="customFormControl"
+                                            id="floatingInputGrid" placeholder="id" value="{{item.id}}" readonly>
+                                    </div>
+                                    <div class="details">
+                                        <span>name </span>: <input type="text" class="customFormControl"
+                                            id="floatingInputGrid" value="{{item.name}}" placeholder="name">
+
                                     </div>
                                 </div>
-    
-                            </form>
+                            </div>
                         </div>
-    
-                    </div>
+                    </form>
+
                 </div>
-    
             </div>
-    
+
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -49,14 +50,25 @@ export class UsersComponent implements OnInit {
     this.isAddressesShown[Id] = !this.isAddressesShown[Id];
   }
   
-  delete(Id: number) {
-    return this._ser.delete(Id).subscribe((res: any) => {
-      this.isdelete = res;
-      window.location.reload();
-      // console.log("delete", this.isdelete);
-    });
-  }
 
+  delete(Id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._ser.delete(Id).subscribe((res: any) => {
+          this.isdelete = res;
+          window.location.reload();
+        });
+      }
+    })
+  }
   edit(Id: number) {
 
   }

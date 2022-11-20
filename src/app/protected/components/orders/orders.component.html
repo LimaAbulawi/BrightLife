@@ -3,10 +3,10 @@
         <div class="head">
             All Orders
         </div>
-        <div class="">
+        <!-- <div class="">
             <button type="button" class="ml-4 btn btn btn-light customBg"
                 routerLink="/protected/promocode/add-promocode">Add</button>
-        </div>
+        </div> -->
     </div>
     <div class="container">
         <div class="row">
@@ -36,7 +36,12 @@
                                     {{item.status}}
                                 </div>
                                 <div class="hidden md:block"> {{item.payment_method}} </div>
-                                <div class="hidden md:block"> {{item.type}} </div>
+                                <div class="hidden md:block">
+                                    <div *ngIf="item.type == null">
+                                        null
+                                    </div>
+                                    {{item.type}}
+                                </div>
                                 <div class="hidden md:block"> {{item.total}} </div>
                                 <div class="flex  items-center justify-end">
                                     <!-- Details button -->
@@ -44,50 +49,43 @@
                                         <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
                                         <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                             <!-- show details -->
                             <div *ngIf="isShown[item.id]">
-                                <!-- <div class="container " *ngIf="item.orders.length == 0">
-                                    <div class="col-5 noData">
-                                        <div class="">
-                                            no orders yet
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div *ngFor="let order of item.orders">
+                                <!-- <div *ngFor="let order of item.orders"> -->
                                     <div class="container">
                                         <div class="row flex justify-center">
                                             <div class="col-5 my-3">
                                                 <div class="details">
                                                     <span>id </span>: <input type="number" class="customFormControl"
-                                                        id="floatingInputGrid" placeholder="id" value="{{order.id}}"
+                                                        id="floatingInputGrid" placeholder="id" value="{{item.id}}"
                                                         readonly>
                                                 </div>
                                                 <div class="details">
                                                     <span>status </span>: <input type="text" class="customFormControl"
                                                         id="floatingInputGrid" placeholder="status"
-                                                        value="{{order.status}}">
+                                                        value="{{item.status}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>payment method </span>: <input type="text"
                                                         class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="payment method" value="{{order.payment_method}}">
+                                                        placeholder="payment method" value="{{item.payment_method}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>note </span>: <input type="text" class="customFormControl"
                                                         id="floatingInputGrid" placeholder="note"
-                                                        value="{{order.note}}">
+                                                        value="{{item.note}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>total </span>: <input type="text" class="customFormControl"
                                                         id="floatingInputGrid" placeholder="total"
-                                                        value="{{order.total}}">
+                                                        value="{{item.total}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>tax </span>: <input type="text" class="customFormControl"
-                                                        id="floatingInputGrid" placeholder="tax" value="{{order.tax}}">
+                                                        id="floatingInputGrid" placeholder="tax" value="{{item.tax}}">
                                                 </div>
                                             </div>
                                             <div class="col-5 my-3">
@@ -95,33 +93,33 @@
                                                 <div class="details">
                                                     <span>delivery_fee </span>: <input type="text"
                                                         class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="delivery_fee" value="{{order.delivery_fee}}">
+                                                        placeholder="delivery_fee" value="{{item.delivery_fee}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>discount </span>: <input type="text" class="customFormControl"
                                                         id="floatingInputGrid" placeholder="discount"
-                                                        value="{{order.discount}}">
+                                                        value="{{item.discount}}">
                                                 </div>
                                                 <div class="details">
                                                     <span>percentage </span>: <input type="text"
                                                         class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="percentage" value="{{order.percentage}}">
+                                                        placeholder="percentage" value="{{item.percentage}}">
                                                 </div>
 
                                                 <div class="details">
                                                     <span>number </span>: <input type="text" class="customFormControl"
                                                         id="floatingInputGrid" placeholder="number"
-                                                        value="{{order.number}}">
+                                                        value="{{item.number}}">
                                                 </div>
                                                 <div class="details">
-                                                    <span>order value </span>: <input type="text"
+                                                    <span>item value </span>: <input type="text"
                                                         class="customFormControl" id="floatingInputGrid"
-                                                        placeholder="order value" value="{{order.order_value}}">
+                                                        placeholder="order value" value="{{item.order_value}}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,7 @@
             All FAQs
         </div>
         <div class="">
-            <button type="button" class="ml-4 btn btn btn-light customBg"
-                routerLink="/protected/FAQs/add">Add</button>
+            <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/FAQs/add">Add</button>
         </div>
     </div>
     <div class="container">
@@ -49,9 +48,11 @@
                                 <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
                                     <div class="hidden md:block"></div>
                                     <div class="hidden md:block">
-          
                                     </div>
-                                    <div class="flex items-center">
+                                    <div *ngIf="item.answer == ''">
+                                        no answer yet
+                                    </div>
+                                    <div *ngIf="item.answer != ''" class="flex items-center">
                                         {{item.answer}}
                                     </div>
                                     <div class="items-center flex ">

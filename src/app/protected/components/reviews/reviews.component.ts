@@ -73,11 +73,6 @@ export class ReviewsComponent implements OnInit {
 
         this._ser.delete(Id).subscribe((res: any) => {
           this.isdelete = res;
-          // Swal.fire(
-          //   'Deleted!',
-          //   'Your file has been deleted.',
-          //   'success'
-          // )
           window.location.reload();
         });
       }

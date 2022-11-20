@@ -38,7 +38,7 @@
                                 <div class="hidden md:block"> {{item.code}} </div>
                                 <div class="hidden md:block"> {{item.type}} </div>
                                 <div class="hidden md:block"> {{item.value}} </div>
-                                <div class="flex  items-center ">
+                                <div class="flex  items-center justify-center">
                                     <!-- Details button -->
                                     <div class="min-w-10 min-h-7 h-7 px-2 leading-6" (click)="details(item.id)">
                                         <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
@@ -50,13 +50,11 @@
                             </div>
                             <!-- show details -->
                             <div *ngIf="isShown[item.id]">
-                            <div class="container " *ngIf="item.orders.length == 0">
-                                <div class="col-5 noData">
-                                    <div class="" >
-                                        no orders yet
+                                <div class="container " *ngIf="item.orders.length == 0">
+                                    <div class="col-5 noData">
+                                            no orders yet
                                     </div>
                                 </div>
-                            </div>
                                 <div *ngFor="let order of item.orders">
                                     <div class="container">
                                         <div class="row flex justify-center">

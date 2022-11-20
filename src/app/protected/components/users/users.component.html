@@ -43,7 +43,7 @@
                             <i class="fas fa-angle-down cursor-pointer" *ngIf="!isShown[item.id]"></i>
                             <i class="fas fa-angle-up cursor-pointer" *ngIf="isShown[item.id]"></i>
                         </div>
-                        <!-- delete icob -->
+                        <!-- delete icon -->
                         <i class="fa-solid fa-trash-can px-2 deleteIcon" (click)="delete(item.id)"></i>
                     </div>
                 </div>
@@ -85,50 +85,56 @@
                                 </div>
                                 <!-- Addresses details  -->
                                 <div class="col-5 my-3">
-                                    <i class="fa-solid fa-user mx-2"></i>
-                                    <h2 class="inline-block">Address details</h2>
-                                    <div class="details">
-                                        <span>id </span>: <input type="number" class="customFormControl"
-                                            id="floatingInputGrid" placeholder="id" value="{{item.address.id}}"
-                                            readonly>
+                                    <div *ngIf="item.address == null">
+                                      No Address details
                                     </div>
-                                    <div class="details">
-                                        <span>name </span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.name}}" placeholder="name">
+                                    <div *ngIf="item.address != null">
+                                        <i class="fa-solid fa-user mx-2"></i>
+                                        <h2 class="inline-block">Address details</h2>
+                                        <div class="details">
+                                            <span>id </span>: <input type="number" class="customFormControl"
+                                                id="floatingInputGrid" placeholder="id" value="{{item.address.id}}"
+                                                readonly>
+                                        </div>
+                                        <div class="details">
+                                            <span>name </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.name}}" placeholder="name">
+                                        </div>
+                                        <div class="details">
+                                            <span>city </span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.city}}" placeholder="city">
+                                        </div>
+                                        <div class="details">
+                                            <span>region</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.region}}"
+                                                placeholder="region">
+                                        </div>
+                                        <div class="details">
+                                            <span>street</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.street}}"
+                                                placeholder="street">
+                                        </div>
+                                        <div class="details">
+                                            <span>building number</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.building_number}}"
+                                                placeholder="building number">
+                                        </div>
+                                        <div class="details">
+                                            <span>floor number</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.floor_number}}"
+                                                placeholder="floor_number">
+                                        </div>
+                                        <div class="details">
+                                            <span>apartment number</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.apartment_number}}"
+                                                placeholder="apartment number">
+                                        </div>
+                                        <div class="details">
+                                            <span>additional tips</span>: <input type="text" class="customFormControl"
+                                                id="floatingInputGrid" value="{{item.address.additional_tips}}"
+                                                placeholder="additional tips">
+                                        </div>
                                     </div>
-                                    <div class="details">
-                                        <span>city </span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.city}}" placeholder="city">
-                                    </div>
-                                    <div class="details">
-                                        <span>region</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.region}}" placeholder="region">
-                                    </div>
-                                    <div class="details">
-                                        <span>street</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.street}}" placeholder="street">
-                                    </div>
-                                    <div class="details">
-                                        <span>building number</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.building_number}}"
-                                            placeholder="building number">
-                                    </div>
-                                    <div class="details">
-                                        <span>floor number</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.floor_number}}"
-                                            placeholder="floor_number">
-                                    </div>
-                                    <div class="details">
-                                        <span>apartment number</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.apartment_number}}"
-                                            placeholder="apartment number">
-                                    </div>
-                                    <div class="details">
-                                        <span>additional tips</span>: <input type="text" class="customFormControl"
-                                            id="floatingInputGrid" value="{{item.address.additional_tips}}"
-                                            placeholder="additional tips">
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { CategorysService } from '../../services/categorys.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CategoriesComponent implements OnInit {
   isShown: Array<Boolean> = [];
   Categorys: any = [];
   basicUrl = "https://api.brightlifeapp.com/public";
-  delete: any = [];
+  isdelete: any= [];
 
   constructor(private _ser: CategorysService, private fb: FormBuilder,
     private cd: ChangeDetectorRef) { }
@@ -67,13 +68,26 @@ export class CategoriesComponent implements OnInit {
       this.cd.markForCheck();
     }
   }
-  deleteCat(Id: number) {
-    return this._ser.deleteCat(Id).subscribe((res: any) => {
-      this.delete = res;
-      window.location.reload();
-      console.log("delete", this.delete);
-    });
+
+  delete(Id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._ser.deleteCat(Id).subscribe((res: any) => {
+          this.isdelete = res;
+          window.location.reload();
+        });
+      }
+    })
   }
+
   edit(Id: number){
     
   }
