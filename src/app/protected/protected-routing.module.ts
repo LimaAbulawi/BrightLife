@@ -5,6 +5,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { AddFaqComponent } from './components/faqs/add-faq/add-faq.component';
 import { FAQsComponent } from './components/faqs/faqs.component';
 import { FinanceComponent } from './components/finance/finance.component';
+import { AddSliderComponent } from './components/home/sliders/add-slider/add-slider.component';
+import { SlidersComponent } from './components/home/sliders/sliders.component';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddPromoCodeComponent } from './components/promo-code/add-promo-code/add-promo-code.component';
@@ -35,12 +37,13 @@ const routes: Routes = [
   { path: "FAQs", component: FAQsComponent },
   { path: "FAQs/add", component: AddFaqComponent },  
   { path: "reviews", component: ReviewsComponent },
+  { path: "sliders", component: SlidersComponent },
   { path: "reviews/add-review", component: AddReviewComponent },
   { path: "promocode", component: PromoCodeComponent },
   { path: "promocode/add-promocode", component: AddPromoCodeComponent },
-
-   {
-    //lazyloding the protected module
+  { path: "sliders/add-slider", component: AddSliderComponent },
+  //lazyloding the protected module
+  {
     path: "providers/details/:id",
     component : ProviderDetailsComponent,
     loadChildren: () => import('./components/providers/provider-details/provider-details.module').then(m=>m.ProviderDetailsModule)

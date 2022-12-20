@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
     phone: ['', Validators.required],
     image: ['', Validators.required],
   })
+  openModel: boolean = false;
 
   constructor(private _ser: UsersService, private cd: ChangeDetectorRef, private fb: FormBuilder) { }
 
@@ -27,7 +28,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addUsers() {
-    
+
     console.log(this.addUsersForm.value);
     if (!this.addUsersForm.valid) {
       this.addUsersForm.markAllAsTouched();
@@ -39,6 +40,10 @@ export class AddUserComponent implements OnInit {
     )
     this._ser.addUsers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
+      if (res.code == 200) {
+        this.openModel = true;
+        this.deleteForm();
+      }
       console.log("res", res);
     });
   }
@@ -55,12 +60,7 @@ export class AddUserComponent implements OnInit {
     }
   }
   deleteForm() {
-    this.addUsersForm.controls.name.setValue('')
-    this.addUsersForm.controls.last_name.setValue('')
-    this.addUsersForm.controls.email.setValue('')
-    this.addUsersForm.controls.password.setValue('')
-    this.addUsersForm.controls.phone.setValue('')
-    this.addUsersForm.controls.image.setValue('')
+    this.addUsersForm.reset();
   }
 
   // space: any;

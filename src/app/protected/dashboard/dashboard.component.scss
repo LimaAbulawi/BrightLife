@@ -221,3 +221,14 @@ a:focus{
     width: 100%;
     flex-grow: 1;
 }
+
+.dropSup{
+    background-color: #f2edf3;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.dropSup a {
+   margin-bottom: 5px;
+}

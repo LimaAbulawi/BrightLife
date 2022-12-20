@@ -24,6 +24,8 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddReviewComponent } from './components/reviews/add-review/add-review.component';
 import { PromoCodeComponent } from './components/promo-code/promo-code.component';
 import { AddPromoCodeComponent } from './components/promo-code/add-promo-code/add-promo-code.component';
+import { SlidersComponent } from './components/home/sliders/sliders.component';
+import { AddSliderComponent } from './components/home/sliders/add-slider/add-slider.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { AddPromoCodeComponent } from './components/promo-code/add-promo-code/ad
     AddReviewComponent,
     PromoCodeComponent,
     AddPromoCodeComponent,
+    SlidersComponent,
+    AddSliderComponent,
   ],
   imports: [
     CommonModule,

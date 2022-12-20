@@ -60,7 +60,7 @@
                         >{{userName}}</div>
                   </div>
                     <ul class="nav text-left flex flex-col  ml-6 mr-6"  [ngClass]="{'m-auto': isShown}" ui-nav>
-                        <a routerLink="/protected/dashboard" class="mb-2" [ngClass]="{'mt-7': isShown ,  'text-[#b991c2]' : active == 1 }" (click)="setActive(1)">
+                        <a routerLink="/protected/dashboard"  routerLinkActive="text-[#b991c2]"  class="mb-2" [ngClass]="{'mt-7': isShown }" >
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text "
@@ -68,7 +68,7 @@
                                     <i class="fa-solid fa-house "></i>
                             </li>
                         </a>    
-                        <a routerLink="/protected/users" class="mb-2" [ngClass]="{'mt-7': isShown , 'text-[#b991c2]' : active == 2 }" (click)="setActive(2)">
+                        <a routerLink="/protected/users" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between ">
                                 <!-- [ngClass]="{'hover:bg-slate-600': !isShown}" -->
@@ -76,7 +76,7 @@
                                 <i class="fa-solid fa-users "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/providers" class="mb-2" [ngClass]="{'mt-7': isShown , 'text-[#b991c2]' : active == 3 }" (click)="setActive(3)">
+                        <a routerLink="/protected/providers" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
                             <li
                                 class="hidden-folded aside_data  rounded cursor-pointer flex items-center  justify-between">
                                 <span class="nav-text  "
@@ -84,7 +84,7 @@
                                 <i class="fa-solid fa-truck "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/finance" class="mb-2" [ngClass]="{'mt-7': isShown , 'text-[#b991c2]' : active == 6 }" (click)="setActive(6)">
+                        <a routerLink="/protected/finance" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer  flex items-center  justify-between">
                                 <!-- <i class="fa-light fa-display "></i> -->
@@ -93,7 +93,24 @@
                                 <i class="fa-solid fa-charging-station "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/categories" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 4 }" (click)="setActive(4)">
+                        <!-- Home -->
+                        <div class="mb-2" [ngClass]="{'mt-7': isShown }" >
+                            <li
+                                class="hidden-folded aside_data rounded flex items-center  justify-between">
+                                <!-- <i class="fa-light fa-display "></i> -->
+                                <span class="nav-text  "
+                                [ngClass]="{'block': !isShown, 'hidden': isShown}">Home</span>
+                                <i class="fas fa-angle-down cursor-pointer" ></i>
+
+                            </li>
+                        </div>
+                        <div class="dropSup" >
+                            <a routerLink="/protected/sliders" routerLinkActive="text-[#b991c2]">
+                                sliders
+                            </a>
+
+                        </div>
+                        <a routerLink="/protected/categories" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown}" >
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between">
                                 <span class="nav-text  "
@@ -101,7 +118,7 @@
                                 <i class="fa-solid fa-bars-staggered "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/orders" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 7 }" (click)="setActive(7)">
+                        <a routerLink="/protected/orders" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown}">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
@@ -109,7 +126,7 @@
                                 <i class="fa-solid fa-cart-shopping "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/FAQs" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 8 }" (click)="setActive(8)">
+                        <a routerLink="/protected/FAQs" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown }" >
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
@@ -118,7 +135,7 @@
                                 <i class="fa-solid fa-clipboard-question"></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/reviews" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 9 }" (click)="setActive(9)">
+                        <a routerLink="/protected/reviews" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
@@ -127,7 +144,7 @@
                                 <i class="fa-solid fa-comments"></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/promocode" class="mb-2" [ngClass]="{'mt-7': isShown, 'text-[#b991c2]' : active == 10 }" (click)="setActive(10)">
+                        <a routerLink="/protected/promocode" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text"
