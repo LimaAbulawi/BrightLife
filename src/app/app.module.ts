@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ProtectedModule } from './protected/protected.module';
+import { DataTablesModule } from "angular-datatables";
 
 export const LOCALSTORAGE_TOKEN_KEY = 'login_and_register'
 export function tokenGetter(){
@@ -29,6 +30,7 @@ export function tokenGetter(){
     AppRoutingModule,
     HttpClientModule ,
     GoogleMapsModule,
+    DataTablesModule,
     JwtModule.forRoot({
       config :{
         tokenGetter:tokenGetter , 

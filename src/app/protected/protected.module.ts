@@ -26,6 +26,8 @@ import { PromoCodeComponent } from './components/promo-code/promo-code.component
 import { AddPromoCodeComponent } from './components/promo-code/add-promo-code/add-promo-code.component';
 import { SlidersComponent } from './components/home/sliders/sliders.component';
 import { AddSliderComponent } from './components/home/sliders/add-slider/add-slider.component';
+import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { AddSliderComponent } from './components/home/sliders/add-slider/add-sli
     ProviderDetailsModule,
     GoogleMapsModule,
     NgApexchartsModule,
+    DataTablesModule
   ]
 })
 export class ProtectedModule { }

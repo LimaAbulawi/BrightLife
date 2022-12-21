@@ -18,10 +18,14 @@ export class UsersComponent implements OnInit {
   user: any = [];
   isdelete: any = [];
   isAddUser: boolean = false;
+  dtOptions: DataTables.Settings = {};
 
   constructor(private _ser: UsersService) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
     this.getListFromService();
   }
 

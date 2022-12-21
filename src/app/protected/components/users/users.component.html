@@ -7,6 +7,26 @@
             <button type="button" class="ml-4 btn btn btn-light customBg" routerLink="/protected/users/add">Add</button>
         </div>
     </div>
+
+
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of users">
+            <td>1</td>
+            <td>Foo</td>
+            <td>Bar</td>
+          </tr>
+        </tbody>
+      </table>
+
+
     <div class="grid shadow bg-white">
 
         <div

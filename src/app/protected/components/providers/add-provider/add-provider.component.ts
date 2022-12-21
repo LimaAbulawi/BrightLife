@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, MinValidator, Validators } from '@angular/forms';
 import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 import { GoogleMap, MapMarker, MapInfoWindow } from '@angular/google-maps';
+import { CustomValidators } from 'src/app/shared/validators';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-provider',
   templateUrl: './add-provider.component.html',
@@ -109,19 +111,31 @@ export class AddProviderComponent implements OnInit {
     })
     // }
   }
-  addSuppliersForm = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', Validators.required],
-    password_confirmation: ['', Validators.required],
-    phone: ['', Validators.required ],
-    description: [''],
-    location: [''],
-    image: ['', Validators.required], //making the image required here
-    cover: ['', Validators.required], //making the image required here
-    done: [false]
-  })
 
+  addSuppliersForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    password_confirmation: new FormControl('', [Validators.required]),
+    role: new FormControl('admin', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+    // description: [''],
+    // location: [''],
+    // image: ['', Validators.required], //making the image required here
+    // cover: ['', Validators.required], //making the image required here
+    // done: [false]
+  },
+    [CustomValidators.MatchValidator('password', 'password_confirmation')]
+  );
+
+  get passwordMatchError() {
+    return (
+      this.addSuppliersForm.getError('mismatch') &&
+      this.addSuppliersForm.get('password_confirmation')?.touched
+    );
+  }
+
+  // submit
   addSuppliers() {
     console.log("length", this.addSuppliersForm.get('phone')?.value?.length)
     if (!this.addSuppliersForm.valid) {
@@ -136,6 +150,16 @@ export class AddProviderComponent implements OnInit {
 
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
+      if (res.code == 200) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'تم  اضافة مزود خدمة ',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.addSuppliersForm.reset();
+      }
     });
   }
 
@@ -151,15 +175,8 @@ export class AddProviderComponent implements OnInit {
       this.cd.markForCheck();
     }
   }
+
   deleteForm() {
-    this.addSuppliersForm.controls.name.setValue('')
-    this.addSuppliersForm.controls.email.setValue('')
-    this.addSuppliersForm.controls.password.setValue('')
-    this.addSuppliersForm.controls.phone.setValue('')
-    this.addSuppliersForm.controls.image.setValue('')
-    this.addSuppliersForm.controls.description.setValue('')
-    this.addSuppliersForm.controls.location.setValue('')
-    this.addSuppliersForm.controls.cover.setValue('')
   }
 
   onInput(event: any) {
@@ -285,9 +302,9 @@ export class AddProviderComponent implements OnInit {
   }
   must10Digit() {
     debugger
-    if (this.addSuppliersForm.get('phone')?.value?.length !=10) {
+    if (this.addSuppliersForm.get('phone')?.value?.length != 10) {
       this.lenghtErorr = true;
-    }else{
+    } else {
       this.lenghtErorr = false;
     }
   }

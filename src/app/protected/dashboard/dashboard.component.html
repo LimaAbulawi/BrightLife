@@ -1,14 +1,13 @@
 <div class="overflow-hidden">
-    <nav class="flex flex-row col-lg-12 col-12 p-0 fixed-top bg-white sm:justify-between sm:px-4">
-        <div class="text-center items-center h-[70px] justify-center sm:w-11 pt-[14px]  "
-        [ngClass]="{'lg:mx-1': isShown, 'lg:mx-6': !isShown}" >
+    <nav class="flex flex-row justify-between col-lg-12 col-12 p-0 fixed-top bg-white sm:justify-between sm:px-4">
+        <div class="text-center items-center h-[70px] justify-center sm:w-11 pt-[14px]  nav-brand lg:mx-6">
             <div class="flex flex-wrap" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
-                <img class="w-12" src="../../../assets/App icon1.png" alt="">
-                <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1>
+                <img class="w-auto" src="../../../assets/logo.png" alt="">
+                <!-- <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1> -->
             </div>
-            <a href="" class="inline-block" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
+            <!-- <a href="" class="inline-block" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
                 <img class="w-12" src="../../../assets/App icon1.png" alt="">
-            </a>
+            </a> -->
         </div>
         <div class=" lg:px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
             <!-- burger button -->
