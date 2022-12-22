@@ -9,7 +9,7 @@ import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '
   providedIn: 'root'
 })
 export class AuthService {
-  basicUrl = "http://api.brightlifeapp.com/public";
+  basicUrl = "https://api.brightlifeapp.com/public";
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Authorization', 'Bearer ' + localStorage.getItem(LOCALSTORAGE_TOKEN_KEY));
