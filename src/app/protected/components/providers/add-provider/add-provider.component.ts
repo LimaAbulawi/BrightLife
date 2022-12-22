@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, MinValidator, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, MinValidator, Validators } from '@angular/forms';
 import { SuppliersService } from 'src/app/protected/services/suppliers.service';
 import { GoogleMap, MapMarker, MapInfoWindow } from '@angular/google-maps';
 import { CustomValidators } from 'src/app/shared/validators';
@@ -73,6 +73,11 @@ export class AddProviderComponent implements OnInit {
               animation: google.maps.Animation.DROP,
             },
           })
+          this.latitude= position.coords.latitude;
+          this.longitude= position.coords.longitude;
+          this.addSuppliersForm.controls.lat.setValue( this.latitude)
+          this.addSuppliersForm.controls.lng.setValue( this.longitude)
+          console.log("this.latitude1" ,  this.addSuppliersForm.controls.lat.value , "this.longitude1" ,  this.addSuppliersForm.controls.lng.value )
         })
         console.log('granted')
       } else if (result.state === 'prompt') {
@@ -88,6 +93,12 @@ export class AddProviderComponent implements OnInit {
     this.markers = [];
     // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude=position.coords.latitude;
+      this.longitude= position.coords.longitude;
+      
+      this.addSuppliersForm.controls.lat.setValue(this.latitude)
+      this.addSuppliersForm.controls.lng.setValue(this.longitude)
+      
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -108,7 +119,11 @@ export class AddProviderComponent implements OnInit {
           animation: google.maps.Animation.DROP,
         },
       })
+      console.log("this.markers" ,   this.markers)
+      console.log("this.controls.lat" ,  this.addSuppliersForm.controls.lat.value , "this.controls.lng" ,  this.addSuppliersForm.controls.lng.value )
     })
+    
+
     // }
   }
 
@@ -119,11 +134,13 @@ export class AddProviderComponent implements OnInit {
     password_confirmation: new FormControl('', [Validators.required]),
     role: new FormControl('admin', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
-    // description: [''],
-    // location: [''],
-    // image: ['', Validators.required], //making the image required here
-    // cover: ['', Validators.required], //making the image required here
-    // done: [false]
+    lat: new FormControl("", [Validators.required]),
+    lng: new FormControl("", [Validators.required]),
+    groups: this.fb.array([this.initgroups()]),
+    image: new FormControl('', [Validators.required]), //making the image required here
+    cover: new FormControl('', [Validators.required]), //making the image required here
+    description: new FormControl(''),
+    // done: new FormControl(false, [Validators.required]),
   },
     [CustomValidators.MatchValidator('password', 'password_confirmation')]
   );
@@ -135,26 +152,69 @@ export class AddProviderComponent implements OnInit {
     );
   }
 
+  initgroups() {
+    return this.fb.group({
+      from: ['', Validators.required],
+      to: ['', Validators.required],
+      delivery_fees: ['', Validators.required],
+    });
+  }
+
+  getGroupsControls() {
+    return (this.addSuppliersForm.get('groups') as FormArray).controls;
+  }
+  getGroupsControlsLenght() {
+    return (this.addSuppliersForm.get('groups') as FormArray).controls.length > 1;
+  }
+  removegroup(i: number) {
+    const control = <FormArray>this.addSuppliersForm.controls['groups'];
+    control.removeAt(i);
+  }
+  addgroup() {
+    const control = <FormArray>this.addSuppliersForm.controls['groups'];
+    control.push(this.initgroups());
+  }
+
+
   // submit
   addSuppliers() {
-    console.log("length", this.addSuppliersForm.get('phone')?.value?.length)
+
+    // console.log("length", this.addSuppliersForm.get('phone')?.value?.length)
+    console.log("addSuppliersForm", this.addSuppliersForm.value)
+ 
+
     if (!this.addSuppliersForm.valid) {
       this.addSuppliersForm.markAllAsTouched();
     }
+
     Object.entries(this.addSuppliersForm.value).forEach(
       ([key, value]: any[]) => {
+        if(key == 'groups'){
+
+          
+          // this.formData.append(key, value);
+         
+        }
         this.formData.append(key, value);
         console.log(key + ':' + value);
       }
     )
 
+    // console.log("formData", this.formData.get('groups') );
+
+    // return;
+
+
+    
+
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
+      console.log("formData", res );
       if (res.code == 200) {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'تم  اضافة مزود خدمة ',
+          title: 'تم اضافة مزود خدمة ',
           showConfirmButton: false,
           timer: 1500
         })
@@ -195,16 +255,13 @@ export class AddProviderComponent implements OnInit {
     let autocomplete = new google.maps.places.Autocomplete(
       this.searchElementRef.nativeElement
     );
-
     autocomplete.setComponentRestrictions({
       country: ["jo"],
     });
-
     // Align search box to center
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
       this.searchElementRef.nativeElement
     );
-
     autocomplete.addListener('place_changed', () => {
 
       this.ngZone.run(() => {
@@ -221,6 +278,10 @@ export class AddProviderComponent implements OnInit {
         //set latitude, longitude 
         this.latitude = place.geometry.location?.lat();
         this.longitude = place.geometry.location?.lng();
+
+        this.addSuppliersForm.controls.lat.setValue( this.latitude)
+        this.addSuppliersForm.controls.lng.setValue( this.longitude)
+
         this.center = {
           lat: this.latitude,
           lng: this.longitude,
@@ -243,9 +304,15 @@ export class AddProviderComponent implements OnInit {
             animation: google.maps.Animation.DROP,
           },
         });
+
+        console.log("this.markers2" , this.markers)
+
+    console.log("this.lat.search" ,  this.addSuppliersForm.controls.lat.value , "this.lng.search" ,  this.addSuppliersForm.controls.lng.value )
+
+        // console.log(" this.latitude" ,   this.latitude , "longitude" , this.longitude)
+
       });
     });
-
   }
 
   zoomIn() {
@@ -287,6 +354,13 @@ export class AddProviderComponent implements OnInit {
         animation: google.maps.Animation.DROP,
       },
     })
+
+    this.latitude= event.latLng.lat();
+    this.longitude= event.latLng.lng();
+
+    console.log("this.markers3" , this.markers)
+    console.log(" this.latitude" ,   this.latitude , "longitude" , this.longitude)
+
   }
 
   openInfo(marker: MapMarker, content: string) {

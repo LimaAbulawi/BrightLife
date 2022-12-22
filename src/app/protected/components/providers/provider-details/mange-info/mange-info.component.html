@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-9  m-auto grid-margin stretch-card">
-        <div class="card mt-10">
+    <div class="col-12 col-md-9  m-auto grid-margin stretch-card">
+        <div class="card my-10">
             <div class="card-body">
                 <div *ngIf="provider">
                     <form action="" class="">
                         <!-- w-full p-1 justify-center mx-auto  columns-2 sm:columns-1 -->
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 ">
                                 <div class="form-floating flex justify-between m-1">
                                     <img class=" w-14 h-14  rounded-full" src="{{basicUrl}}/{{provider.image}}" alt="">
                                     <img class=" w-36 h-14" src="{{basicUrl}}/{{provider.cover}}" alt="">
@@ -21,14 +21,9 @@
                                         value="{{provider.name}}">
                                     <label for="floatingInputGrid">Name</label>
                                 </div>
-                                <div class="form-floating m-1">
-                                    <input type="text" class="form-control" id="floatingInputGrid"
-                                        onKeyPress="if(this.value.length==10) return false;" placeholder="phone"
-                                        value="{{provider.phone}}">
-                                    <label for="floatingInputGrid">phone</label>
-                                </div>
+                             
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="form-floating m-1">
                                     <input type="text" class="form-control" id="floatingInputGrid" placeholder="Email"
                                         value="{{provider.email}}">
@@ -36,9 +31,15 @@
                                 </div>
                                 <div class="form-floating m-1">
                                     <input type="text" class="form-control" id="floatingInputGrid"
+                                        onKeyPress="if(this.value.length==10) return false;" placeholder="phone"
+                                        value="{{provider.phone}}">
+                                    <label for="floatingInputGrid">phone</label>
+                                </div>
+                                <!-- <div class="form-floating m-1">
+                                    <input type="text" class="form-control" id="floatingInputGrid"
                                         placeholder="location" value="{{provider.location}}">
                                     <label for="floatingInputGrid">location</label>
-                                </div>
+                                </div> -->
                                 <div class="form-floating m-1">
                                     <input type="text" class="form-control" id="floatingInputGrid"
                                         placeholder="description" value="{{provider.description}}">

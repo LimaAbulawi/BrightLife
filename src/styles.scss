@@ -239,13 +239,15 @@ td:nth-child(even) {
     border-color: white;
     width: 87px;
 }
-.saveBtn:hover{
+
+.saveBtn:hover {
     background-color: #76a38d;
     border-color: white;
     color: rgb(71 85 105);
 
 }
-.deleteBtn{
+
+.deleteBtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -263,15 +265,19 @@ td:nth-child(even) {
     color: white;
     background-color: rgb(185 28 28);
 }
-.middle{
-    background-color: #f2edf3 ;
+
+.middle {
+    background-color: #f2edf3;
 }
-.middle input{
-    background-color: #f2edf3 ;
+
+.middle input {
+    background-color: #f2edf3;
 }
+
 .details {
     overflow: hidden;
 }
+
 .noData {
     text-align: center;
     margin: 10px auto;
@@ -282,6 +288,20 @@ td:nth-child(even) {
     background-color: #41464b;
     border-radius: 5px;
 }
+
 body {
     text-transform: capitalize !important;
+}
+
+// media
+@media screen and (max-width: 425px) {
+
+    .head {
+        font-size: 1.25rem;
+    }
+    .customBg {
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+    }
+
 }

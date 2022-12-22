@@ -120,18 +120,18 @@
                             </div>
 
                             <!-- description -->
-                            <!-- <div class="mb-1">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">description</label>
                                 </div>
                                 <input type="text" class="form-control" placeholder="description"
                                     formControlName="description">
-                            </div> -->
+                            </div>
                             <!-- image -->
-                            <!-- <div class="mb-1">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">image</label>
-                           
+
                                     <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('image')?.touched && this.addSuppliersForm.get('image')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
@@ -141,12 +141,12 @@
                                 <input type="file" #file class="form-control" placeholder="image"
                                     (change)="onFileChange($event,'image')"
                                     accept="image/png, image/gif, image/jpeg , image/PNG, image/GIF , image/JPEG">
-                            </div> -->
+                            </div>
                             <!-- cover image -->
-                            <!-- <div class="mb-1">
+                            <div class="mb-1">
                                 <div class="flex justify-between mb-1">
                                     <label for="floatingInputGrid">cover</label>
-                                 
+
                                     <label class="errorLabel"
                                         *ngIf="this.addSuppliersForm.get('cover')?.touched && this.addSuppliersForm.get('cover')?.hasError('required')">
                                         <i class="fad fa-exclamation"></i>
@@ -155,20 +155,12 @@
                                 </div>
                                 <input type="file" #file class="form-control" placeholder="cover"
                                     (change)="onFileChange($event,'cover')">
-                            </div> -->
-
-                            <!-- location -->
-                            <!-- <div class="mb-1">
-                                <div class="flex justify-between mb-1">
-                                    <label for="floatingInputGrid">location</label>
-                                </div>
-                                <input type="" class="form-control" placeholder="location" formControlName="location">
-                            </div> -->
+                            </div>
                             <!-- location -->
                             <!-- map  start-->
-                            <!-- <div class="mt-3"> -->
-                            <!-- app.component.html -->
-                            <!-- <div>
+                            <div class="mt-3">
+                                <!-- app.component.html -->
+                                <div>
                                     <div class="flex items-center mb-1">
                                         <label for="floatingInputGrid" class="mr-2">location /</label>
                                         <label for="floatingInputGrid" class="text-[#585b60] text-sm">double click to
@@ -181,15 +173,15 @@
 
                                 <google-map #myGoogleMap height="500px" width="100%" [center]="center"
                                     [options]="options" (mapClick)="eventHandler($event,'mapClick')"
-                                    (mapDblclick)="eventHandler($event,'mapDblclick')"> -->
-                            <!--  (mapDrag)="eventHandler($event,'mapDrag')"
+                                    (mapDblclick)="eventHandler($event,'mapDblclick')">
+                                    <!--  (mapDrag)="eventHandler($event,'mapDrag')"
     (mapDragend)="eventHandler($event,'mapDragend')"
     (mapRightclick)="eventHandler($event,'mapRightclick')"
     (positionChanged)="eventHandler($event,'marker_positionChanged')"
     (zoomChanged)="eventHandler($event,'zoomChanged')"
     
   -->
-                            <!-- <map-marker #markerElem="mapMarker" *ngFor="let marker of markers"
+                                    <map-marker #markerElem="mapMarker" *ngFor="let marker of markers"
                                         [position]="marker.position" [label]="marker.label" [title]="marker.title"
                                         [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)">
 
@@ -197,32 +189,44 @@
 
                                     <map-info-window>{{ infoContent }}</map-info-window>
                                 </google-map>
-                            </div> -->
-                            <!-- <button  placeholder="loc" type="button"
+                            </div>
+                            <button placeholder="loc" type="button"
                                 class="px-1 py-1 mt-1 text-sm text-[#78909c] border border-[#a0c1f8] rounded cursor-pointer"
-                                (click)="getMyLoc()">get my location</button> -->
+                                (click)="getMyLoc()">get my location</button>
                             <!-- map  end-->
                             <!-- from / to / delivery fees -->
-                            <!-- <div class="flex justify-between">
-                                <div class="mb-1 px-1">
-                                    <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">from</label>
+                            <div formArrayName="groups">
+                                <div *ngFor="let item of getGroupsControls(); let i = index" class="gp-card">
+                                    <div class="gp-card-heading">
+                                        <span>Group {{ i + 1 }}</span>
+                                        <a class="gb-close" *ngIf="getGroupsControlsLenght()" (click)="removegroup(i)"
+                                            style="cursor: default; float: right">
+                                            X
+                                        </a>
                                     </div>
-                                    <input type="number" class="form-control" placeholder="1Km">
-                                </div>
-                                <div class="mb-1 px-1">
-                                    <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">to</label>
+                                    <div class="gp-card-body" [formGroupName]="i" class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label>from</label>
+                                                <input type="text" class="form-control" formControlName="from" placeholder="1Km" />
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>to</label>
+                                                <input type="text" class="form-control" formControlName="to" placeholder="2Km" />
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>delivery fees</label>
+                                                <input type="text" class="form-control" formControlName="delivery_fees" placeholder="0jd"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input type="number" class="form-control" placeholder="2Km">
                                 </div>
-                                <div class="mb-1 px-1">
-                                    <div class="flex justify-between mb-1">
-                                        <label for="floatingInputGrid" class="sm:text-[0.8rem]">delivery fees</label>
-                                    </div>
-                                    <input type="number" class="form-control" placeholder="0jd">
-                                </div>
-                            </div> -->
+                            </div>
+                            <div class="margin-20 new">
+                                <a (click)="addgroup()" style=" float: right">
+                                    + Group
+                                </a>
+                            </div>
                         </div>
                         <div class="flex items-center justify-center customContainer  px-4 mt-2 ">
                             <!-- <button type="submit" class="addNew" data-toggle="modal" data-target="#exampleModal">Add
@@ -231,9 +235,7 @@
                                 Provider</button>
                             <button *ngIf="addSuppliersForm.valid" type="submit" class="addNew cursor-pointer">
                                 Add Provider</button>
-                        
                         </div>
-
                     </form>
                 </div>
             </div>

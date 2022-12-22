@@ -1,13 +1,7 @@
 <div class="overflow-hidden">
-    <nav class="flex flex-row justify-between col-lg-12 col-12 p-0 fixed-top bg-white sm:justify-between sm:px-4">
-        <div class="text-center items-center h-[70px] justify-center sm:w-11 pt-[14px]  nav-brand lg:mx-6">
-            <div class="flex flex-wrap" [ngClass]="{'block': leftToggle, 'hidden': !leftToggle}">
-                <img class="w-auto" src="../../../assets/logo.png" alt="">
-                <!-- <h1 class="text-3xl pt-1" [ngClass]="{'block': !isShown, 'hidden': isShown}">Bright Life</h1> -->
-            </div>
-            <!-- <a href="" class="inline-block" [ngClass]="{'block': rightToggle, 'hidden': !rightToggle}">
-                <img class="w-12" src="../../../assets/App icon1.png" alt="">
-            </a> -->
+    <nav class="flex flex-row items-center justify-between col-lg-12 col-12 p-0 fixed-top bg-white sm:justify-between sm:px-4">
+        <div class="ml-3  sm:w-28  nav-brand lg:mx-6">
+            <img class="w-auto" src="../../../assets/logo.png" alt="">
         </div>
         <div class=" lg:px-6 sm:w-auto text-[#9c9fa6] h-[70px] flex items-stretch ">
             <!-- burger button -->
@@ -36,7 +30,8 @@
                     </div>
                 </li>
                 <li class="sm:static ml-6 mr-2 logOut items-center">
-                    <i class="fa-solid fa-arrow-right-from-bracket cursor-pointer hover:text-[#b66dff]" (click)="logOut()"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket cursor-pointer hover:text-[#b66dff]"
+                        (click)="logOut()"></i>
                 </li>
             </ul>
             <button class="sm:px-1 pl-1 pr-5 border-none self-center navbar-toggler text-inherit ml-4 mr-2"
@@ -47,27 +42,28 @@
     </nav>
     <div class="pt-[70px] flex flex-row px-0 w-full m-auto ">
         <nav class="sidebar sidebar-offcanvas bg-blue-600 flex sm:w-[253px]  w-[293px] overflow-hidden" id=""
-            [ngClass]="{'R_0': !isShown ,'w_54': isShown }" >
+            [ngClass]="{'R_0': !isShown ,'w_54': isShown }">
             <div class="flex flex-col bg-white text-center text-[#0f172a]  h-[100vh] sm:h-auto  w-full"
-            [ngClass]="{'w-[55px]': isShown}">
+                [ngClass]="{'w-[55px]': isShown}">
                 <div class="flex flex-col ">
-                  <div class="flex px-9 py-3 items-center mb-3" [ngClass]="{'block': !isShown, 'hidden': isShown}">
-                    <div class="relative w-14 h-11 sm:mx-3 user_image">
-                        <img src="../../../assets/face1.jpg" alt="" class="rounded-[100%]">
+                    <div class="flex px-9 py-3 items-center mb-3" [ngClass]="{'block': !isShown, 'hidden': isShown}">
+                        <div class="relative w-14 h-11 sm:mx-3 user_image">
+                            <img src="../../../assets/face1.jpg" alt="" class="rounded-[100%]">
+                        </div>
+                        <div class="navbar-brand truncate ">{{userName}}</div>
                     </div>
-                    <div class="navbar-brand truncate "
-                        >{{userName}}</div>
-                  </div>
-                    <ul class="nav text-left flex flex-col  ml-6 mr-6"  [ngClass]="{'m-auto': isShown}" ui-nav>
-                        <a routerLink="/protected/dashboard"  routerLinkActive="text-[#b991c2]"  class="mb-2" [ngClass]="{'mt-7': isShown }" >
+                    <ul class="nav text-left flex flex-col  ml-6 mr-6" [ngClass]="{'m-auto': isShown}" ui-nav>
+                        <a routerLink="/protected/dashboard" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text "
                                     [ngClass]="{'block': !isShown, 'hidden': isShown}">dashboard</span>
-                                    <i class="fa-solid fa-house "></i>
+                                <i class="fa-solid fa-house "></i>
                             </li>
-                        </a>    
-                        <a routerLink="/protected/users" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
+                        </a>
+                        <a routerLink="/protected/users" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between ">
                                 <!-- [ngClass]="{'hover:bg-slate-600': !isShown}" -->
@@ -75,79 +71,83 @@
                                 <i class="fa-solid fa-users "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/providers" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
+                        <a routerLink="/protected/providers" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data  rounded cursor-pointer flex items-center  justify-between">
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">providers</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">providers</span>
                                 <i class="fa-solid fa-truck "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/finance" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }">
+                        <a routerLink="/protected/finance" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer  flex items-center  justify-between">
                                 <!-- <i class="fa-light fa-display "></i> -->
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">finance</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">finance</span>
                                 <i class="fa-solid fa-charging-station "></i>
                             </li>
                         </a>
                         <!-- Home -->
-                        <div class="mb-2" [ngClass]="{'mt-7': isShown }" >
-                            <li
-                                class="hidden-folded aside_data rounded flex items-center  justify-between">
+                        <div class="mb-2" [ngClass]="{'mt-7': isShown }">
+                            <li class="hidden-folded aside_data rounded flex items-center  justify-between">
                                 <!-- <i class="fa-light fa-display "></i> -->
-                                <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">Home</span>
-                                <i class="fas fa-angle-down cursor-pointer" ></i>
+                                <span class="nav-text  " [ngClass]="{'block': !isShown, 'hidden': isShown}">Home</span>
+                                <i class="fas fa-angle-down cursor-pointer"></i>
 
                             </li>
                         </div>
-                        <div class="dropSup" >
+                        <div class="dropSup">
                             <a routerLink="/protected/sliders" routerLinkActive="text-[#b991c2]">
                                 sliders
                             </a>
 
                         </div>
-                        <a routerLink="/protected/categories" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown}" >
+                        <a routerLink="/protected/categories" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown}">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center  justify-between">
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">categories</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">categories</span>
                                 <i class="fa-solid fa-bars-staggered "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/orders" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown}">
+                        <a routerLink="/protected/orders" class="mb-2" routerLinkActive="text-[#b991c2]"
+                            [ngClass]="{'mt-7': isShown}">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">orders</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">orders</span>
                                 <i class="fa-solid fa-cart-shopping "></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/FAQs" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown }" >
+                        <a routerLink="/protected/FAQs" class="mb-2" routerLinkActive="text-[#b991c2]"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
-                                <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">FAQs</span>
+                                <span class="nav-text  " [ngClass]="{'block': !isShown, 'hidden': isShown}">FAQs</span>
                                 <!-- <i class="fa-solid fa-cart-shopping "></i> -->
                                 <i class="fa-solid fa-clipboard-question"></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/reviews" class="mb-2" routerLinkActive="text-[#b991c2]" [ngClass]="{'mt-7': isShown }">
+                        <a routerLink="/protected/reviews" class="mb-2" routerLinkActive="text-[#b991c2]"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">reviews</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">reviews</span>
                                 <!-- <i class="fa-solid fa-cart-shopping "></i> -->
                                 <i class="fa-solid fa-comments"></i>
                             </li>
                         </a>
-                        <a routerLink="/protected/promocode" routerLinkActive="text-[#b991c2]" class="mb-2" [ngClass]="{'mt-7': isShown }" >
+                        <a routerLink="/protected/promocode" routerLinkActive="text-[#b991c2]" class="mb-2"
+                            [ngClass]="{'mt-7': isShown }">
                             <li
                                 class="hidden-folded aside_data rounded cursor-pointer flex items-center justify-between ">
                                 <span class="nav-text"
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">promocode</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">promocode</span>
                                 <!-- <i class="fa-solid fa-cart-shopping"></i> -->
                                 <i class="fa-sharp fa-solid fa-barcode"></i>
                             </li>
@@ -156,7 +156,7 @@
                             <li
                                 class="hidden-folded aside_data cursor-pointer rounded flex items-center justify-between">
                                 <span class="nav-text  "
-                                [ngClass]="{'block': !isShown, 'hidden': isShown}">logOut</span>
+                                    [ngClass]="{'block': !isShown, 'hidden': isShown}">logOut</span>
                                 <i class="fas fa-sign-out "></i>
                             </li>
                         </a>
@@ -164,7 +164,7 @@
                 </div>
             </div>
         </nav>
-        <div class="main-panel w-full bg-[#f2edf3]"> 
+        <div class="main-panel w-full bg-[#f2edf3]">
             <router-outlet></router-outlet>
         </div>
     </div>
@@ -176,5 +176,3 @@
      </svg>
 </div>
      -->
-
-   
