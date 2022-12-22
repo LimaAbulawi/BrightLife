@@ -43,6 +43,7 @@ export class AddProviderComponent implements OnInit {
   latitude!: any;
   longitude!: any;
   lenghtErorr: boolean = false;
+  resss: any;
   // enableMap: boolean = false;
 
   constructor(private fb: FormBuilder, private _ser: SuppliersService, private cd: ChangeDetectorRef, private ngZone: NgZone) { }
@@ -209,6 +210,7 @@ export class AddProviderComponent implements OnInit {
 
     this._ser.addSuppliers(this.formData).subscribe((res: any) => {
       this.resMsg = res.msg;
+      this.resss= res ;
       console.log("formData", res );
       if (res.code == 200) {
         Swal.fire({
@@ -218,6 +220,7 @@ export class AddProviderComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+        
         this.addSuppliersForm.reset();
       }
     });
