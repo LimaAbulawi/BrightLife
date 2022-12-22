@@ -57,6 +57,7 @@ export class ProvidersCategoriesComponent implements OnInit {
         res.user.categories.filter((x: any) => x.id == '51'))
       )
   }
+  
   selectChangeHandler(event: any) {
     this.selectedTeam = event.target.value;
     this.selectCat.controls.category_id.setValue(this.selectedTeam)

@@ -13,6 +13,7 @@ import { AddPromoCodeComponent } from './components/promo-code/add-promo-code/ad
 import { PromoCodeComponent } from './components/promo-code/promo-code.component';
 import { AddProviderComponent } from './components/providers/add-provider/add-provider.component';
 import { ProviderDetailsComponent } from './components/providers/provider-details/provider-details.component';
+import { AddCatProviderComponent } from './components/providers/provider-details/providers-categories/add-cat-provider/add-cat-provider.component';
 import { ProvidersComponent } from './components/providers/providers.component';
 import { AddReviewComponent } from './components/reviews/add-review/add-review.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
     path: "providers/details/:id",
     component : ProviderDetailsComponent,
     loadChildren: () => import('./components/providers/provider-details/provider-details.module').then(m=>m.ProviderDetailsModule)
+  },
+  {
+    path: "provider/add-category/:id",
+    component : AddCatProviderComponent,
   },
 ];
 

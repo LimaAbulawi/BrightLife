@@ -220,7 +220,7 @@ export class AddProviderComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        
+
         this.addSuppliersForm.reset();
       }
     });

@@ -8,6 +8,7 @@ import { ProvidersCategoriesComponent } from './providers-categories/providers-c
 import { ProvidersOrdersComponent } from './providers-orders/providers-orders.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProviderFinanceComponent } from './provider-finance/provider-finance.component';
+import { AddCatProviderComponent } from './providers-categories/add-cat-provider/add-cat-provider.component';
 
 
 
@@ -18,6 +19,7 @@ import { ProviderFinanceComponent } from './provider-finance/provider-finance.co
     ProvidersCategoriesComponent,
     ProvidersOrdersComponent,
     ProviderFinanceComponent,
+    AddCatProviderComponent,
  
   ],
   imports: [

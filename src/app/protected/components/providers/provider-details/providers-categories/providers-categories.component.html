@@ -15,11 +15,12 @@
         </table>
     </div>
     <div class="col-3">
-        <button type="button" class="mt-8 btn btn-light customBg " data-toggle="modal" data-target="#exampleModal">
+<!-- data-toggle="modal" data-target="#exampleModal" -->
+        <button  [routerLink]="['/protected/provider/add-category/', providerId]" type="button" class="mt-8 btn btn-light customBg " >
             + add category
         </button>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -41,12 +42,11 @@
                             <button type="button" class="btn border border-white hover:bg-[#5c636a] bg-[#90949b]"
                                 data-dismiss="modal">Close</button>
                             <button type="submit" class="btn border" [disabled]="!selectCat.valid">add</button>
-                            <!-- <button type="submit" data-dismiss="modal">Submit</button> -->
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </div>
