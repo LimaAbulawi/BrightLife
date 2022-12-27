@@ -1,13 +1,19 @@
-<form action="" [formGroup]="selectCat" (ngSubmit)="submit()">
-    <div class="modal-body">
-        <select (change)="selectChangeHandler($event)" class="ml-4 btn btn-light  customBg"
-            name="addCategory" id="">
-            <option value="add" disabled selected hidden>add cat</option>
-            <option class="text-white" *ngFor="let category of Categorys" value="{{category.id}}">
-                {{category.name}}</option>
-        </select>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="" [formGroup]="selectCat" (ngSubmit)="submit()">
+                <div class="modal-body">
+                    <select (change)="selectChangeHandler($event)" class="ml-4 btn btn-light  customBg"
+                        name="addCategory" id="">
+                        <option value="add" disabled selected hidden>add cat</option>
+                        <option class="text-white" *ngFor="let category of Categorys" value="{{category.id}}">
+                            {{category.name}}</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn border" [disabled]="!selectCat.valid">add</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button type="submit" class="btn border" [disabled]="!selectCat.valid">add</button>
-    </div>
-</form>
+</div>
